@@ -14,7 +14,7 @@ UserProfile:
     first_name: string(255)
     last_name: string(255)
     email_address: string(255)
-    notes: text(65555)
+    notes: string(65555)
   relations:
     User:
       class: sfGuardUser
@@ -30,7 +30,7 @@ StandardProgram:
         notes: string(65555)
     relations:
         ExerciseSet:
-            class: ExcerciseSet
+            class: ExerciseSet
             foreignType: many
 
 UserProgram:
@@ -45,7 +45,7 @@ UserProgram:
             class: sfGuardUser
             foreignType: one        
         ExerciseSet:
-            class: ExcerciseSet
+            class: ExerciseSet
             foreignType: many
 
 # Each exercise will be related to the program through one of two:
@@ -67,13 +67,13 @@ Exercise:
         name: string(30)
         description: string(30)      
     relations:
-        class: Excercise
+        class: Exercise
         foreignType: many
         local: id
-        foreign: related_exercise_id
-        refClass: ExcerciseLink
+        foreign: exercise_id
+        refClass: ExerciseLink
 
-ExcerciseLink:
+ExerciseLink:
     columns:
         exercise_id: integer(4)
         related_exercise_id: integer(4)
