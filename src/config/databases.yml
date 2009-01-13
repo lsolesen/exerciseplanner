@@ -1,0 +1,21 @@
+dev:
+  doctrine:
+    param:
+      classname:  DebugDoctrine
+
+test:
+  doctrine:
+    param:
+      classname:  DebugDoctrine
+
+all:
+  doctrine:
+    class:        sfDoctrineDatabase
+    param:
+      classname:  DoctrinePDO
+      dsn:        mysql:dbname=motionsplan;host=localhost
+      username:   root
+      password:   klani
+      encoding:   utf8
+      persistent: true
+      pooling:    true

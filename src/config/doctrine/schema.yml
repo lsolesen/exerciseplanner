@@ -1,0 +1,92 @@
+# A teacher / trainer has to be able to create programs for users
+# A user can create own programs
+# A user can create own exercises which in time can be reviewed by trainers
+#   and added to the collective pool of exercises.
+# A user can have an infinite numbers of programs
+# A trainer / editor can create standard programs, which are easy to apply to 
+#   a user    
+
+# A user can have an exercise program
+
+UserProfile:
+  columns:
+    sf_guard_user_id: integer(4)
+    first_name: string(255)
+    last_name: string(255)
+    email_address: string(255)
+    notes: text(65555)
+  relations:
+    User:
+      class: sfGuardUser
+      foreignType: one
+
+# A program consists of different exercises
+
+StandardProgram:
+    actAs:
+        Timestampable
+    columns:
+        name: string(30)
+        notes: string(65555)
+    relations:
+        ExerciseSet:
+            class: ExcerciseSet
+            foreignType: many
+
+UserProgram:
+    actAs:
+        Timestampable
+    columns:
+        sf_guard_user_id: integer(4)    
+        name: string(30)
+        notes: string(65555)
+    relations:
+        User:
+            class: sfGuardUser
+            foreignType: one        
+        ExerciseSet:
+            class: ExcerciseSet
+            foreignType: many
+
+# Each exercise will be related to the program through one of two:
+# 1) The time you have to conduct an exercise, lets say running, or 
+# 2) The number of reps you have to do in each set 
+
+ExerciseSet:
+    columns:
+        exercise_id: integer(30)
+        reps: integer(30)
+        weight: string(20)
+
+# An exercise can have several related exercises
+
+Exercise:
+    actAs:
+        Timestampable
+    columns:
+        name: string(30)
+        description: string(30)      
+    relations:
+        class: Excercise
+        foreignType: many
+        local: id
+        foreign: related_exercise_id
+        refClass: ExcerciseLink
+
+ExcerciseLink:
+    columns:
+        exercise_id: integer(4)
+        related_exercise_id: integer(4)
+
+###############################################
+Muscle:
+    columns:
+        name: string(255)
+        insertio: string(255)
+        origio: string(255)
+
+
+# LATER ADDITIONS:
+
+# A user can have a log and a calendar and follow own training
+# A trainer can follow students training 
