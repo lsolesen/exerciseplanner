@@ -24,7 +24,7 @@ UserProfile:
 
 StandardProgram:
     actAs:
-        Timestampable
+        [ Timestampable ]
     columns:
         name: string(30)
         notes: string(65555)
@@ -35,7 +35,7 @@ StandardProgram:
 
 UserProgram:
     actAs:
-        Timestampable
+        [ Timestampable ]
     columns:
         sf_guard_user_id: integer(4)    
         name: string(30)
@@ -62,7 +62,7 @@ ExerciseSet:
 
 Exercise:
     actAs:
-        Timestampable
+        [ Timestampable ]
     columns:
         name: string(30)
         description: string(30)      
