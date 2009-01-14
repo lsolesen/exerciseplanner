@@ -29,9 +29,11 @@ StandardProgram:
         name: string(30)
         notes: string(65555)
     relations:
-        ExerciseSet:
+         ExerciseSet:
             class: ExerciseSet
             foreignType: many
+            foreign: id
+            local: id
 
 UserProgram:
     actAs:
@@ -47,6 +49,8 @@ UserProgram:
         ExerciseSet:
             class: ExerciseSet
             foreignType: many
+            foreign: id
+            local: id
 
 # Each exercise will be related to the program through one of two:
 # 1) The time you have to conduct an exercise, lets say running, or 
@@ -67,11 +71,11 @@ Exercise:
         name: string(30)
         description: string(30)      
     relations:
-        class: Exercise
-        foreignType: many
-        local: id
-        foreign: related_exercise_id
-        refClass: ExerciseLink
+        Exercise:
+            foreignType: many
+            local: id
+            foreign: related_exercise_id
+            refClass: ExerciseLink
 
 ExerciseLink:
     columns:
