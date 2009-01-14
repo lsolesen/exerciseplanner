@@ -1,0 +1,35 @@
+= EXERCISE PLANNER =
+
+The project started a bit on motionsplan.dk. Here it is programmed in Drupal, but god feed up 
+trying to improve it.
+
+Therefore I wanted to switch to symfony, which is coded in a form I am more familar with.
+
+== IDEA ==
+
+=== VERSION 0.1 ===
+
+The site should have a lot of exercises. The exercises has both pictures, description, and videoes (probably
+through for instance vimeo). You can relate exercises to each other, tag them, and from the tagging it should be able 
+to automatically find out which are related.
+
+One can login to the site as either:
+
+1) A coach
+
+- The coach can create standard programs
+- The coach can have more players and create programs for the player (e.g. by transerring the standard program)
+
+2) A player
+
+- The player can create programs for himself and see the programs the trainer has created.
+
+=== VERSION 1.0 ====
+
+- The site provides articles
+- The player can follow the training through a log - which is connected to one's training program
+- The exercises references muscle groups, so it is easy to choose
+
+== MODEL ==
+
+I started the model here: http://svn.intraface.dk/exerciseplanner/trunk/src/config/doctrine/schema.yml
