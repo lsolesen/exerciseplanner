@@ -70,7 +70,7 @@ Exercise:
         class: Exercise
         foreignType: many
         local: id
-        foreign: exercise_id
+        foreign: related_exercise_id
         refClass: ExerciseLink
 
 ExerciseLink:
