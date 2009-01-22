@@ -17,5 +17,9 @@ class ExerciseForm extends BaseExerciseForm
     $this->widgetSchema->setLabel('muscles_list','Related Muscles');
 
     $this->embedI18n(array('en','da'));
+
+    $this->widgetSchema->setLabel('en','English');
+    $this->widgetSchema->setLabel('en','Danish');
+
   }
 }

@@ -9,20 +9,6 @@
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
       <tr>
-        <th><?php echo $form['exercises_list']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['exercises_list']->renderError() ?>
-          <?php echo $form['exercises_list'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['muscles_list']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['muscles_list']->renderError() ?>
-          <?php echo $form['muscles_list'] ?>
-        </td>
-      </tr>
-      <tr>
         <th><?php echo $form['en']->renderLabel() ?></th>
         <td>
           <?php echo $form['en']->renderError() ?>
@@ -37,6 +23,23 @@
           <?php echo $form['da'] ?>
         </td>
       </tr>
+
+
+      <tr>
+        <th><?php echo $form['exercises_list']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['exercises_list']->renderError() ?>
+          <?php echo $form['exercises_list'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['muscles_list']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['muscles_list']->renderError() ?>
+          <?php echo $form['muscles_list'] ?>
+        </td>
+      </tr>
+
     </tbody>
 
 
