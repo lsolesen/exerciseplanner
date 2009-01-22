@@ -1,5 +1,4 @@
 <?php
-ini_set('memory_limit', '512K');
 
 require_once(dirname(__FILE__).'/../config/ProjectConfiguration.class.php');
 
