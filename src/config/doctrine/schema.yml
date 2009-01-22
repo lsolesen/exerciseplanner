@@ -18,76 +18,110 @@ UserProfile:
   relations:
     User:
       class: sfGuardUser
+      local: sf_guard_user_id
+      onDelete: CASCADE
       foreignType: one
 
 # A program consists of different exercises
 
-StandardProgram:
-    actAs:
-        [ Timestampable ]
-    columns:
-        name: string(30)
-        notes: string(65555)
-    relations:
-         ExerciseSet:
-            class: ExerciseSet
-            foreignType: many
-            foreign: id
-            local: id
+Program:
+  actAs: [ Timestampable ]
+  columns:
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    sf_guard_user_id: integer(4)    
+    name: { type: string(32) }
+    notes: { type: string(4000) }  
+  relations:
+    User:
+      class: sfGuardUser
+      local: sf_guard_user_id
+      onDelete: CASCADE
+    Exercises:
+      refClass: ProgramExercise
+      local: program_id
+      foreign: exercise_set_id
 
-UserProgram:
-    actAs:
-        [ Timestampable ]
-    columns:
-        sf_guard_user_id: integer(4)    
-        name: string(30)
-        notes: string(65555)
-    relations:
-        User:
-            class: sfGuardUser
-            foreignType: one        
-        ExerciseSet:
-            class: ExerciseSet
-            foreignType: many
-            foreign: id
-            local: id
+ProgramExercise:
+  columns:
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }  
+    program_id: { type: integer(4), unsigned: true }
+    exercise_set_id: { type: integer(4), unsigned: true }
+  relations:
+    Program:
+      onDelete: CASCADE
+    ExerciseSet:
+      onDelete: CASCADE
 
 # Each exercise will be related to the program through one of two:
 # 1) The time you have to conduct an exercise, lets say running, or 
 # 2) The number of reps you have to do in each set 
 
 ExerciseSet:
-    columns:
-        exercise_id: integer(30)
-        reps: integer(30)
-        weight: string(20)
+  columns:
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    otype: { type: integer(1), unsigned: true }
+    s1: { type: string(32) }
+    i1: { type: integer(4), unsigned: true }
+
+RepSet:
+  inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 1 }
+  columns:
+    i1 as reps: { type: integer(4), unsigned: true }
+    s1 as weight: { type: string(32) }
+   
+
+TimeSet:
+  inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 1 }
+  columns:
+    i1 as time: { type: integer(4), unsigned: true }
 
 # An exercise can have several related exercises
 
 Exercise:
-    actAs:
-        [ Timestampable ]
-    columns:
-        name: string(30)
-        description: string(30)      
-    relations:
-        Exercise:
-            foreignType: many
-            local: id
-            foreign: related_exercise_id
-            refClass: ExerciseLink
+  tableName: exercises
+  actAs:
+    Timestampable:
+    I18n:
+      fields: [ name, description ]
+  columns:
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    name: string(30)
+    description: string(30)
+  relations:
+    Exercise:
+      local: exercise_id
+      foreign: related_exercise_id
+      refClass: ExerciseLink
+    Muscles:
+      local: exercise_id
+      foreign: muscle_id
+      refClass: ExerciseMuscle
+          
+# Exercise relation tables
+ExerciseMuscle:
+  tableName: exercise_muscles
+  columns:
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    exercise_id: { type: integer(4), unsigned: true }
+    muscle_id: { type: integer(4), unsigned: true }
+
 
 ExerciseLink:
-    columns:
-        exercise_id: integer(4)
-        related_exercise_id: integer(4)
+  tableName: exercise_links
+  columns:
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    exercise_id: { type: integer(4), unsigned: true }
+    related_exercise_id: { type: integer(4), unsigned: true }
+
 
 ###############################################
 Muscle:
-    columns:
-        name: string(255)
-        insertio: string(255)
-        origio: string(255)
+  tableName: muscles
+  columns:
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    name: string(255)
+    insertio: string(255)
+    origio: string(255)
 
 
 # LATER ADDITIONS:

@@ -1,5 +1,0 @@
-relations:
-    sfGuardUser:
-        local: user_id
-        foreign: id
-        type: one
