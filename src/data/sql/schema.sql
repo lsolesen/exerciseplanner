@@ -12,7 +12,7 @@ CREATE TABLE exercise_links (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNS
 CREATE TABLE exercise_muscles (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNSIGNED, muscle_id INT UNSIGNED, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE profile (id BIGINT AUTO_INCREMENT, sf_guard_user_id INT, first_name VARCHAR(255), middle_name VARCHAR(255), last_name VARCHAR(255), email_address VARCHAR(255), INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercises (id INT UNSIGNED AUTO_INCREMENT, created_at DATETIME, updated_at DATETIME, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE exercise_translation (id INT UNSIGNED, name VARCHAR(30), description VARCHAR(30), lang CHAR(2), PRIMARY KEY(id, lang)) ENGINE = INNODB;
+CREATE TABLE exercise_translation (id INT UNSIGNED, name VARCHAR(30), description TEXT, lang CHAR(2), PRIMARY KEY(id, lang)) ENGINE = INNODB;
 CREATE TABLE muscles (id INT UNSIGNED AUTO_INCREMENT, name VARCHAR(255), insertio VARCHAR(255), origio VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE program (id INT UNSIGNED AUTO_INCREMENT, sf_guard_user_id INT, name VARCHAR(32), notes TEXT, created_at DATETIME, updated_at DATETIME, INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 ALTER TABLE sf_guard_group_permission ADD FOREIGN KEY (permission_id) REFERENCES sf_guard_permission(id) ON DELETE CASCADE;
