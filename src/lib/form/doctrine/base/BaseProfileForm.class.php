@@ -15,18 +15,18 @@ class BaseProfileForm extends BaseFormDoctrine
       'id'               => new sfWidgetFormInputHidden(),
       'sf_guard_user_id' => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'first_name'       => new sfWidgetFormInput(),
-      'middle_name'      => new sfWidgetFormInput(),
       'last_name'        => new sfWidgetFormInput(),
       'email_address'    => new sfWidgetFormInput(),
+      'notes'            => new sfWidgetFormTextarea(),
     ));
 
     $this->setValidators(array(
       'id'               => new sfValidatorDoctrineChoice(array('model' => 'Profile', 'column' => 'id', 'required' => false)),
       'sf_guard_user_id' => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
       'first_name'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'middle_name'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'last_name'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'email_address'    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'notes'            => new sfValidatorString(array('max_length' => 4000, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('profile[%s]');

@@ -10,7 +10,7 @@ CREATE TABLE program_exercise (id INT UNSIGNED AUTO_INCREMENT, program_id INT UN
 CREATE TABLE user_profile (id BIGINT AUTO_INCREMENT, sf_guard_user_id INT, first_name VARCHAR(255), last_name VARCHAR(255), email_address VARCHAR(255), notes TEXT, INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercise_links (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNSIGNED, related_exercise_id INT UNSIGNED, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercise_muscles (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNSIGNED, muscle_id INT UNSIGNED, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE profile (id BIGINT AUTO_INCREMENT, sf_guard_user_id INT, first_name VARCHAR(255), middle_name VARCHAR(255), last_name VARCHAR(255), email_address VARCHAR(255), INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE profile (id BIGINT AUTO_INCREMENT, sf_guard_user_id INT, first_name VARCHAR(255), last_name VARCHAR(255), email_address VARCHAR(255), notes TEXT, INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercises (id INT UNSIGNED AUTO_INCREMENT, created_at DATETIME, updated_at DATETIME, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercise_translation (id INT UNSIGNED, name VARCHAR(30), description TEXT, lang CHAR(2), PRIMARY KEY(id, lang)) ENGINE = INNODB;
 CREATE TABLE muscles (id INT UNSIGNED AUTO_INCREMENT, name VARCHAR(255), insertio VARCHAR(255), origio VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
@@ -25,6 +25,6 @@ ALTER TABLE sf_guard_remember_key ADD FOREIGN KEY (user_id) REFERENCES sf_guard_
 ALTER TABLE program_exercise ADD FOREIGN KEY (program_id) REFERENCES program(id) ON DELETE CASCADE;
 ALTER TABLE program_exercise ADD FOREIGN KEY (exercise_set_id) REFERENCES exercise_set(id) ON DELETE CASCADE;
 ALTER TABLE user_profile ADD FOREIGN KEY (sf_guard_user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
-ALTER TABLE profile ADD FOREIGN KEY (sf_guard_user_id) REFERENCES sf_guard_user(id);
+ALTER TABLE profile ADD FOREIGN KEY (sf_guard_user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
 ALTER TABLE exercise_translation ADD FOREIGN KEY (id) REFERENCES exercises(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE program ADD FOREIGN KEY (sf_guard_user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;

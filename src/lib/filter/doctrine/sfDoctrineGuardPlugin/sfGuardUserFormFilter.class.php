@@ -7,7 +7,7 @@
  * @subpackage sfGuardUser *
  * @version    SVN: $Id: sfDoctrineFormFilterTemplate.php 11675 2008-09-19 15:21:38Z fabien $
  */
-class sfGuardUserFormFilter extends PluginsfGuardUserFormFilter
+class sfGuardUserFormFilter extends sfGuardUserFormFilter
 {
   public function configure()
   {

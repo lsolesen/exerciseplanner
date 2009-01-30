@@ -40,8 +40,8 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
     $this->hasOne('sfGuardRememberKey as RememberKeys', array('local' => 'id',
                                                               'foreign' => 'user_id'));
 
-    $this->hasOne('UserProfile', array('local' => 'id',
-                                       'foreign' => 'sf_guard_user_id'));
+    $this->hasOne('Profile', array('local' => 'id',
+                                   'foreign' => 'sf_guard_user_id'));
 
     $this->hasMany('Program', array('local' => 'id',
                                     'foreign' => 'sf_guard_user_id'));

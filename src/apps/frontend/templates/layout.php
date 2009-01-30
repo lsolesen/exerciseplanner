@@ -6,14 +6,18 @@
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
-  <body>
-  <div>
-    <ul>
-        <li><?php echo link_to('Exercises','exercises/index'); ?></li>
-        <li><?php echo link_to('Muscles','muscles/index'); ?></li>
-        <li><?php echo link_to('Programs','programs/index'); ?></li>
-    </ul>
-  <div>
-    <?php echo $sf_content ?>
-  </body>
+    <body>
+        <?php if($sf_user->isAuthenticated()): ?>
+        <div>
+            <ul>
+                <li><?php echo link_to('Muscles','muscles/index'); ?></li>
+                <li><?php echo link_to('Exercises','exercises/index'); ?></li>
+                <li><?php echo link_to('Programs','programs/index'); ?></li>
+                <li><?php echo link_to('Logout','@sf_guard_signout'); ?></li>
+            </ul>
+        <div>
+        <?php endif; ?>
+
+        <?php echo $sf_content ?>
+    </body>
 </html>

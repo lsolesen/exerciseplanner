@@ -14,15 +14,17 @@ class BaseMuscleFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'     => new sfWidgetFormFilterInput(),
-      'insertio' => new sfWidgetFormFilterInput(),
-      'origio'   => new sfWidgetFormFilterInput(),
+      'name'          => new sfWidgetFormFilterInput(),
+      'insertio'      => new sfWidgetFormFilterInput(),
+      'origio'        => new sfWidgetFormFilterInput(),
+      'exercise_list' => new sfWidgetFormDoctrineSelectMany(array('model' => 'Exercise')),
     ));
 
     $this->setValidators(array(
-      'name'     => new sfValidatorPass(array('required' => false)),
-      'insertio' => new sfValidatorPass(array('required' => false)),
-      'origio'   => new sfValidatorPass(array('required' => false)),
+      'name'          => new sfValidatorPass(array('required' => false)),
+      'insertio'      => new sfValidatorPass(array('required' => false)),
+      'origio'        => new sfValidatorPass(array('required' => false)),
+      'exercise_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Exercise', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('muscle_filters[%s]');
@@ -30,6 +32,22 @@ class BaseMuscleFormFilter extends BaseFormFilterDoctrine
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
     parent::setup();
+  }
+
+  public function addExerciseListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query->leftJoin('r.ExerciseMuscle ExerciseMuscle')
+          ->andWhereIn('ExerciseMuscle.exercise_id', $values);
   }
 
   public function getModelName()
@@ -40,10 +58,11 @@ class BaseMuscleFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'       => 'Number',
-      'name'     => 'Text',
-      'insertio' => 'Text',
-      'origio'   => 'Text',
+      'id'            => 'Number',
+      'name'          => 'Text',
+      'insertio'      => 'Text',
+      'origio'        => 'Text',
+      'exercise_list' => 'ManyKey',
     );
   }
 }

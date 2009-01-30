@@ -13,14 +13,14 @@ class BaseExerciseMuscleForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'exercise_id' => new sfWidgetFormInput(),
-      'muscle_id'   => new sfWidgetFormInput(),
+      'exercise_id' => new sfWidgetFormDoctrineSelect(array('model' => 'Exercise', 'add_empty' => true)),
+      'muscle_id'   => new sfWidgetFormDoctrineSelect(array('model' => 'Muscle', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'id'          => new sfValidatorDoctrineChoice(array('model' => 'ExerciseMuscle', 'column' => 'id', 'required' => false)),
-      'exercise_id' => new sfValidatorInteger(array('required' => false)),
-      'muscle_id'   => new sfValidatorInteger(array('required' => false)),
+      'exercise_id' => new sfValidatorDoctrineChoice(array('model' => 'Exercise', 'required' => false)),
+      'muscle_id'   => new sfValidatorDoctrineChoice(array('model' => 'Muscle', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_muscle[%s]');

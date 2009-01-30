@@ -3,6 +3,8 @@ security:
   class: sfGuardBasicSecurityFilter
 
 # insert your own filters here
+security:
+  class: sfGuardBasicSecurityFilter
 
 cache:     ~
 common:    ~
