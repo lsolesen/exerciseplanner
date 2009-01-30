@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext" date="2009-01-30T15:56:51Z">
+    <body>
+      <trans-unit id="1">
+        <source>Muscles</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Exercises</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Programs</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Logout</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Switch Language</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>register</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Forgot your password?</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>Register</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>Programs List</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>Name</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>Notes</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>Created at</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>Updated at</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>New</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>Edit Programs</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>New Programs</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>Exercises List</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>Edit Exercises</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>New Exercises</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>Muscles List</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>Edit Muscles</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>New Muscles</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>Edit Profile</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>Login</source>
+        <target/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

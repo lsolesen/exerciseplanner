@@ -2,7 +2,15 @@
 
 class sfGuardAuthActions extends BasesfGuardAuthActions
 {
-    public function executePassword()
+    public function executeSwitchLanguage(sfWebRequest $request)
+    {
+        $u       = $this->getUser();
+        $culture = $u->getCulture();
+        $u->setCulture( ($culture == 'en')?'da':'en' );
+        $this->redirect('@homepage');
+    }
+
+    public function executePassword(sfWebRequest $request)
     {
 
     }

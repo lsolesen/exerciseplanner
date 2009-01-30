@@ -1,6 +1,4 @@
-EDIT
-<?php use_helper('I18N') ?>
-
+<?php echo __('Edit Profile'); ?>
 <form action="<?php echo url_for('sfGuardAuth/register') ?>" method="post">
   <table>
     <?php echo $form ?>

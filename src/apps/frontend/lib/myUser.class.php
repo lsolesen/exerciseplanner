@@ -21,4 +21,9 @@ class myUser extends sfGuardSecurityUser
 
         return $this->user;
     }
+
+    public function getId()
+    {
+        return $this->getAttribute('user_id', null, 'sfGuardSecurityUser');
+    }
 }

@@ -19,7 +19,6 @@ class ExerciseForm extends BaseExerciseForm
     $this->embedI18n(array('en','da'));
 
     $this->widgetSchema->setLabel('en','English');
-    $this->widgetSchema->setLabel('en','Danish');
-
+    $this->widgetSchema->setLabel('da','Danish');
   }
 }

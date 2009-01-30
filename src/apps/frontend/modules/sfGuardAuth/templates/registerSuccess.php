@@ -1,5 +1,4 @@
-REGISTER
-<?php use_helper('I18N') ?>
+<?php echo __('Register'); ?>
 
 <form action="<?php echo url_for('sfGuardAuth/edit') ?>" method="post">
   <table>

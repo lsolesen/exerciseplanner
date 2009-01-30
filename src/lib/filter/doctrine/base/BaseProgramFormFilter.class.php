@@ -15,16 +15,12 @@ class BaseProgramFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'sf_guard_user_id' => new sfWidgetFormDoctrineChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
-      'name'             => new sfWidgetFormFilterInput(),
-      'notes'            => new sfWidgetFormFilterInput(),
       'created_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
       'updated_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
     ));
 
     $this->setValidators(array(
       'sf_guard_user_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'sfGuardUser', 'column' => 'id')),
-      'name'             => new sfValidatorPass(array('required' => false)),
-      'notes'            => new sfValidatorPass(array('required' => false)),
       'created_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'updated_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
     ));
@@ -46,8 +42,6 @@ class BaseProgramFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'               => 'Number',
       'sf_guard_user_id' => 'ForeignKey',
-      'name'             => 'Text',
-      'notes'            => 'Text',
       'created_at'       => 'Date',
       'updated_at'       => 'Date',
     );

@@ -12,9 +12,7 @@ class programsActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->program_list = Doctrine::getTable('Program')
-      ->createQuery('a')
-      ->execute();
+    $this->program_list = Doctrine_Query::create()->from('Program p')->leftJoin('p.Translation t')->leftJoin('p.User u')->execute();
   }
 
   public function executeNew(sfWebRequest $request)

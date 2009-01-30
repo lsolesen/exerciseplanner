@@ -1,19 +1,19 @@
-<h1>Exercises List</h1>
+<h1><?php echo __('Exercises List') ?></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Created at</th>
-      <th>Updated at</th>
+      <th><?php echo __('Name'); ?></th>
+      <th><?php echo __('Created at'); ?></th>
+      <th><?php echo __('Updated at'); ?></th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($exercise_list as $exercise): ?>
     <tr>
-      <td><a href="<?php echo url_for('exercises/edit?id='.$exercise['id']) ?>"><?php echo $exercise->getname() ?></a></td>
-      <td><?php echo $exercise->getcreated_at() ?></td>
-      <td><?php echo $exercise->getupdated_at() ?></td>
+      <td><a href="<?php echo url_for('exercises/edit?id='.$exercise['id']) ?>"><?php echo $exercise['Translation'][$sf_user->getCulture()]['name']; ?> - <?php echo $exercise['id']; ?></a></td>
+      <td><?php echo $exercise['created_at']; ?></td>
+      <td><?php echo $exercise['updated_at']; ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

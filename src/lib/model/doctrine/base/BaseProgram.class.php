@@ -24,6 +24,8 @@ abstract class BaseProgram extends sfDoctrineRecord
                                             'foreign' => 'program_id'));
 
     $timestampable0 = new Doctrine_Template_Timestampable();
+    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'notes')));
     $this->actAs($timestampable0);
+    $this->actAs($i18n0);
   }
 }

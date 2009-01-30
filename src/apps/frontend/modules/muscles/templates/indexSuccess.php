@@ -1,4 +1,4 @@
-<h1>Muscles List</h1>
+<h1><?php echo __('Muscles List') ?></h1>
 
 <table>
   <thead>

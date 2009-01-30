@@ -12,9 +12,7 @@ class exercisesActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->exercise_list = Doctrine::getTable('Exercise')
-      ->createQuery('a')
-      ->execute();
+    $this->exercise_list = Doctrine_Query::create()->from('Exercise e')->leftJoin('e.Translation t')->execute();
   }
 
   public function executeNew(sfWebRequest $request)

@@ -10,10 +10,11 @@
         <?php if($sf_user->isAuthenticated()): ?>
         <div>
             <ul>
-                <li><?php echo link_to('Muscles','muscles/index'); ?></li>
-                <li><?php echo link_to('Exercises','exercises/index'); ?></li>
-                <li><?php echo link_to('Programs','programs/index'); ?></li>
-                <li><?php echo link_to('Logout','@sf_guard_signout'); ?></li>
+                <li><?php echo link_to(__('Muscles'),'muscles/index'); ?></li>
+                <li><?php echo link_to(__('Exercises'),'exercises/index'); ?></li>
+                <li><?php echo link_to(__('Programs'),'programs/index'); ?></li>
+                <li><?php echo link_to(__('Logout'),'@sf_guard_signout'); ?></li>
+                <li><?php echo link_to(__('Switch Language'),'sfGuardAuth/switchLanguage'); ?></li>
             </ul>
         <div>
         <?php endif; ?>
