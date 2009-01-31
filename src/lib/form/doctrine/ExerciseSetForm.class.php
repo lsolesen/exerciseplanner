@@ -9,7 +9,9 @@
  */
 class ExerciseSetForm extends BaseExerciseSetForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        $this->setWidget('otype',new sfWidgetFormInputHidden(array('default'=>1)));
+
+    }
 }

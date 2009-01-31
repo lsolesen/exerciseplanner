@@ -41,6 +41,7 @@ Program:
       onDelete: CASCADE
     Exercises:
       refClass: ProgramExercise
+      class: ExerciseSet
       local: program_id
       foreign: exercise_set_id
 
@@ -68,15 +69,9 @@ ExerciseSet:
 
 RepSet:
   inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 1 }
-#  columns:
-#    i1 as reps: { type: integer(4), unsigned: true }
-#    s1 as weight: { type: string(32) }
    
-
 TimeSet:
-  inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 1 }
-#  columns:
-#    i1 as time: { type: integer(4), unsigned: true }
+  inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 2 }
 
 # An exercise can have several related exercises
 

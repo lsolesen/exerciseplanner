@@ -9,7 +9,12 @@
  */
 class RepSetForm extends BaseRepSetForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        $this->setWidget('otype',new sfWidgetFormInputHidden(array('default'=>1)));
+        $this->widgetSchema->setLabels(array(
+                                        's1'   => 'Weight',
+                                        'i1'   => 'Number of Reps',
+                                        ));
+    }
 }

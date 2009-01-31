@@ -13,11 +13,15 @@ abstract class BaseExerciseSet extends sfDoctrineRecord
     $this->hasColumn('s1', 'string', 32, array('type' => 'string', 'length' => '32'));
     $this->hasColumn('i1', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
 
-    $this->setSubClasses(array('RepSet' => array('otype' => '1'), 'TimeSet' => array('otype' => '1')));
+    $this->setSubClasses(array('RepSet' => array('otype' => '1'), 'TimeSet' => array('otype' => '2')));
   }
 
   public function setUp()
   {
+    $this->hasMany('Program', array('refClass' => 'ProgramExercise',
+                                    'local' => 'exercise_set_id',
+                                    'foreign' => 'program_id'));
+
     $this->hasMany('ProgramExercise', array('local' => 'id',
                                             'foreign' => 'exercise_set_id'));
   }

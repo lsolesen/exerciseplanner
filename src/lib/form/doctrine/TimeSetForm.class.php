@@ -9,7 +9,12 @@
  */
 class TimeSetForm extends BaseTimeSetForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        $this->setWidget('otype',new sfWidgetFormInputHidden(array('default'=>2)));
+        $this->widgetSchema->setLabels(array(
+                                        's1'   => 'Misc',
+                                        'i1'   => 'Time',
+                                        ));
+    }
 }

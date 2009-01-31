@@ -20,6 +20,10 @@ abstract class BaseProgram extends sfDoctrineRecord
                                                'foreign' => 'id',
                                                'onDelete' => 'CASCADE'));
 
+    $this->hasMany('ExerciseSet as Exercises', array('refClass' => 'ProgramExercise',
+                                                     'local' => 'program_id',
+                                                     'foreign' => 'exercise_set_id'));
+
     $this->hasMany('ProgramExercise', array('local' => 'id',
                                             'foreign' => 'program_id'));
 
