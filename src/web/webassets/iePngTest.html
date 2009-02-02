@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+   <title>IE!!!</title>
+   <style>
+       body { background: #dcba34; }
+       .iePngScale, .iePngCrop, .iePngImage, .iePng { behavior: url(/webassets/css/iepng.htc) }
+   </style>
+</head>
+<body>
+
+    <p>Image, avec width & height:<br />
+    <img class="iePng" src="iePngTest.png" height="300" width="15" />
+
+    <p>Image, sans width & height:<br />
+    <img src="iePngTest.png" height="" width="" /></p>
+
+    <h1>Scale mode:</h1>
+    <div style="width:15px; height:400px;background:transparent url('iePngTest.png') repeat-y top left;" class="iePngScale">Div, avec width (15) & height(400)<br /></div>
+
+    <div style="clear:left;background:transparent url('iePngTest.png') repeat-y top left;" class="iePngScale">Div, sans width & height<br /></div>
+
+    <div style="float:left;clear:left;background:transparent url('iePngTest.png') repeat-y top left;" class="iePngScale">Div, sans width & height, float=left<br /></div>
+
+
+    <h1>Crop mode:</h1>
+    <div style="width:15px;height:200px;background:transparent url('iePngTest.png') no-repeat top left;" class="iePngCrop">Div, avec width (200) & height(200)<br /></div>
+
+    <div style="background:transparent url('iePngTest.png') no-repeat top left;" class="iePngCrop">Div, sans width & height<br /></div>
+
+    <div style="float:left;background:transparent url('iePngTest.png') no-repeat top left;" class="iePngCrop">Div, sans width & height, float=left<br /></div>
+
+
+    <h1>Image mode:</h1>
+    <div style="width:200px height:200px;background:transparent url('iePngTest.png') no-repeat top left;" class="iePngImage">Div, avec width (200) & height(200)<br /></div>
+
+    <div style="background:transparent url('iePngTest.png') no-repeat top left;" class="iePngImage">Div, sans width & height, class=iePngScale:<br /></div>
+
+    <div style="float:left;background:transparent url('iePngTest.png') no-repeat top left;" class="iePngImage">Div, sans width & height, float=left:<br /></div>
+
+
+</body>
+</html>

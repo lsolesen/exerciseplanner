@@ -10,7 +10,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
         $this->redirect('@homepage');
     }
 
-    public function executePassword(sfWebRequest $request)
+    public function executePassword()
     {
 
     }

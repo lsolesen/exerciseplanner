@@ -12,7 +12,8 @@ CREATE TABLE exercise_muscles (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT U
 CREATE TABLE profile (id BIGINT AUTO_INCREMENT, sf_guard_user_id INT, first_name VARCHAR(255), last_name VARCHAR(255), email_address VARCHAR(255), notes TEXT, INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercises (id INT UNSIGNED AUTO_INCREMENT, created_at DATETIME, updated_at DATETIME, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercise_translation (id INT UNSIGNED, name VARCHAR(30), description TEXT, lang CHAR(2), PRIMARY KEY(id, lang)) ENGINE = INNODB;
-CREATE TABLE muscles (id INT UNSIGNED AUTO_INCREMENT, name VARCHAR(255), insertio VARCHAR(255), origio VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE muscles (id INT UNSIGNED AUTO_INCREMENT, image VARCHAR(128), image_width INT UNSIGNED, image_height INT UNSIGNED, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE muscle_translation (id INT UNSIGNED, name VARCHAR(255), insertio VARCHAR(255), origio VARCHAR(255), lang CHAR(2), PRIMARY KEY(id, lang)) ENGINE = INNODB;
 CREATE TABLE program_translation (id INT UNSIGNED, name VARCHAR(32), notes TEXT, lang CHAR(2), PRIMARY KEY(id, lang)) ENGINE = INNODB;
 CREATE TABLE program (id INT UNSIGNED AUTO_INCREMENT, sf_guard_user_id INT, created_at DATETIME, updated_at DATETIME, INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 ALTER TABLE sf_guard_group_permission ADD FOREIGN KEY (permission_id) REFERENCES sf_guard_permission(id) ON DELETE CASCADE;
@@ -26,5 +27,6 @@ ALTER TABLE program_exercise ADD FOREIGN KEY (program_id) REFERENCES program(id)
 ALTER TABLE program_exercise ADD FOREIGN KEY (exercise_set_id) REFERENCES exercise_set(id) ON DELETE CASCADE;
 ALTER TABLE profile ADD FOREIGN KEY (sf_guard_user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
 ALTER TABLE exercise_translation ADD FOREIGN KEY (id) REFERENCES exercises(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE muscle_translation ADD FOREIGN KEY (id) REFERENCES muscles(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE program_translation ADD FOREIGN KEY (id) REFERENCES program(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE program ADD FOREIGN KEY (sf_guard_user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;

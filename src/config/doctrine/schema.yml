@@ -105,7 +105,6 @@ ExerciseMuscle:
     exercise_id: { type: integer(4), unsigned: true }
     muscle_id: { type: integer(4), unsigned: true }
 
-
 ExerciseLink:
   tableName: exercise_links
   columns:
@@ -113,16 +112,20 @@ ExerciseLink:
     exercise_id: { type: integer(4), unsigned: true }
     related_exercise_id: { type: integer(4), unsigned: true }
 
-
 ###############################################
 Muscle:
+  actAs:
+    I18n:
+      fields: [ name, insertio, origio ]
   tableName: muscles
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
     name: string(255)
     insertio: string(255)
     origio: string(255)
-
+    image: string(128)
+    image_width: { type: integer(4), unsigned: true }
+    image_height: { type: integer(4), unsigned: true }
 
 # LATER ADDITIONS:
 

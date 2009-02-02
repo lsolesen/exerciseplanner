@@ -16,6 +16,7 @@ class BaseProgramForm extends BaseFormDoctrine
       'sf_guard_user_id' => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
+      'exercises_list'   => new sfWidgetFormDoctrineChoiceMany(array('model' => 'ExerciseSet')),
     ));
 
     $this->setValidators(array(
@@ -23,6 +24,7 @@ class BaseProgramForm extends BaseFormDoctrine
       'sf_guard_user_id' => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
       'created_at'       => new sfValidatorDateTime(array('required' => false)),
       'updated_at'       => new sfValidatorDateTime(array('required' => false)),
+      'exercises_list'   => new sfValidatorDoctrineChoiceMany(array('model' => 'ExerciseSet', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('program[%s]');
@@ -35,6 +37,51 @@ class BaseProgramForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Program';
+  }
+
+  public function updateDefaultsFromObject()
+  {
+    parent::updateDefaultsFromObject();
+
+    if (isset($this->widgetSchema['exercises_list']))
+    {
+      $this->setDefault('exercises_list', $this->object->Exercises->getPrimaryKeys());
+    }
+
+  }
+
+  protected function doSave($con = null)
+  {
+    parent::doSave($con);
+
+    $this->saveExercisesList($con);
+  }
+
+  public function saveExercisesList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['exercises_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (is_null($con))
+    {
+      $con = $this->getConnection();
+    }
+
+    $this->object->unlink('Exercises', array());
+
+    $values = $this->getValue('exercises_list');
+    if (is_array($values))
+    {
+      $this->object->link('Exercises', $values);
+    }
   }
 
 }

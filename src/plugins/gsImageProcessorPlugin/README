@@ -1,0 +1,86 @@
+General Options
+===============
+
+If save: is set, the image will be saved after processing and before returning to the caller. The following options can be set
+
+Save
+----
+
+    save:
+      type:         string (optionally force the image
+      transparent:  [ R,G,B ] or 'FFAAFF' (sets the transparent color)
+
+Create
+------
+    create:
+      depth:        8 | 32 (bit depth of created image, basically imagecreate vs imagecreatetruecolour)
+      width:        integer
+      height:       integer
+      bgcolor:      [ R,G,B ] or FFAAFF
+      transparent:  boolean                 ( not applied unless bgcolor is set ) 
+      opacity:      integer (default 127)   ( not applied unless bgcolor is set )
+
+Processors
+==========
+
+Border
+-----
+    border:
+      width:        integer  - default is 10 px
+      color:        [ R,G,B ] or FFAAFF
+      clone:        boolean
+
+Colorize
+--------
+    colorize:
+      color:        [ R,G,B ] or FFAAFF
+      clone:        boolean
+
+Crop
+----
+    crop:
+      width:        integer (required)
+      height:       integer (required)
+
+Resize
+------
+    resize: 
+      crop:         boolean (optional) - crops the image to the final size after resizing to width  
+      strict:       boolean (optional) - forces the width/heights to be *exact* to specified dimensions
+      width:        integer (required)
+      height:       integer (optional - required with strict)
+  
+Rotation
+--------
+    rotate:
+      degrees:      integer
+      background:   [ R,G,B ] or FFAAFF
+      clone:        boolean
+
+Drop Shadow
+-----------
+    shadow:
+      color:   [ R,G,B ] or 'FFAAFF' (default 000000)
+      path:   /full/path/to/dropshadow/images.png
+
+Text Overlay
+------------
+Watermark
+---------
+
+Processing Order
+================
+The effects and options are currently applied in the following order assuming all 
+effects are requested.
+
+*    Create
+*    Resize
+*    Crop
+*    Colorize
+*    Border
+*    Drop Shadow
+*    Rotate
+*    Watermark
+*    TextOverlay
+*    Save
+

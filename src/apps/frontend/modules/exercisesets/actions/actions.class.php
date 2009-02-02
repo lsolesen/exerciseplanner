@@ -12,9 +12,14 @@ class exercisesetsActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->exercise_set_list = Doctrine::getTable('ExerciseSet')
-      ->createQuery('a')
-      ->execute();
+//    $this->exercise_set_list = Doctrine::getTable('ExerciseSet')
+//      ->createQuery('a')
+//      ->execute();
+
+    $this->exercise_set_list = Doctrine_Query::create()->from('ExerciseSet es')->orderBy('es.otype')->execute();
+//      ->createQuery('a')
+//      ->execute();
+
   }
 
   public function executeNewRep(sfWebRequest $request)

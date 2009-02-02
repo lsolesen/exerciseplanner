@@ -14,16 +14,16 @@ class BaseMuscleFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'          => new sfWidgetFormFilterInput(),
-      'insertio'      => new sfWidgetFormFilterInput(),
-      'origio'        => new sfWidgetFormFilterInput(),
+      'image'         => new sfWidgetFormFilterInput(),
+      'image_width'   => new sfWidgetFormFilterInput(),
+      'image_height'  => new sfWidgetFormFilterInput(),
       'exercise_list' => new sfWidgetFormDoctrineSelectMany(array('model' => 'Exercise')),
     ));
 
     $this->setValidators(array(
-      'name'          => new sfValidatorPass(array('required' => false)),
-      'insertio'      => new sfValidatorPass(array('required' => false)),
-      'origio'        => new sfValidatorPass(array('required' => false)),
+      'image'         => new sfValidatorPass(array('required' => false)),
+      'image_width'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'image_height'  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'exercise_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Exercise', 'required' => false)),
     ));
 
@@ -59,9 +59,9 @@ class BaseMuscleFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'            => 'Number',
-      'name'          => 'Text',
-      'insertio'      => 'Text',
-      'origio'        => 'Text',
+      'image'         => 'Text',
+      'image_width'   => 'Number',
+      'image_height'  => 'Number',
       'exercise_list' => 'ManyKey',
     );
   }

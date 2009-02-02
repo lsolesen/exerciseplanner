@@ -13,17 +13,17 @@ class BaseMuscleForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'            => new sfWidgetFormInputHidden(),
-      'name'          => new sfWidgetFormInput(),
-      'insertio'      => new sfWidgetFormInput(),
-      'origio'        => new sfWidgetFormInput(),
+      'image'         => new sfWidgetFormInput(),
+      'image_width'   => new sfWidgetFormInput(),
+      'image_height'  => new sfWidgetFormInput(),
       'exercise_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Exercise')),
     ));
 
     $this->setValidators(array(
       'id'            => new sfValidatorDoctrineChoice(array('model' => 'Muscle', 'column' => 'id', 'required' => false)),
-      'name'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'insertio'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'origio'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'image'         => new sfValidatorString(array('max_length' => 128, 'required' => false)),
+      'image_width'   => new sfValidatorInteger(array('required' => false)),
+      'image_height'  => new sfValidatorInteger(array('required' => false)),
       'exercise_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Exercise', 'required' => false)),
     ));
 
