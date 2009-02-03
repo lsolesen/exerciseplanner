@@ -5,5 +5,4 @@
  */
 class RepSet extends BaseRepSet
 {
-
 }

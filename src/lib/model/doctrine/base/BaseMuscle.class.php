@@ -10,8 +10,8 @@ abstract class BaseMuscle extends sfDoctrineRecord
     $this->setTableName('muscles');
     $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
     $this->hasColumn('name', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('insertio', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('origio', 'string', 255, array('type' => 'string', 'length' => '255'));
+    $this->hasColumn('insertion', 'string', 255, array('type' => 'string', 'length' => '255'));
+    $this->hasColumn('origin', 'string', 255, array('type' => 'string', 'length' => '255'));
     $this->hasColumn('image', 'string', 128, array('type' => 'string', 'length' => '128'));
     $this->hasColumn('image_width', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
     $this->hasColumn('image_height', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
@@ -23,7 +23,7 @@ abstract class BaseMuscle extends sfDoctrineRecord
                                      'local' => 'muscle_id',
                                      'foreign' => 'exercise_id'));
 
-    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'insertio', 2 => 'origio')));
+    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'insertion', 2 => 'origin')));
     $this->actAs($i18n0);
   }
 }

@@ -17,7 +17,7 @@ class BaseMuscleFormFilter extends BaseFormFilterDoctrine
       'image'         => new sfWidgetFormFilterInput(),
       'image_width'   => new sfWidgetFormFilterInput(),
       'image_height'  => new sfWidgetFormFilterInput(),
-      'exercise_list' => new sfWidgetFormDoctrineSelectMany(array('model' => 'Exercise')),
+      'exercise_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Exercise')),
     ));
 
     $this->setValidators(array(

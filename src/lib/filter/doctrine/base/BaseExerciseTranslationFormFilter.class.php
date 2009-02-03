@@ -16,11 +16,13 @@ class BaseExerciseTranslationFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'name'        => new sfWidgetFormFilterInput(),
       'description' => new sfWidgetFormFilterInput(),
+      'video'       => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'name'        => new sfValidatorPass(array('required' => false)),
       'description' => new sfValidatorPass(array('required' => false)),
+      'video'       => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_translation_filters[%s]');
@@ -41,6 +43,7 @@ class BaseExerciseTranslationFormFilter extends BaseFormFilterDoctrine
       'id'          => 'Number',
       'name'        => 'Text',
       'description' => 'Text',
+      'video'       => 'Text',
       'lang'        => 'Text',
     );
   }

@@ -19,28 +19,7 @@
       </tr>
     </tfoot>
     <tbody>
-      <?php echo $form->renderGlobalErrors() ?>
-      <tr>
-        <th><?php echo $form['name']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['name']->renderError() ?>
-          <?php echo $form['name'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['insertio']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['insertio']->renderError() ?>
-          <?php echo $form['insertio'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['origio']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['origio']->renderError() ?>
-          <?php echo $form['origio'] ?>
-        </td>
-      </tr>
+      <?php echo $form ; ?>
     </tbody>
   </table>
 </form>

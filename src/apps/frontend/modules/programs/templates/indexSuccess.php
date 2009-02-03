@@ -13,7 +13,6 @@
     <?php foreach ($program_list as $program): ?>
     <tr>
       <td><a href="<?php echo url_for('programs/edit?id='.$program['id']) ?>"><?php echo $program->getName() ?></a></td>
-      <td><?php echo $program->getname() ?></td>
       <td><?php echo $program->getUser()->getUsername() ?></td>
 
       <td><?php echo $program->getcreated_at() ?></td>

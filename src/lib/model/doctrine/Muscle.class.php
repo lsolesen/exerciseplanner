@@ -5,5 +5,8 @@
  */
 class Muscle extends BaseMuscle
 {
-
+    public function construct()
+    {
+        $this->state('tdirty');
+    }
 }

@@ -15,6 +15,11 @@ class TimeSetForm extends BaseTimeSetForm
         $this->widgetSchema->setLabels(array(
                                         's1'   => 'Misc',
                                         'i1'   => 'Time',
+                                        'en'   => 'English',
+                                        'da'   => 'Danish',
                                         ));
+        $this->widgetSchema->setNameFormat('exercise_set[%s]');
+
+        $this->embedI18n(array('en','da'));
     }
 }

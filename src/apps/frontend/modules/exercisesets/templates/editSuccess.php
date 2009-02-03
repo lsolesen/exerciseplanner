@@ -1,3 +1,3 @@
-<h1>Edit Exercisesets</h1>
+<h1>Edit <?php echo $label; ?></h1>
 
 <?php include_partial('form', array('form' => $form)) ?>

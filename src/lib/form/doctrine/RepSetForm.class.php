@@ -15,6 +15,11 @@ class RepSetForm extends BaseRepSetForm
         $this->widgetSchema->setLabels(array(
                                         's1'   => 'Weight',
                                         'i1'   => 'Number of Reps',
+                                        'en'   => 'English',
+                                        'da'   => 'Danish',
                                         ));
+        $this->widgetSchema->setNameFormat('exercise_set[%s]');
+
+        $this->embedI18n(array('en','da'));
     }
 }

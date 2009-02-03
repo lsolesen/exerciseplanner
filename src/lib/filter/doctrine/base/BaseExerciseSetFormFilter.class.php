@@ -14,16 +14,16 @@ class BaseExerciseSetFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'otype'        => new sfWidgetFormFilterInput(),
       's1'           => new sfWidgetFormFilterInput(),
       'i1'           => new sfWidgetFormFilterInput(),
-      'program_list' => new sfWidgetFormDoctrineSelectMany(array('model' => 'Program')),
+      'otype'        => new sfWidgetFormFilterInput(),
+      'program_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Program')),
     ));
 
     $this->setValidators(array(
-      'otype'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       's1'           => new sfValidatorPass(array('required' => false)),
       'i1'           => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'otype'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'program_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Program', 'required' => false)),
     ));
 
@@ -59,9 +59,9 @@ class BaseExerciseSetFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'           => 'Number',
-      'otype'        => 'Number',
       's1'           => 'Text',
       'i1'           => 'Number',
+      'otype'        => 'Number',
       'program_list' => 'ManyKey',
     );
   }

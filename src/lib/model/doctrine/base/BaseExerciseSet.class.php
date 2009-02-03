@@ -9,9 +9,10 @@ abstract class BaseExerciseSet extends sfDoctrineRecord
   {
     $this->setTableName('exercise_set');
     $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-    $this->hasColumn('otype', 'integer', 1, array('type' => 'integer', 'unsigned' => true, 'length' => '1'));
+    $this->hasColumn('name', 'string', 64, array('type' => 'string', 'length' => '64'));
     $this->hasColumn('s1', 'string', 32, array('type' => 'string', 'length' => '32'));
     $this->hasColumn('i1', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
+    $this->hasColumn('otype', 'integer', 1, array('type' => 'integer', 'unsigned' => true, 'length' => '1'));
 
     $this->setSubClasses(array('RepSet' => array('otype' => '1'), 'TimeSet' => array('otype' => '2')));
   }
@@ -24,5 +25,8 @@ abstract class BaseExerciseSet extends sfDoctrineRecord
 
     $this->hasMany('ProgramExercise', array('local' => 'id',
                                             'foreign' => 'exercise_set_id'));
+
+    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name')));
+    $this->actAs($i18n0);
   }
 }

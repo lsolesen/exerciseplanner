@@ -13,17 +13,17 @@ class BaseTimeSetForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
-      'otype'        => new sfWidgetFormInput(),
       's1'           => new sfWidgetFormInput(),
       'i1'           => new sfWidgetFormInput(),
+      'otype'        => new sfWidgetFormInput(),
       'program_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Program')),
     ));
 
     $this->setValidators(array(
       'id'           => new sfValidatorDoctrineChoice(array('model' => 'TimeSet', 'column' => 'id', 'required' => false)),
-      'otype'        => new sfValidatorInteger(array('required' => false)),
       's1'           => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'i1'           => new sfValidatorInteger(array('required' => false)),
+      'otype'        => new sfValidatorInteger(array('required' => false)),
       'program_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Program', 'required' => false)),
     ));
 

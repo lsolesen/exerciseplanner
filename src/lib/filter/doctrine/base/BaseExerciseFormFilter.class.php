@@ -16,8 +16,8 @@ class BaseExerciseFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'created_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
       'updated_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
-      'exercises_list' => new sfWidgetFormDoctrineSelectMany(array('model' => 'Exercise')),
-      'muscles_list'   => new sfWidgetFormDoctrineSelectMany(array('model' => 'Muscle')),
+      'exercises_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Exercise')),
+      'muscles_list'   => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Muscle')),
     ));
 
     $this->setValidators(array(

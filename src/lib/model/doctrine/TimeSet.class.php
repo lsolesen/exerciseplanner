@@ -5,5 +5,4 @@
  */
 class TimeSet extends BaseTimeSet
 {
-
 }

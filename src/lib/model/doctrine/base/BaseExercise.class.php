@@ -11,6 +11,7 @@ abstract class BaseExercise extends sfDoctrineRecord
     $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
     $this->hasColumn('name', 'string', 30, array('type' => 'string', 'length' => '30'));
     $this->hasColumn('description', 'string', 4000, array('type' => 'string', 'length' => '4000'));
+    $this->hasColumn('video', 'string', 255, array('type' => 'string', 'length' => '255'));
   }
 
   public function setUp()
@@ -23,8 +24,11 @@ abstract class BaseExercise extends sfDoctrineRecord
                                               'local' => 'exercise_id',
                                               'foreign' => 'muscle_id'));
 
+    $this->hasMany('ExerciseImage as Images', array('local' => 'id',
+                                                    'foreign' => 'owner_id'));
+
     $timestampable0 = new Doctrine_Template_Timestampable();
-    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'description')));
+    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'description', 2 => 'video')));
     $this->actAs($timestampable0);
     $this->actAs($i18n0);
   }

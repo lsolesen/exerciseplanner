@@ -61,15 +61,19 @@ ProgramExercise:
 # 2) The number of reps you have to do in each set 
 
 ExerciseSet:
+  actAs:
+    I18n:
+      fields: [ name ]
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
-    otype: { type: integer(1), unsigned: true }
+    name: { type: string(64) }
     s1: { type: string(32) }
     i1: { type: integer(4), unsigned: true }
+    otype: { type: integer(1), unsigned: true }
 
 RepSet:
   inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 1 }
-   
+
 TimeSet:
   inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 2 }
 
@@ -80,11 +84,12 @@ Exercise:
   actAs:
     Timestampable:
     I18n:
-      fields: [ name, description ]
+      fields: [ name, description, video ]
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
     name: string(30)
     description: string(4000)
+    video: string(255)
   relations:
     Exercise:
       alias: Exercises
@@ -116,17 +121,38 @@ ExerciseLink:
 Muscle:
   actAs:
     I18n:
-      fields: [ name, insertio, origio ]
+      fields: [ name, insertion, origin ]
   tableName: muscles
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
     name: string(255)
-    insertio: string(255)
-    origio: string(255)
+    insertion: string(255) # muscle point attached to the bone which moves
+    origin: string(255) # muscle point attached to the bone which is stationary
     image: string(128)
     image_width: { type: integer(4), unsigned: true }
     image_height: { type: integer(4), unsigned: true }
 
+################################################
+Image:
+  attributes:
+    export: [ all, constraints ]
+  tableName: images
+  columns:
+    id:       { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    owner_id: { type: integer(4), unsigned: true }
+    filename: { type: string(128) }
+    width:    { type: integer(3), unsigned: true }
+    height:   { type: integer(3), unsigned: true }
+    caption:  { type: string(128) }
+    otype:    { type: integer(1), unsigned: true }  
+
+ExerciseImage:
+  inheritance: { extends: Image, keyField: otype, keyValue: 1 }
+  relations:
+    Exercise:
+      local: owner_id
+      foreignAlias: Images
+      
 # LATER ADDITIONS:
 
 # A user can have a log and a calendar and follow own training

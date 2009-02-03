@@ -15,6 +15,7 @@ class BaseExerciseTranslationForm extends BaseFormDoctrine
       'id'          => new sfWidgetFormInputHidden(),
       'name'        => new sfWidgetFormInput(),
       'description' => new sfWidgetFormTextarea(),
+      'video'       => new sfWidgetFormInput(),
       'lang'        => new sfWidgetFormInputHidden(),
     ));
 
@@ -22,6 +23,7 @@ class BaseExerciseTranslationForm extends BaseFormDoctrine
       'id'          => new sfValidatorDoctrineChoice(array('model' => 'ExerciseTranslation', 'column' => 'id', 'required' => false)),
       'name'        => new sfValidatorString(array('max_length' => 30, 'required' => false)),
       'description' => new sfValidatorString(array('max_length' => 4000, 'required' => false)),
+      'video'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'lang'        => new sfValidatorDoctrineChoice(array('model' => 'ExerciseTranslation', 'column' => 'lang', 'required' => false)),
     ));
 
