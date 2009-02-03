@@ -1,0 +1,56 @@
+/**
+ * 3-column layout, with fixed-width left/right columns, and liquid center column.
+ * (this file shouldn't be directly used as a template, but rather a reference that can be copied and pasted, and modified to suit)
+ * Note the position of #centreCol FIRST in the markup.
+ * 
+ * <div id="header"></div>
+ * <div id="container">
+ *     <div id="centreCol" class="column"></div>
+ *     <div id="leftCol" class="column"></div>
+ *     <div id="rightCol" class="column"></div>
+ * </div>
+ * <div id="footerWrapper">
+ *     <div id="footer"></div>
+ * </div>       
+ */
+
+ #container {
+    overflow: hidden;
+    padding-right: 125px; /* Width of right-hand column */
+    padding-left: 200px; /* Width of left-hand column */}
+    
+#container .column {
+    position: relative;
+    padding-bottom: 30000px;
+    margin-bottom: -30000px;
+    float: left;}
+    
+    #centreCol {
+        width: 100%;}
+    
+    #leftCol {
+        width: 200px;
+        margin-left: -100%;
+        right: 200px;}       
+
+    /* Fix for IE6, should be included in IE6 stylesheet rather than * html */
+    * html #leftNav {
+        left: 125px; /* IE6 moves left col too far to left, offscreen */}
+    
+    #rightCol {
+        width: 125px;
+        margin-right: -125px;}
+
+#footerWrapper {
+    float: left;
+    position: relative;
+    width: 100%;
+    background: #ffffff;}
+    
+    /* Fix for IE6, should be included in IE6, IE7 stylesheet rather than * html */
+    * html #footerWrapper {        
+        padding-bottom: 30000px;
+        margin-bottom: -30000px;}
+    
+    #footer {
+        clear: both;}

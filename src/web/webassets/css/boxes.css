@@ -1,0 +1,77 @@
+/* ROUNDED CORNER BOXES - IMAGE BASED 
+
+    <div class="box">
+        <div class="top"><div><h1>Optional Heading - .top must be able to accomodate the height/width/wrapping of this</h1></div></div>
+        <div class="boxContent">
+            <div class="innerPadding">
+                <p><h1><element>text
+            </div>
+        </div><!-- /.boxContent -->
+        <div class="bottom"><div></div></div>
+    </div><!-- /.box -->
+
+
+    div.top holds the left side of the rounded corner image
+    div.top div holds the right side of the rounded corner image
+        Note: The calculation for image width is to find the min-width of the box, and subtract the radius of the corner
+    div.top div h1 is optional - just make sure the height of .top and the image can handle font-size increase and possible wrapping
+        
+    div.boxContent holds the right side border image, if needed.
+    div.boxContent div.innerPadding pads the content of the box by X%, and holds the left side border image, if needed
+        You can place any content you'd like in .innerPadding.
+    
+    div.bottom holds the left side of the rounded corner image
+    div.bottom div holds the right side of the rounded corner image
+        Note: The calculation for image width is to find the min-width of the box, and subtract the radius of the corner
+
+
+
+*/
+.box {
+    width:100%;
+    margin:0 auto 2em auto;}
+    
+    /* top & bottom - hold the left side of the rounded corner 
+       image width == (box min-width - 20px) {roughly}
+    */
+    .box div.top, .box div.bottom, .box span.top, .box span.bottom {
+        width:100%;
+        height:10px;
+        background-repeat:no-repeat;
+        background-position:left top;}
+        
+        .box div.bottom, .box span.bottom {
+            background-position:left bottom;}
+            
+        /* nested div/span holds the right side image, floated right 
+           span is for nesting in li's, div for other applications
+        */
+        .box .top div, .box .bottom div, .box .top span, .box .bottom span {
+            float:right;
+            width:95%;
+            height:10px;
+            background-repeat:no-repeat;
+            background-position:right top;}
+            
+            .box .bottom div, .box .bottom span {
+                background-position:right bottom;}
+            
+    /* box content has a color
+       can also have a repeating border on right side
+       move images to #right
+    */
+    .box .boxContent {
+        width:100%;
+        padding:0;}
+        
+        /* innerPadding pads the boxContent by 4%
+           and can hold a border image on the left. 
+           this works around the IE6 box model crap */
+        .box .boxContent .innerPadding {
+            padding:4% 10% 4% 8%;}
+            
+            #ie6 .box .boxContent .innerPadding, #ie7 .box .boxContent .innerPadding {
+                float:left;}
+
+/* END ROUNDED CORNER BOXES - IMAGE BASED */
+

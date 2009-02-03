@@ -1,0 +1,255 @@
+/*------------------------------------------------------------------------------------
+    UlNav
+
+    <ul class="ulNav">
+        <!-- case with no children (only for root elements, for highlighting IE issue)-->
+        <li class="root daddy">
+            <a class="root" href="page.html">Link</a>
+            <ul class="bachelor"></ul>
+        </li>
+
+        <!-- case with children, parent page has no url - cursor:none is default here -->
+        <li class="root daddy">
+            <a class="root" href="#">Link</a>
+            <ul>
+                <li class="daddy">
+                    <a class="emptyPage" href="#">Link</a>
+                    <ul>
+                        .....
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+
+    </ul>
+
+*/
+
+/* Shim Iframe for z-indexing */
+.bgIframeCont iframe {
+	position: absolute;
+    z-index: -1;
+    filter: alpha(opacity=0);
+    opacity:0;}
+    
+.ulNav {
+  float:left;
+  width:100%;
+  list-style:none;
+  line-height:1.0;
+  padding:0;
+  margin:0;}
+
+.ulNav li {
+  float:left;
+  padding:0;
+  list-style:none;
+  width:13em;}
+
+/* node is root-level */
+  .ulNav li.root {
+    width:auto;}
+
+.ulNav a {
+  display:block;
+  width:13em;
+  color:#000;
+  text-decoration:none;}
+
+
+/* node is root-level */
+  .ulNav a.root {
+    width:auto;}
+
+/* node is a page type none */
+  .ulNav a.emptyPage {
+    cursor:default;}
+
+/* node has children */
+.ulNav a.daddy {}
+
+/* root node has children */
+.ulNav a.rootDaddy { }
+
+
+/* nested lists */
+.ulNav li ul {
+  position:absolute;
+  left:-999em;
+  width:13em;
+  font-weight:normal;
+  margin:0;
+  padding:0;
+  background-color:#fff;}
+
+.ulNav li li {
+  width:13em;}
+
+.ulNav li ul a {
+  width:13em;}
+
+
+/* third level deploys to the right of the parent */
+.ulNav li ul ul {
+  margin:-1em 0 0 13em;}
+
+/* five levels of deployment */
+.ulNav li:hover ul ul,
+.ulNav li:hover ul ul ul,
+.ulNav li:hover ul ul ul ul,
+.ulNav li:hover ul ul ul ul ul,
+.ulNav li.hover ul ul,
+.ulNav li.hover ul ul ul,
+.ulNav li.hover ul ul ul ul,
+.ulNav li.hover ul ul ul ul ul {
+  left:-999em;}
+
+.ulNav li:hover ul,
+.ulNav li li:hover ul,
+.ulNav li li li:hover ul,
+.ulNav li li li li:hover ul,
+.ulNav li li li li li:hover ul,
+.ulNav li.hover ul,
+.ulNav li li.hover ul,
+.ulNav li li li.hover ul,
+.ulNav li li li li.hover ul,
+.ulNav li li li li li.hover ul {
+  left:auto;}
+
+/* highlighting */
+.ulNav li.hover, .ulNav li:hover {
+  background-color:#ddd;}
+
+  .ulNav li.hover a:hover, .ulNav li:hover a:hover {
+    background-color:#ddd;
+    color:#000;}
+
+  .ulNav li.hover ul a, .ulNav li:hover ul a {
+    color:#000;}
+
+
+
+
+/************************************************
+ * **Vertical Application**
+  */
+ 
+/* Vertical Application */
+.ulNavVertical, .ulNavVertical ul {
+  float:left;
+  width:12em;
+  list-style:none;
+  line-height:1;
+  padding:0;
+  margin:0;
+  position:relative;
+  z-index:100;}
+
+/* has no children, printed solely for highlighting purposes */
+.ulNavVertical ul.bachelor, .ulNavVertical ul.bachelor li {
+  display:none !important;}
+
+.ulNavVertical li {
+  float:left;
+  clear:left;
+  padding:0;
+  margin:0;
+  width:12em;}
+
+/* node is root-level */
+  .ulNavVertical li.root {}
+
+.ulNavVertical a {
+  display:block;
+  width:8em;
+  color:#000;
+  text-decoration:none;
+  padding:0.25em 2em;}
+
+/* node is root-level */
+  .ulNavVertical a.root {}
+
+/* node is a page type none */
+  .ulNavVertical a.emptyPage {
+    cursor:default;}
+
+/* node has children */
+.ulNavVertical a.daddy {}
+
+/* root node has children */
+.ulNavVertical a.rootDaddy { }
+
+
+/* nested lists  */
+.ulNavVertical li ul {
+  position:absolute;
+  left:-999em;
+  height:auto;
+  margin:-1.5em 0 0 12em;
+  width:12em;
+  font-weight:normal;}
+
+
+/* five levels of deployment */
+.ulNavVertical li:hover ul ul,
+.ulNavVertical li:hover ul ul ul,
+.ulNavVertical li:hover ul ul ul ul,
+.ulNavVertical li:hover ul ul ul ul ul,
+.ulNavVertical li.hover ul ul,
+.ulNavVertical li.hover ul ul ul,
+.ulNavVertical li.hover ul ul ul ul,
+.ulNavVertical li.hover ul ul ul ul ul {
+  left:-999em;}
+
+.ulNavVertical li:hover ul,
+.ulNavVertical li li:hover ul,
+.ulNavVertical li li li:hover ul,
+.ulNavVertical li li li li:hover ul,
+.ulNavVertical li li li li li:hover ul,
+.ulNavVertical li.hover ul,
+.ulNavVertical li li.hover ul,
+.ulNavVertical li li li.hover ul,
+.ulNavVertical li li li li.hover ul,
+.ulNavVertical li li li li li.hover ul {
+  left:auto;}
+
+/* highlighting */
+.ulNavVertical li.hover, .ulNavVertical li:hover {
+  background-color:#000;}
+
+  .ulNavVertical li.hover a:hover, .ulNavVertical li:hover a:hover {
+    background-color:#000;
+    color:#fff;}
+
+  .ulNavVertical li.hover ul a, .ulNavVertical li:hover ul a {
+    color:#000;}
+
+    
+ 
+ 
+
+
+/************************************************
+ * **Auto-magical click-deployed dropdown menu**
+ * Use in conjunction with menu.js
+ * Just add class of "expMenu" to any UL you want to make a dropdown, and voila!
+ */
+
+
+ ul.expMenu li {
+    clear: both;}
+
+ul.expMenu li.hide ul li {
+    position: absolute;
+    float: left;
+    margin-left: -999em;}
+
+ul.expMenu li.hover ul li {
+    position: relative; /* use position:absolute instead to make the menu appear over content, instead of bumping content down */
+    margin-left: 0;
+    clear: both;
+    overflow: hidden;}
+
+
+

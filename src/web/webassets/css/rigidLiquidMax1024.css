@@ -1,0 +1,47 @@
+/*------------------------------------------------------------------------------------
+    770 Min width
+    1024 max stretch
+    Based on 1280 window width
+*/
+
+html, body {
+  border:0;
+  margin:0;
+  padding:0;}
+
+body {
+  padding:0 385px; /* Half of wrapper minimum */
+  margin:0;
+  text-align:center;}
+
+#sizer {
+  margin:0 auto;
+  padding:0;
+  text-align:left;
+  width:50%;                     /* any value from 0% (full rigid) to 100% (full liquid) */
+  max-width:224px;}               /* wrapper maximum - wrapper minimum  (1024 - 770) */
+
+#expander {
+  position:relative;
+  margin:0 -385px;      				/* Half of wrapper minimum */
+  min-width:770px;              /* Wrapper minimum */
+  }
+
+#wrapper { 
+  width: 100%;}
+
+/* wrapper relies on the clearfix class */
+
+.clearfix:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */

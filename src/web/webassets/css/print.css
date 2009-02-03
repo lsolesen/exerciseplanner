@@ -1,0 +1,26 @@
+/*------------------------------------------------------------------------------------
+    Print:
+
+    basic print stylesheet, gives print and noPrint classes.
+
+
+*/
+
+.noPrint {
+	display: none;}
+
+#sizer {
+    display: inline;
+    width: 100%;}
+
+html * {
+  background:transparent;
+  color:black;
+  font-size:12pt;}
+
+html * a:link:after, html * a:visited:after {
+   content: " (" attr(href) ") ";
+   font-size: 90%;}
+
+html * a[href^="/"]:after {
+  content: " (" attr(href) ") ";}

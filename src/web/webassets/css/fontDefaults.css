@@ -1,0 +1,12 @@
+body {
+  font-size:100%;
+  font-family:arial, "Luxi Sans", verdana, sans-serif;
+  line-height:normal;}
+
+.smallestText { font-size:85%; }
+.smallerText { font-size:90%; }
+.smallText { font-size:95%; }
+.largeText { font-size:105%; }
+.largerText { font-size:110%; }
+.largestText { font-size:115%; }
+

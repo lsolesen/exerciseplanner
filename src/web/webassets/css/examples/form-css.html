@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="en" />
+
+    <title>Forms (form.css)</title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../rigidLiquidMax1024.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../fontDefaults.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../xSmall.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../ie.css" />
+</head>
+
+<body>
+
+<div id="sizer">
+    <div id="expander">
+        <div id="wrapper" class="clearfix">
+            
+            <h1>Forms</h1>
+            <p>Uses an &lt;ol&gt;, with a classname of &quot;form&quot;.</p>
+            <p>The basic markup is: (bold denotes default)</p>
+            <code>
+                <pre>
+                    &lt;ol class=&quot;form <strong>labelsAlignedRight</strong>|labelsAboveLeft|labelsAlignedLeft|labelsBelowLeft&quot;&gt;
+                        &lt;li&gt;
+                            &lt;label for=&quot;one&quot;&gt;&lt;span class=&quot;required isRequired|isOptional&quot;&gt;*&lt;/span&gt;Name&lt;/label&gt;:
+                            &lt;input id=&quot;one&quot; type=&quot;text&quot; /&gt;
+                            &lt;span class=&quot;help&quot; title=&quot;Sepcify the help text in the title&quot;&gt;&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/ol&gt;
+                </pre>
+            </code>
+            <p>There are 4 possible layouts:</p>
+            <ol>
+                <li>Labels Above, aligned left (&lt;ol class=&quot;form labelsAboveLeft&quot;&gt;)</li>
+                <li>Labels Left, aligned left (&lt;ol class=&quot;form labelsAlignedLeft&quot;&gt;)</li>
+                <li>Labels Left, aligned right (default) (&lt;ol class=&quot;form labelsAlignedRight&quot;&gt;)</li>
+                <li>Labels Below, aligned left (&lt;ol class=&quot;form labelsBelowLeft&quot;&gt;)</li>
+                <li>Labels Below, aligned right (&lt;ol class=&quot;form labelsBelowRight&quot;&gt;)</li>
+            </ol>
+            <p>It also provides classes for M2M associations (side-by-side  selects and association buttons</p>
+            <p>It provides classes for help for all fields - include a &lt;div class="help"&gt;*&lt;/span&gt;, as the last elment in the list-item. Use the title attribute to specify the help text - this can easily be picked up with JavaScript, and put into nice little rollover popups, if needed.</p>
+            <p>It provides classes for required fields - include a &lt;span class="required"&gt;*&lt;/span&gt;</p>
+            <ul>
+                <li>Append a class of &quot;isRequired&quot; for required fields</li>
+                <li>Optionally, append a class of &quot;isOptional&quot; for optional fields</li>
+            </ul>
+            <p>All width calculations are based on using a min-width of 770px (using rigidLiquidMax1280)</p>
+            <p>Without further ado-do...</p>
+            
+            <div style="border-bottom:4px double #000;margin:1em 0 2em 0;width:100%;float:left;"></div>
+            <h2>Default layout (labels left, aligned right) (&lt;ol class=&quot;form&quot;&gt;)</h2>
+            
+            <ol class="form">
+                <li>
+                    <label class="required" for="one"><span class="required isRequired">*</span>Default Required</label>
+                    <input id="one" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrow"><span class="required isOptional">*</span>Narrow</label>
+                    <input id="narrow" type="text" class="narrow" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrower"><span class="required isRequired">*</span>Narrower</label>
+                    <input id="narrower" type="text" class="narrower" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrowest"><span class="required isRequired">*</span>Narrowest</label>
+                    <input id="narrowest" type="text" class="narrowest" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="" for="defnotreq"><span class="required isOptional">*</span>Default not required</label>
+                    <input id="defnotreq" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="sel"><span class="required isRequired">*</span>select</label>
+                    <select id="sel"><option value="'-1">Select...</option></select>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="tx"><span class="required isRequired">*</span>Textarea</label>
+                    <textarea id="tx" rows="40" cols="80">text</textarea>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="grouping">
+                    <label for="oneone"><span class="required isRequired">*</span>Group</label>
+                    <ol>
+                        <li>
+                            <label for="oneone">One</label>
+                            <input id="oneone" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="onetw0">A longer label</label>
+                            <input id="onetw0" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="oneThree">A longer label</label>
+                            <input id="oneThree" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="oneFour">A longer label</label>
+                            <input id="oneFour" type="checkbox" />
+                        </li>
+                    </ol>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="m2m">
+                    <label for="oneone"><span class="required isRequired">*</span>M2M</label>
+                    <ol>
+                        <li>
+                            <label for="avail">Available</label>
+                            <select id="avail" name="name"  size="20">
+                                <option value="value1">option1</option>
+                                <option value="value2">option2</option>
+                                <option value="value3">option3</option>
+                            </select>
+                        </li>
+                        
+                        <li class="buttons">
+                            <input type="button" value="&lt;" />
+                            <input type="button" value="&lt;" />
+                        </li>
+                        <li>
+                            <label for="assoc">Associated</label>
+                            <select id="assoc" name="name"  size="20">
+                                <option value="value1">option1</option>
+                                <option value="value2">option2</option>
+                                <option value="value3">option3</option>
+                            </select>
+                        </li>
+                    </ol>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="multipleInputs">
+                    <label for="date"><span class="required isRequired">*</span>date select</label>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+            </ol>
+
+            
+            
+            
+            <div style="border-bottom:4px double #000;margin:1em 0 2em 0;width:100%;float:left;"></div>
+            <h2>Labels above, aligned left (&lt;ol class=&quot;form labelsAboveLeft&quot;&gt;)</h2>
+            
+            <ol class="form labelsAboveLeft">
+                <li>
+                    <label class="required" for="one"><span class="required isRequired">*</span>Default Required</label>
+                    <input id="one" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrow"><span class="required isRequired">*</span>Narrow</label>
+                    <input id="narrow" type="text" class="narrow" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrower"><span class="required isRequired">*</span>Narrower</label>
+                    <input id="narrower" type="text" class="narrower" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrowest"><span class="required isRequired">*</span>Narrowest</label>
+                    <input id="narrowest" type="text" class="narrowest" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="" for="defnotreq"><span class="required isOptional">*</span>Default not required</label>
+                    <input id="defnotreq" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="sel"><span class="required isRequired">*</span>select</label>
+                    <select id="sel"><option value="'-1">Select...</option></select>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="tx"><span class="required isRequired">*</span>Textarea</label>
+                    <textarea id="tx" rows="40" cols="80">text</textarea>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="grouping">
+                    <label for="oneone"><span class="required isRequired">*</span>Group</label>
+                    <ol>
+                        <li>
+                            <label for="oneone">One</label>
+                            <input id="oneone" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="onetw0">A longer label</label>
+                            <input id="onetw0" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="oneThree">A longer label</label>
+                            <input id="oneThree" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="oneFour">A longer label</label>
+                            <input id="oneFour" type="checkbox" />
+                        </li>
+                    </ol>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="m2m">
+                    <label for="oneone"><span class="required isRequired">*</span>M2M</label>
+                    <ol>
+                        <li>
+                            <label for="avail">Available</label>
+                            <select id="avail" name="name"  size="20">
+                                <option value="value1">option1</option>
+                                <option value="value2">option2</option>
+                                <option value="value3">option3</option>
+                            </select>
+                        </li>
+                        
+                        <li class="buttons">
+                            <input type="button" value="&lt;" />
+                            <input type="button" value="&lt;" />
+                        </li>
+                        <li>
+                            <label for="assoc">Associated</label>
+                            <select id="assoc" name="name"  size="20">
+                                <option value="value1">option1</option>
+                                <option value="value2">option2</option>
+                                <option value="value3">option3</option>
+                            </select>
+                        </li>
+                    </ol>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="multipleInputs">
+                    <label for="date"><span class="required isRequired">*</span>date select</label>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+            </ol>
+            
+            
+            
+            
+            
+            <div style="border-bottom:4px double #000;margin:1em 0 2em 0;width:100%;float:left;"></div>
+            <h2>Labels left, aligned left (&lt;ol class=&quot;form labelsAlignedLeft&quot;&gt;)</h2>
+            
+            <ol class="form labelsAlignedLeft">
+                <li>
+                    <label class="required" for="one"><span class="required isRequired">*</span>Default Required</label>
+                    <input id="one" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrow"><span class="required isRequired">*</span>Narrow</label>
+                    <input id="narrow" type="text" class="narrow" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrower"><span class="required isRequired">*</span>Narrower</label>
+                    <input id="narrower" type="text" class="narrower" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrowest"><span class="required isRequired">*</span>Narrowest</label>
+                    <input id="narrowest" type="text" class="narrowest" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="" for="defnotreq"><span class="required isOptional">*</span>Default not required</label>
+                    <input id="defnotreq" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="sel"><span class="required isRequired">*</span>select</label>
+                    <select id="sel"><option value="'-1">Select...</option></select>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="tx"><span class="required isRequired">*</span>Textarea</label>
+                    <textarea id="tx" rows="40" cols="80">text</textarea>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="grouping">
+                    <label for="oneone"><span class="required isRequired">*</span>Group</label>
+                    <ol>
+                        <li>
+                            <label for="oneone">One</label>
+                            <input id="oneone" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="onetw0">A longer label</label>
+                            <input id="onetw0" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="oneThree">A longer label</label>
+                            <input id="oneThree" type="checkbox" />
+                        </li>
+                        
+                        <li>
+                            <label for="oneFour">A longer label</label>
+                            <input id="oneFour" type="checkbox" />
+                        </li>
+                    </ol>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="m2m">
+                    <label for="oneone"><span class="required isRequired">*</span>M2M</label>
+                    <ol>
+                        <li>
+                            <label for="avail">Available</label>
+                            <select id="avail" name="name"  size="20">
+                                <option value="value1">option1</option>
+                                <option value="value2">option2</option>
+                                <option value="value3">option3</option>
+                            </select>
+                        </li>
+                        
+                        <li class="buttons">
+                            <input type="button" value="&lt;" />
+                            <input type="button" value="&lt;" />
+                        </li>
+                        <li>
+                            <label for="assoc">Associated</label>
+                            <select id="assoc" name="name"  size="20">
+                                <option value="value1">option1</option>
+                                <option value="value2">option2</option>
+                                <option value="value3">option3</option>
+                            </select>
+                        </li>
+                    </ol>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li class="multipleInputs">
+                    <label for="date"><span class="required isRequired">*</span>date select</label>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <select class="narrowest" name="name">
+                        <option value="value1">option1</option>
+                        <option value="value2">option2</option>
+                        <option value="value3">option3</option>
+                    </select>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>  
+                </li>
+            </ol>
+            
+            
+            
+            
+            <div style="border-bottom:4px double #000;margin:1em 0 2em 0;width:100%;float:left;"></div>
+            
+            <h2>Labels below, aligned left (&lt;ol class=&quot;form labelsAboveLeft&quot;&gt;)</h2>
+            
+            <ol class="form labelsBelowLeft">
+                <li>
+                    <label class="required" for="one"><span class="required isRequired">*</span>Default Required</label>
+                    <input id="one" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrow"><span class="required isRequired">*</span>Narrow</label>
+                    <input id="narrow" type="text" class="narrow" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrower"><span class="required isRequired">*</span>Narrower</label>
+                    <input id="narrower" type="text" class="narrower" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="required" for="narrowest"><span class="required isRequired">*</span>Narrowest</label>
+                    <input id="narrowest" type="text" class="narrowest" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label class="" for="defnotreq"><span class="required isOptional">*</span>Default not required</label>
+                    <input id="defnotreq" type="text" class="required" />
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="sel"><span class="required isRequired">*</span>select</label>
+                    <select id="sel"><option value="'-1">Select...</option></select>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li>
+                    <label for="tx" class="textarea"><span class="required isRequired">*</span>Textarea</label>
+                    <textarea id="tx" rows="40" cols="80">text</textarea>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                <li><strong>NOTE: There is a nested div in the next item, to create the proper alignment</strong></li>
+                
+                <li class="multipleInputs">
+                    <label for="date"><span class="required isRequired">*</span>date select</label>
+                    <span>
+                        <select class="narrowest" name="name" id="date">
+                            <option value="value1">option1</option>
+                            <option value="value2">option2</option>
+                            <option value="value3">option3</option>
+                        </select>
+                        <select class="narrowest" name="name">
+                            <option value="value1">option1</option>
+                            <option value="value2">option2</option>
+                            <option value="value3">option3</option>
+                        </select>
+                        <select class="narrowest" name="name">
+                            <option value="value1">option1</option>
+                            <option value="value2">option2</option>
+                            <option value="value3">option3</option>
+                        </select>
+                    </span>
+                    <div class="help" title="This is the help for this field"></div>
+                    <div class="formError">&uarr; Please enter a valid Phone Number &uarr;</div>
+                    <div class="hint">Please enter in this format: (xxx) xxx-xxxx</div>
+                </li>
+                
+                
+                <li><strong>NOTE: The grouping and M2M don't make sense visually, or UI-wise, so this layout isn't recommended if you have a form with possible groupings/M2M.</strong></li>
+                
+            </ol>
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

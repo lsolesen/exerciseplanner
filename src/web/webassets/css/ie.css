@@ -1,0 +1,13 @@
+/* rigid liquid stuff */
+#ie6 #sizer {
+    width:expression(document.body.clientWidth > 1280 ? "224px" : "50%" );
+   /* document.body.clientWidth > maxWindowWidth ? (wrapper max - wrapper min) ? 0% to 100% */
+}
+
+* html #expander { 
+    height:0;}
+
+/* elements with PNG-32 images or bgimages */
+#ie6 .iePng, #ie6 .iePngScale, #ie6 .iePngCrop, #ie6 .iePngImage {
+    behavior: url(/webassets/css/iepng.htc);}
+

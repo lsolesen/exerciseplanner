@@ -1,0 +1,152 @@
+/************************************************
+ * Explorer Menu
+ * use with explorerMenu.js
+ * HTML Structure:
+ * <!-- 
+        'root' for root nodes
+        'daddy' if a child menu is present
+        'bachelor' if a child menu is NOT present
+        'current' for menu highlighting
+        'expanded' if the menu should be expanded by default
+   -->
+   <li class="root {daddy || bachelor} {current} {expanded}">
+       <span>Menu Text</span>
+       <!-- JS changes the value of the '+-' text, the span is hidden by default in the CSS -->
+       <span class="expandButton"><a href="javascript:void(0);"><span>+ {-}</span></a></span>
+       <!-- currently, the JS only allows for 1 child menu -->
+       <ul>
+           <li class="bachelor {current} ">
+               <span>Menu Text</span>
+               <!-- this is hidden by CSS, there is nothing to expand, but allows for an easy PHP loop ;) -->
+               <span class="expandButton"><a href="javascript:void(0);"><span>+ {-}</span></a></span>
+           </li>
+   </li>
+ */
+ 
+.explorerMenu, .explorerMenu ul {
+    list-style:none;
+    margin:0;
+    padding:0;}
+
+    /* all li's */
+    .explorerMenu li {
+        float:left;
+        clear:left;
+        width:100%;
+        margin:.2em 0;}
+
+        /* tighten sub menu items a bit */
+        .explorerMenu li li {
+            margin:.058em 0;}
+            
+        /* first span is for the menu name & link, if present */
+        .explorerMenu li span {
+            float:left;
+            width:86%;
+            padding-left:.3em;}
+            
+            #ie6 .explorerMenu li span {
+                width:89%;}
+            
+            /* style for href in the first span */
+            .explorerMenu li span a, .explorerMenu li span a {
+                color:#000;
+                display:block;
+                padding:.2em 0 .2em 0;
+                line-height:1.0;
+                text-decoration:none;}
+                
+                /* style for the expand button text only version - remove the padding */
+                .explorerMenu li span.expandButton a span {
+                    padding:0;}
+                
+                /* hover style for href in the first span */
+                .explorerMenu li span a:hover, .explorerMenu li span a.current {
+                    color:#fff;
+                    background:#ababab;}
+                    
+            /* root (first-level) hrefs in first span */
+            .explorerMenu li span a.root {
+                font-weight:bold;}
+                
+            /* highlight for root nodes */
+            .explorerMenu li.current span {
+                background:#ababab;
+                color:#fff;}
+                
+                /* remove highlight for all sub spans */            
+                .explorerMenu li.current ul span {
+                    background:none;}
+        
+        /* second span is only for the expand button - display of none for all EXCEPT li.daddy */
+        .explorerMenu li span.expandButton {
+            width:8%;
+            text-align:center;}
+            
+            #ie6 .explorerMenu li span.expandButton {
+                width:8%;
+                padding:0;}
+            
+            /* the child menu is collapsed */
+            .explorerMenu li span.expandButton a,
+            .explorerMenu li span.expandButton a:hover {
+                width:100%;
+                color:#fff;
+                height:1em;
+                background:transparent url(/webassets/images/explorer_nav_expanded.png) no-repeat center center;}
+            
+                /* the child menu is deployed - change something on the expand button href */    
+                .explorerMenu li span.expandButton a.expanded,  
+                .explorerMenu li span.expandButton a.expanded:hover {
+                    background:transparent url(/webassets/images/explorer_nav_collapsed.png) no-repeat center center;}
+                
+            
+                    
+                /* hide the + text symbol if using css - use background images on the a instead */
+                .explorerMenu li span.expandButton a span {
+                    display:none;}
+            
+            
+
+                
+    /* parent with no child */
+    .explorerMenu li.bachelor { /* inherits from .explorerMenu li */ }
+    
+        /* no child menu, so make the first span 100% width */
+        .explorerMenu li.bachelor span {
+            width:97%;}
+    
+    /* parent with children */
+    .explorerMenu li.daddy { /* inherits from .explorerMenu li */ }
+    
+        /* make the expand button visible here */
+        .explorerMenu li.daddy span.expandButton {
+            display:inline;}
+            
+        /* hide any expand buttons on other li's, and if noJS */
+        .explorerMenu li.bachelor span.expandButton, .explorerMenu li span.expandButton.noJS {
+            display:none;}
+        
+    /* child menu  - indent and add top/bottom margins*/
+    .explorerMenu li.daddy ul {
+        float:left;
+        width:95%;
+        display:none;
+        margin:.1em 0 .5em 5%;}
+                
+        
+        
+        /* parent's child menu deployed - show child menu for 2 levels (add as needed) */
+        .explorerMenu li.expanded ul li.daddy ul,
+        .explorerMenu li.expanded ul li.daddy ul li.daddy ul,
+        .explorerMenu li.expanded ul li.daddy ul li.daddy ul li.daddy ul,
+        .explorerMenu li.expanded ul li.daddy ul li.daddy ul li.daddy ul li.daddy ul,
+        .explorerMenu li.expanded ul li.daddy ul li.daddy ul li.daddy ul li.daddy ul li.daddy ul {
+            display:none;}    
+            
+        .explorerMenu li.expanded ul,
+        .explorerMenu li.expanded ul li.expanded ul,
+        .explorerMenu li.expanded ul li.expanded ul li.expanded ul,
+        .explorerMenu li.expanded ul li.expanded ul li.expanded ul li.expanded ul,
+        .explorerMenu li.expanded ul li.expanded ul li.expanded ul li.expanded ul li.expanded ul {
+            display:inline;}        

@@ -1,0 +1,93 @@
+/*------------------------------------------------------------------------------------
+    Rounded Corner.
+
+    <div class="roundedCorner myClass">
+     <div class="r1"></div>>...<div class="r7"></div>>
+     <p>Box content</p>
+     <div class="r7"></div>>...<div class="r1"></div>>
+    </div>
+
+    Use myClass to override the color of the box, children of roundedCorner are background:transparent
+
+
+    Rounded Border:
+    Same as above, save the box has bgcolor AND a border
+    Use myClass to override the default white border color
+*/
+
+
+/* CORNERS */
+
+.roundedCorner div {
+	overflow:hidden;
+	height: 2px;
+	font-size:1em;
+	border-style:solid;
+    border: none;}
+
+    .roundedCorner .r1 { margin:0 14px 0 14px; height:1px;}
+    .roundedCorner .r2 { margin:0 11px 0 11px;}
+    .roundedCorner .r3 { margin:0 8px 0 8px;}
+    .roundedCorner .r4 { margin:0 5px 0 5px;}
+    .roundedCorner .r5 { margin:0 3px 0 3px;}
+    .roundedCorner .r6 { margin:0 2px 0 2px;}
+    .roundedCorner .r7 { margin:0 1px 0 1px;}
+
+    .roundedCorner .r1, .roundedCorner .r2 {
+        height:1px;}
+
+/* want only the right side rounded? */
+.roundedRight div {
+	border-left-width:0em;}
+
+/* how about left side only? */
+.roundedLeft div {
+	border-right-width:0em;}
+
+
+
+/* BORDERS */
+
+
+.roundedBorder div {
+	overflow:hidden;
+	height: 2px;
+	font-size:1em;
+	border-style:solid;
+    border: none;
+    border: 1px solid white;
+    border-width: 0 1px;}
+
+    .roundedBorder .r1 { margin:0 14px 0 14px; height:1px; border-width: 0px 1px 0 1px; background: #ffffff;}
+    .roundedBorder .r2 { margin:0 11px 0 11px; height:1px;border-width: 0px 3px 0 3px;}
+    .roundedBorder .r3 { margin:0 8px 0 8px; height:1px;border-width: 0px 2px 0 2px;}
+    .roundedBorder .r4 { margin:0 5px 0 5px;border-width: 0px 2px 0 2px;}
+    .roundedBorder .r5 { margin:0 3px 0 3px;}
+    .roundedBorder .r6 { margin:0 2px 0 2px;}
+    .roundedBorder .r7 { margin:0 1px 0 1px;}
+
+    .roundedBorder .r1, .roundedBorder .r2 {
+        height:1px;}
+
+/* STENCIL */
+/* If the the box requiring the rounded corners is sitting on a solid background,
+ * this rounded corner type can be placed INSIDE the target box allowing
+ * it to have a background-image that flows into the rounded corners */ 
+       
+.roundedStencil div {
+	overflow:hidden;
+	height: 2px;
+	font-size:1em;
+	border: 1px solid blue;}
+
+    .roundedStencil .r1 { border-width:0 14px 0 14px; height:1px;}
+    .roundedStencil .r2 { border-width:0 11px 0 11px;}
+    .roundedStencil .r3 { border-width:0 8px 0 8px;}
+    .roundedStencil .r4 { border-width:0 5px 0 5px;}
+    .roundedStencil .r5 { border-width:0 3px 0 3px;}
+    .roundedStencil .r6 { border-width:0 2px 0 2px;}
+    .roundedStencil .r7 { border-width:0 1px 0 1px;}
+
+    .roundedStencil .r1, .roundedStencil .r2 {
+        height:1px;}
+

@@ -1,0 +1,52 @@
+/**
+ * 3-column, equal height layout, with rigid left and right columns, and fluid middle column
+ * Use with 3col_rfr.htm
+ */
+
+/* Fix for IE7, should be included in IE7 stylesheet */
+body {
+    overflow-y: hidden;}
+/*/ie7*/
+
+ #main {
+    overflow: hidden;
+    padding-right: 125px; /* Right column width + right column padding + desired margin*/
+    padding-left: 200px; /* Left column width + left column padding + desired margin*/}
+    
+#main .column {
+    position: relative;
+    padding-bottom: 30000px;
+    margin-bottom: -30000px;
+    float: left;}
+    
+    #middleCol {
+        width: 100%;}
+    
+    #leftCol {
+        width: 200px;
+        margin-left: -100%;
+        right: 200px; /* Left Col width + Left Col padding}*/}     
+
+    /* Fix for IE6, should be included in IE6 stylesheet rather than * html */
+    * html #leftCol {
+        left: 125px; /* IE6 moves left col too far to left, offscreen */}
+    /*/ie6*/
+    
+    #rightCol {
+        width: 125px;
+        margin-right: -125px;}
+
+#footerWrapper {
+    float: left;
+    position: relative;
+    width: 100%;
+    background: #ffffff;}
+    
+/* Fix for IE6/7, should be included in IE6, IE7 stylesheet rather than * html */
+* html #footerWrapper {        
+    padding-bottom: 30000px;
+    margin-bottom: -30000px;}
+/*/ie6 ie7*/
+        
+    #footer {
+        clear: both;}

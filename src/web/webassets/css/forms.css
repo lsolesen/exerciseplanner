@@ -1,0 +1,214 @@
+/* TODO : add rule for Symfony's error div for each layout. */
+form {
+    margin:0;
+    padding:0;
+    line-height:normal;}
+    
+    fieldset {}
+    
+        fieldset legend {}
+
+
+ol.form { 
+    float:left; 
+    list-style:none; 
+    width:100%;}
+
+ol.form li {
+    clear:both;
+    float:left;
+    margin:0 0 .8em 0;
+    width:100%;}
+    
+/* default layout - labels positioned left-side, aligned right */
+ol.form label, ol.form.labelsAlignedRight label {
+    float:left;
+    margin:0 .5em 0 0;
+    width:10em;
+    cursor:pointer;
+    display:block;
+    text-align:right;
+    font-weight:bold;}
+    
+    /* required and optional fields */
+    ol.form li label span.required {
+        display:none;
+        margin:0 .2em;}
+        
+        ol.form li label span.isRequired {
+            display:inline;
+            color:red;}
+            
+        ol.form li label span.isOptional {
+            display:inline;
+            color:green;}
+    
+    /* label classes - help, required */
+    ol.form li div.help { /* allow for help icon - spec help in span title */
+        width:16px;
+        height:16px;
+        display:inline-block;
+        background:transparent url(../images/icons/help.png) no-repeat 99% center;}
+        
+        /* hints ("Please enter in this format...") & error messages, positioned underneath */
+        ol.form div.formError, ol.form div.hint {
+            width:100%;
+            margin:0 0 0 13.5em; /* margin-left is roughly label width - the font-size adjustment... */
+            font-size:.8em;
+            color:green;}
+            
+        ol.form div.formError {
+            color:red;
+            font-weight:bold;}
+        
+    /* default input styles */
+    ol.form input, ol.form textarea, ol.form select {
+        font:inherit;
+        padding:.1em;
+        width:45em;}
+        
+        ol.form input[type=checkbox], ol.form input[type=radio] {
+            width:auto;
+            padding:0;
+            margin:0;}
+        
+        ol.form select {
+            width:45.7em; /* input width + padding */}
+                
+        ol.form textarea {
+            height:10em;}
+            
+        ol.form input.narrow, ol.form select.narrow, ol.form textarea.narrow {
+            width:22em;}
+        
+        ol.form input.narrower, ol.form select.narrower, ol.form textarea.narrower {
+            width:12em;}
+            
+        ol.form input.narrowest, ol.form select.narrowest, ol.form textarea.narrowest {
+            width:6em;}
+        
+    ol.form textarea { 
+        height:10em;}
+    
+    /* nested uls - m2m, groupings, etc. */
+    ol.form li ol {
+        float:left;
+        clear:left;
+        list-style: none;
+        margin:0;
+        padding:.5em;
+        width:44em;}
+
+    /* input groupings - radios/checks */
+    ol.form li.grouping div.formError, ol.form li.grouping div.hint {
+        clear:left;}
+        
+    ol.form li.grouping ol li label {
+        display:inline;
+        font-weight:normal;
+        margin:0 0 0 10em; /* label width */}
+        
+    ol.form li.grouping ol input { 
+        width:auto;}
+
+    /* m2m assocations */
+    ol.form li.m2m ol {
+        float:left;
+        clear:none;
+        border:1px solid gray;}
+        
+        ol.form li.m2m ol li {
+            float:left;
+            clear:none;
+            width:44%;}
+            
+            ol.form li.m2m ol li label {
+                text-align:left;}
+            
+            ol.form li.m2m ol li select {
+                width:100%;}
+                
+        /* assocation buttons */
+        ol.form li.m2m ol li.buttons {
+            width:11%;
+            margin:0 .5%;
+            padding:5em 0;
+            text-align:center;}
+            
+            ol.form li.m2m ol li.buttons input {
+                width:auto;
+                padding:.3em;}
+        
+    ol.form li.m2m label {
+        float:left;}
+
+    ol.form li.m2m div.formError, ol.form li.m2m div.hint {
+        clear:left;}
+        
+/* OPTIONAL LAYOUTS */    
+    
+    /* optional layout - labels above input, aligned left */
+    ol.form.labelsAboveLeft label {
+        float:none;
+        text-align:left;
+        width:auto;
+        margin:0;}
+        
+        /* special case - M2M ol needs to clear */
+        ol.form.labelsAboveLeft li.m2m ol {
+            clear:left;}
+            
+            ol.form.labelsAboveLeft li.m2m div.help {
+                float:left;}
+        
+        ol.form.labelsAboveLeft div.formError, ol.form.labelsAboveLeft div.hint {
+            margin:0;}
+            
+            ol.form.labelsAboveLeft li.grouping div.formError, ol.form.labelsAboveLeft li.grouping div.hint {
+                margin:0 0 0 13.5em;}
+            
+    /* optional layout - labels positioned left-side, aligned left */
+    ol.form.labelsAlignedLeft label {
+        text-align:left;}
+        
+    /* optional layout - labels positioned below */
+    ol.form.labelsBelowLeft li {
+        margin-bottom:1.5em;}
+        
+        ol.form.labelsBelowLeft label {
+            float:left;
+            text-align:left;
+            width:20em;
+            margin:1.9em 0 0 0; /* input height + input padding + label height + label padding */ }
+            
+            /* special case - textarea label margin needs to match the height of the textarea (10em) */
+            ol.form.labelsBelowLeft label.textarea {
+                margin:10.8em 0 0 0;}
+        
+        ol.form.labelsBelowLeft div.formError, ol.form.labelsBelowLeft div.hint {
+            clear:left;
+            margin:0;}
+            
+        /* this allows for a wrapper span for multiple inputs on one line as well as controlling the inputs, textareas, and selects */
+        ol.form.labelsBelowLeft li.multipleInputs span, ol.form.labelsBelowLeft input, ol.form.labelsBelowLeft select, ol.form.labelsBelowLeft textarea {
+            position:relative;
+            margin:0 0 0 -20em; /* -label width */}
+            
+            ol.form.labelsBelowLeft li.multipleInputs div.help, ol.form.labelsBelowLeft li.multipleInputs span.required {
+                position:auto;
+                margin:0;}
+            
+        /* special case - multiple inputs all on one line (date select) - they all float left, so no negative margin, just let them float left (set one of the narrow* classes... */
+        ol.form.labelsBelowLeft li.multipleInputs input, ol.form.labelsBelowLeft li.multipleInputs select, ol.form.labelsBelowLeft li.multipleInputs textarea {
+            margin:0;}
+            
+    /* optional layout - labels positioned below, aligned right */
+    ol.form.labelsBelowRight label {
+        width:25em; /* input width */
+        text-align:right;
+        margin:1.8em 0 0 0; /* input height + input padding + label height + label padding */ }
+        
+     ol.form.labelsBelowRight input, ol.form.labelsBelowRight select, ol.form.labelsBelowRight textarea {
+        position:relative;
+        width:25em;
+        margin:0 0 0 -25em; /* -label width */}

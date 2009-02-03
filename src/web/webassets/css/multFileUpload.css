@@ -1,0 +1,26 @@
+
+/* file list (<div>) */
+
+.multFileUpload_fileList {
+	padding:10px;}
+
+/* display counter text (<p>) */
+	.multFileUpload_displayCounter {
+		color:#fff;}
+
+/* each row within the fileList (<div>) */
+	.multFileUpload_fileListRow {
+		border:1px solid #E3842F;
+        padding: 0.1em;
+        margin: 3px 0 0 0;}
+
+/* filename within the fileList row (<div>) */
+	.multFileUpload_fileListText {
+		width:50%;
+		color:#000000;}
+
+/* remove file link within the fileList row (<a>) */
+	.multFileUpload_removeFileLink {
+		color:#6F1200;
+		font-variant:small-caps;}
+
