@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
     <body>
+        <h1 id="title"><?php echo __('Workout planner'); ?></h1>
         <?php if($sf_user->isAuthenticated()): ?>
         <div>
             <ul>

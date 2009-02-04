@@ -1,0 +1,9 @@
+h1#title {
+    padding: 72px 0 0 0;
+    overflow: hidden;
+    background-image: url("../images/motionsplan.gif");
+    background-repeat: no-repeat;
+    
+    height: 0px !important;
+    height /**/:72px;
+}
