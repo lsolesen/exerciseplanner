@@ -9,7 +9,8 @@
  */
 class ExerciseTranslationForm extends BaseExerciseTranslationForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        $this->setValidator('video',new sfValidatorUrl(array('max_length' => 255, 'required' => false)));
+    }
 }

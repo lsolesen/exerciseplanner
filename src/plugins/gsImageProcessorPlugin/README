@@ -5,7 +5,6 @@ If save: is set, the image will be saved after processing and before returning t
 
 Save
 ----
-
     save:
       type:         string (optionally force the image
       transparent:  [ R,G,B ] or 'FFAAFF' (sets the transparent color)

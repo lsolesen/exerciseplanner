@@ -112,7 +112,6 @@ class ImageProcessorHelper
         	$img->loadImage($input_file);
         }
 
-
         if(isset($params['resize']))
         {
             $rparams = &$params['resize'];
