@@ -12,8 +12,8 @@
         <div>
             <ul>
                 <li><?php echo link_to(__('Muscles'),'muscles/index'); ?></li>
-                <li><?php echo link_to(__('Programs'),'exerciseset/index'); ?></li>
-                <li><?php echo link_to(__('Exercise Sets'),'exercises/index'); ?></li>
+                <li><?php echo link_to(__('Programs'),'programs/index'); ?></li>
+                <li><?php echo link_to(__('Exercise Sets'),'exercisesets/index'); ?></li>
                 <li><?php echo link_to(__('Exercises'),'exercises/index'); ?></li>
                 <li><?php echo link_to(__('Logout'),'@sf_guard_signout'); ?></li>
                 <li><?php echo link_to(__('Switch Language'),'sfGuardAuth/switchLanguage'); ?></li>
