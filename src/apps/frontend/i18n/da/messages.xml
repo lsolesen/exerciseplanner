@@ -3,96 +3,96 @@
   <file original="global" source-language="en" datatype="plaintext" date="2009-01-30T15:56:51Z">
     <body>
       <trans-unit id="1">
-        <source>Muskler</source>
-        <target/>
+        <source>Muscles</source>      
+        <target>Muskler</target>
       </trans-unit>
       <trans-unit id="2">
-        <source>Øvelser</source>
-        <target/>
+        <source>Exercises</source>      
+        <target>Øvelser</target>
       </trans-unit>
       <trans-unit id="3">
-        <source>Programmer</source>
-        <target/>
+        <source>Programs</source>      
+        <target>Programmer</target>
       </trans-unit>
       <trans-unit id="4">
         <source>Logout</source>
         <target/>
       </trans-unit>
       <trans-unit id="5">
-        <source>Skift sprog</source>
-        <target/>
+        <source>Switch Language</source>      
+        <target>Skift sprog</target>
       </trans-unit>
       <trans-unit id="6">
-        <source>registrer</source>
-        <target/>
+        <source>register</source>      
+        <target>registrer</target>
       </trans-unit>
       <trans-unit id="8">
-        <source>Glemt adgangskode?</source>
-        <target/>
+        <source>Forgot your password?</source>      
+        <target>Glemt adgangskode?</target>
       </trans-unit>
       <trans-unit id="9">
-        <source>Registrer</source>
-        <target/>
+        <source>Register</source>      
+        <target>Registrer</target>
       </trans-unit>
       <trans-unit id="10">
-        <source>Programmer</source>
-        <target/>
+        <source>Programs List</source>      
+        <target>Programmer</target>
       </trans-unit>
       <trans-unit id="11">
-        <source>Navn</source>
-        <target/>
+        <source>Name</source>      
+        <target>Navn</target>
       </trans-unit>
       <trans-unit id="12">
-        <source>Noter</source>
-        <target/>
+        <source>Notes</source>      
+        <target>Noter</target>
       </trans-unit>
       <trans-unit id="13">
-        <source>Oprettet</source>
-        <target/>
+        <source>Created at</source>      
+        <target>Oprettet</target>
       </trans-unit>
       <trans-unit id="14">
-        <source>Opdateret</source>
-        <target/>
+        <source>Updated at</source>      
+        <target>Opdateret</target>
       </trans-unit>
       <trans-unit id="15">
-        <source>Ny</source>
-        <target/>
+        <source>New</source>      
+        <target>Ny</target>
       </trans-unit>
       <trans-unit id="16">
-        <source>Rediger programmer</source>
-        <target/>
+        <source>Edit Programs</source>      
+        <target>Rediger programmer</target>
       </trans-unit>
       <trans-unit id="17">
-        <source>Nye programmer</source>
-        <target/>
+        <source>New Programs</source>      
+        <target>Nye programmer</target>
       </trans-unit>
       <trans-unit id="18">
-        <source>Øvelser</source>
-        <target/>
+        <source>Exercises List</source>      
+        <target>Øvelser</target>
       </trans-unit>
       <trans-unit id="19">
-        <source>Rediger øvelser</source>
-        <target/>
+        <source>Edit Exercises</source>
+        <target>Rediger øvelser</target>
       </trans-unit>
       <trans-unit id="20">
-        <source>Nye øvelser</source>
-        <target/>
+        <source>New Exercises</source>
+        <target>Nye øvelser</target>
       </trans-unit>
       <trans-unit id="21">
-        <source>Muskler</source>
-        <target/>
+        <source>Muscles List</source>      
+        <target>Muskler</target>
       </trans-unit>
       <trans-unit id="22">
-        <source>Rediger muskler</source>
-        <target/>
+        <source>Edit Muscles</source>      
+        <target>Rediger muskler</target>
       </trans-unit>
       <trans-unit id="23">
-        <source>Nye muskler</source>
-        <target/>
+        <source>New Muscles</source>      
+        <target>Nye muskler</target>
       </trans-unit>
       <trans-unit id="24">
         <source>Rediger profil</source>
-        <target/>
+        <target>Edit Profile</target>        
       </trans-unit>
       <trans-unit id="25">
         <source>Login</source>
