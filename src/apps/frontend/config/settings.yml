@@ -37,7 +37,8 @@ all:
     secure_module:          sfGuardAuth
     secure_action:          secure
     i18n:                   on
-    standard_helpers:       [ Partial, Cache, Form, I18N ]
+    standard_helpers:       [ Partial, Cache, Form, I18N, Javascript ]
+    prototype_web_dir:      /sfProtoculousPlugin
 #all:
 #  .actions:
 #    error_404_module:       default   # To be called when a 404 error is raised

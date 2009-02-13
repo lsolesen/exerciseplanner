@@ -5,5 +5,14 @@
  */
 class ExerciseLink extends BaseExerciseLink
 {
+    public function setUp()
+    {
+        $this->hasOne('Exercise', array('local' => 'exercise_id',
+                                    'foreign' => 'id',
+                                    'onDelete' => 'CASCADE'));
+        $this->hasOne('Exercise as RelatedExercise', array('local' => 'related_exercise_id',
+                                    'foreign' => 'id',
+                                    'onDelete' => 'CASCADE'));
 
+    }
 }

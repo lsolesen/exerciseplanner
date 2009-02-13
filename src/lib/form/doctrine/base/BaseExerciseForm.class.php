@@ -13,18 +13,26 @@ class BaseExerciseForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'             => new sfWidgetFormInputHidden(),
+      'creator_id'     => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'owner_id'       => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'is_shareable'   => new sfWidgetFormInputCheckbox(),
       'created_at'     => new sfWidgetFormDateTime(),
       'updated_at'     => new sfWidgetFormDateTime(),
       'exercises_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Exercise')),
       'muscles_list'   => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Muscle')),
+      'tags_list'      => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Tag')),
     ));
 
     $this->setValidators(array(
       'id'             => new sfValidatorDoctrineChoice(array('model' => 'Exercise', 'column' => 'id', 'required' => false)),
+      'creator_id'     => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
+      'owner_id'       => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
+      'is_shareable'   => new sfValidatorBoolean(array('required' => false)),
       'created_at'     => new sfValidatorDateTime(array('required' => false)),
       'updated_at'     => new sfValidatorDateTime(array('required' => false)),
       'exercises_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Exercise', 'required' => false)),
       'muscles_list'   => new sfValidatorDoctrineChoiceMany(array('model' => 'Muscle', 'required' => false)),
+      'tags_list'      => new sfValidatorDoctrineChoiceMany(array('model' => 'Tag', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('exercise[%s]');
@@ -53,6 +61,11 @@ class BaseExerciseForm extends BaseFormDoctrine
       $this->setDefault('muscles_list', $this->object->Muscles->getPrimaryKeys());
     }
 
+    if (isset($this->widgetSchema['tags_list']))
+    {
+      $this->setDefault('tags_list', $this->object->Tags->getPrimaryKeys());
+    }
+
   }
 
   protected function doSave($con = null)
@@ -61,6 +74,7 @@ class BaseExerciseForm extends BaseFormDoctrine
 
     $this->saveExercisesList($con);
     $this->saveMusclesList($con);
+    $this->saveTagsList($con);
   }
 
   public function saveExercisesList($con = null)
@@ -114,6 +128,33 @@ class BaseExerciseForm extends BaseFormDoctrine
     if (is_array($values))
     {
       $this->object->link('Muscles', $values);
+    }
+  }
+
+  public function saveTagsList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['tags_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (is_null($con))
+    {
+      $con = $this->getConnection();
+    }
+
+    $this->object->unlink('Tags', array());
+
+    $values = $this->getValue('tags_list');
+    if (is_array($values))
+    {
+      $this->object->link('Tags', $values);
     }
   }
 

@@ -15,12 +15,12 @@ class BaseExerciseLinkFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'exercise_id'         => new sfWidgetFormDoctrineChoice(array('model' => 'Exercise', 'add_empty' => true)),
-      'related_exercise_id' => new sfWidgetFormFilterInput(),
+      'related_exercise_id' => new sfWidgetFormDoctrineChoice(array('model' => 'Exercise', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'exercise_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Exercise', 'column' => 'id')),
-      'related_exercise_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'related_exercise_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Exercise', 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_link_filters[%s]');
@@ -40,7 +40,7 @@ class BaseExerciseLinkFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'                  => 'Number',
       'exercise_id'         => 'ForeignKey',
-      'related_exercise_id' => 'Number',
+      'related_exercise_id' => 'ForeignKey',
     );
   }
 }

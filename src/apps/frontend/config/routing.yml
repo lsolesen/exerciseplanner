@@ -1,7 +1,7 @@
 # default rules
 homepage:
   url:   /
-  param: { module: exercises, action: index }
+  param: { module: programs, action: index }
 
 default_index:
   url:   /:module

@@ -12,19 +12,23 @@ class BaseProgramForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'               => new sfWidgetFormInputHidden(),
-      'sf_guard_user_id' => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
-      'created_at'       => new sfWidgetFormDateTime(),
-      'updated_at'       => new sfWidgetFormDateTime(),
-      'exercises_list'   => new sfWidgetFormDoctrineChoiceMany(array('model' => 'ExerciseSet')),
+      'id'           => new sfWidgetFormInputHidden(),
+      'creator_id'   => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'owner_id'     => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'is_shareable' => new sfWidgetFormInputCheckbox(),
+      'created_at'   => new sfWidgetFormDateTime(),
+      'updated_at'   => new sfWidgetFormDateTime(),
+      'tags_list'    => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Tag')),
     ));
 
     $this->setValidators(array(
-      'id'               => new sfValidatorDoctrineChoice(array('model' => 'Program', 'column' => 'id', 'required' => false)),
-      'sf_guard_user_id' => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
-      'created_at'       => new sfValidatorDateTime(array('required' => false)),
-      'updated_at'       => new sfValidatorDateTime(array('required' => false)),
-      'exercises_list'   => new sfValidatorDoctrineChoiceMany(array('model' => 'ExerciseSet', 'required' => false)),
+      'id'           => new sfValidatorDoctrineChoice(array('model' => 'Program', 'column' => 'id', 'required' => false)),
+      'creator_id'   => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
+      'owner_id'     => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
+      'is_shareable' => new sfValidatorBoolean(array('required' => false)),
+      'created_at'   => new sfValidatorDateTime(array('required' => false)),
+      'updated_at'   => new sfValidatorDateTime(array('required' => false)),
+      'tags_list'    => new sfValidatorDoctrineChoiceMany(array('model' => 'Tag', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('program[%s]');
@@ -43,9 +47,9 @@ class BaseProgramForm extends BaseFormDoctrine
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['exercises_list']))
+    if (isset($this->widgetSchema['tags_list']))
     {
-      $this->setDefault('exercises_list', $this->object->Exercises->getPrimaryKeys());
+      $this->setDefault('tags_list', $this->object->Tags->getPrimaryKeys());
     }
 
   }
@@ -54,17 +58,17 @@ class BaseProgramForm extends BaseFormDoctrine
   {
     parent::doSave($con);
 
-    $this->saveExercisesList($con);
+    $this->saveTagsList($con);
   }
 
-  public function saveExercisesList($con = null)
+  public function saveTagsList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['exercises_list']))
+    if (!isset($this->widgetSchema['tags_list']))
     {
       // somebody has unset this widget
       return;
@@ -75,12 +79,12 @@ class BaseProgramForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $this->object->unlink('Exercises', array());
+    $this->object->unlink('Tags', array());
 
-    $values = $this->getValue('exercises_list');
+    $values = $this->getValue('tags_list');
     if (is_array($values))
     {
-      $this->object->link('Exercises', $values);
+      $this->object->link('Tags', $values);
     }
   }
 

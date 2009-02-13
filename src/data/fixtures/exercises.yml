@@ -1,0 +1,326 @@
+Exercise:
+  Exercise_1:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_2:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_3:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: false
+  Exercise_4:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_5:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_6:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: false 
+  Exercise_7:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_8:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_9:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_11:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: false
+  Exercise_12:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: false
+  Exercise_13:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: false  
+  Exercise_14:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: false  
+  Exercise_15:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: false
+  Exercise_16:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_17:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_18:
+    created_at: '2009-02-12 14:07:01'
+    updated_at: '2009-02-12 14:07:01'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+  Exercise_19:
+    created_at: '2009-02-12 14:07:21'
+    updated_at: '2009-02-12 14:07:21'
+    Owner:        gnat
+    Creator:      gnat
+    is_shareable: true 
+ExerciseTranslation:
+  ExerciseTranslation_1_da:
+    Exercise: Exercise_1
+    name: 'Exercise 1 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_1_en:
+    Exercise: Exercise_1
+    name: 'Exercise 1 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_2_da:
+    Exercise: Exercise_2
+    name: 'Exercise 2 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_2_en:
+    Exercise: Exercise_2
+    name: 'Exercise 2 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_3_da:
+    Exercise: Exercise_3
+    name: 'Exercise 3 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_3_en:
+    Exercise: Exercise_3
+    name: 'Exercise 3 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_4_da:
+    Exercise: Exercise_4
+    name: 'Exercise 4 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_4_en:
+    Exercise: Exercise_4
+    name: 'Exercise 4 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_5_da:
+    Exercise: Exercise_5
+    name: 'Exercise 5 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_5_en:
+    Exercise: Exercise_5
+    name: 'Exercise 5 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_6_da:
+    Exercise: Exercise_6
+    name: 'Exercise 6 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_6_en:
+    Exercise: Exercise_6
+    name: 'Exercise 6 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_7_da:
+    Exercise: Exercise_7
+    name: 'Exercise 7 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_7_en:
+    Exercise: Exercise_7
+    name: 'Exercise 7 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_8_da:
+    Exercise: Exercise_8
+    name: 'Exercise 8 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_8_en:
+    Exercise: Exercise_8
+    name: 'Exercise 8 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_9_da:
+    Exercise: Exercise_9
+    name: 'Exercise 9 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_9_en:
+    Exercise: Exercise_9
+    name: 'Exercise 9 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_11_da:
+    Exercise: Exercise_11
+    name: 'Exercise 11 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_11_en:
+    Exercise: Exercise_11
+    name: 'Exercise 11 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_12_da:
+    Exercise: Exercise_12
+    name: 'Exercise 12 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_12_en:
+    Exercise: Exercise_12
+    name: 'Exercise 12 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_13_da:
+    Exercise: Exercise_13
+    name: 'Exercise 13 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_13_en:
+    Exercise: Exercise_13
+    name: 'Exercise 13 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_14_da:
+    Exercise: Exercise_14
+    name: 'Exercise 14 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_14_en:
+    Exercise: Exercise_14
+    name: 'Exercise 14 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_15_da:
+    Exercise: Exercise_15
+    name: 'Exercise 15 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_15_en:
+    Exercise: Exercise_15
+    name: 'Exercise 15 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_16_da:
+    Exercise: Exercise_16
+    name: 'Exercise 16 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_16_en:
+    Exercise: Exercise_16
+    name: 'Exercise 16 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_17_da:
+    Exercise: Exercise_17
+    name: 'Exercise 17 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_17_en:
+    Exercise: Exercise_17
+    name: 'Exercise 17 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_18_da:
+    Exercise: Exercise_18
+    name: 'Exercise 18 - Danish'
+    description: "Vivamus lacus turpis, posuere posuere, tempus sit amet, lobortis et, lorem! Maecenas justo. Sed pulvinar sodales nullam.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_18_en:
+    Exercise: Exercise_18
+    name: 'Exercise 18 - English'
+    description: "Suspendisse nibh nisl; blandit at, scelerisque et, faucibus vel, libero. Donec vestibulum pede sit amet mi. Morbi metus.\n"
+    video: ''
+    lang: en
+  ExerciseTranslation_19_da:
+    Exercise: Exercise_19
+    name: 'Exercise 19 - Danish'
+    description: "Quisque vitae mauris nec lectus tincidunt lacinia. Morbi massa lectus, suscipit vitae, vestibulum eu, imperdiet a metus.\n"
+    video: ''
+    lang: da
+  ExerciseTranslation_19_en:
+    Exercise: Exercise_19
+    name: 'Exercise 19 - English'
+    description: "Nulla at sem. Phasellus tortor tellus, dignissim quis, feugiat vel, hendrerit non, lectus. Suspendisse lacus justo amet.\n"
+    video: ''
+    lang: en    

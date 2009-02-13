@@ -5,28 +5,27 @@
  */
 abstract class BaseExerciseSet extends sfDoctrineRecord
 {
-  public function setTableDefinition()
-  {
-    $this->setTableName('exercise_set');
-    $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-    $this->hasColumn('name', 'string', 64, array('type' => 'string', 'length' => '64'));
-    $this->hasColumn('s1', 'string', 32, array('type' => 'string', 'length' => '32'));
-    $this->hasColumn('i1', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
-    $this->hasColumn('otype', 'integer', 1, array('type' => 'integer', 'unsigned' => true, 'length' => '1'));
+    public function setTableDefinition()
+    {
+        $this->setTableName('exercise_set');
+        $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
+        $this->hasColumn('exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
+        $this->hasColumn('program_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
+        $this->hasColumn('s1', 'string', 32, array('type' => 'string', 'length' => '32'));
+        $this->hasColumn('s2', 'string', 32, array('type' => 'string', 'length' => '32'));
+        $this->hasColumn('otype', 'integer', 1, array('type' => 'integer', 'unsigned' => true, 'length' => '1'));
 
-    $this->setSubClasses(array('RepSet' => array('otype' => '1'), 'TimeSet' => array('otype' => '2')));
-  }
+        $this->setSubClasses(array('RepSet' => array('otype' => '1'), 'TimeSet' => array('otype' => '2')));
+    }
 
-  public function setUp()
-  {
-    $this->hasMany('Program', array('refClass' => 'ProgramExercise',
-                                    'local' => 'exercise_set_id',
-                                    'foreign' => 'program_id'));
+    public function setUp()
+    {
+        $this->hasOne('Exercise', array('local' => 'exercise_id',
+                                        'foreign' => 'id',
+                                        'onDelete' => 'CASCADE'));
 
-    $this->hasMany('ProgramExercise', array('local' => 'id',
-                                            'foreign' => 'exercise_set_id'));
-
-    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name')));
-    $this->actAs($i18n0);
-  }
+        $this->hasOne('Program', array('local' => 'program_id',
+                                       'foreign' => 'id',
+                                       'onDelete' => 'CASCADE'));
+    }
 }

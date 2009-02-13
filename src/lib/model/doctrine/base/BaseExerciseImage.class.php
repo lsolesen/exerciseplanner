@@ -5,10 +5,10 @@
  */
 abstract class BaseExerciseImage extends Image
 {
-  public function setUp()
-  {
-    parent::setUp();
+    public function setUp()
+    {
+        parent::setUp();
     $this->hasOne('Exercise', array('local' => 'owner_id',
-                                    'foreign' => 'id'));
-  }
+                                        'foreign' => 'id'));
+    }
 }

@@ -11,15 +11,14 @@ class RepSetForm extends BaseRepSetForm
 {
     public function configure()
     {
+        unset($this['program_id']);
         $this->setWidget('otype',new sfWidgetFormInputHidden(array('default'=>1)));
+//        $this->setWidget('program_id',new sfWidgetFormInputHidden());
         $this->widgetSchema->setLabels(array(
+                                        'exercise_id'=>'Exercise',
                                         's1'   => 'Weight',
-                                        'i1'   => 'Number of Reps',
-                                        'en'   => 'English',
-                                        'da'   => 'Danish',
-                                        ));
-        $this->widgetSchema->setNameFormat('exercise_set[%s]');
-
-        $this->embedI18n(array('en','da'));
+                                        's2'   => 'Number of Reps',
+        ));
+        $this->widgetSchema->setNameFormat('exercise_set[%s][]');
     }
 }

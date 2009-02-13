@@ -3,4 +3,12 @@ sfGuardUser:
     username:       gnat
     password:       1234567
     is_super_admin: true
+
+sfGuardGroup:
+  sgg_coaches:
+    name:           coaches
+    description:    Coach group
+  sgg_moderator:
+    name:           moderator
+    description:    Global Moderator group
    

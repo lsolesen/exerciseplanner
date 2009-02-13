@@ -18,7 +18,7 @@
         }
     ?>
     <tr>
-      <td><a href="<?php echo url_for('exercisesets/edit?id='.$exercise_set['id']) ?>"><?php echo $exercise_set->getname() ?></a></td>
+      <td><a href="<?php echo url_for('exercisesets/edit?id='.$exercise_set['id']) ?>"><?php echo $exercise_set->getid() ?></a></td>
       <td><?php echo $exercise_set->gets1() ?></td>
       <td><?php echo $exercise_set->geti1() ?></td>
     </tr>

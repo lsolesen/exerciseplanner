@@ -1,0 +1,1 @@
+<div><?php include_partial('setsForm',array('label'=>$label,'form'=>$form)); ?></div>

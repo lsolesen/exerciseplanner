@@ -1,102 +1,186 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file original="global" source-language="en" datatype="plaintext" date="2009-01-30T15:56:51Z">
+  <file original="global" source-language="en" datatype="plaintext" date="2009-02-13T10:44:02Z">
     <body>
       <trans-unit id="1">
-        <source>Muscles</source>      
+        <source>Muscles</source>
         <target>Muskler</target>
       </trans-unit>
       <trans-unit id="2">
-        <source>Exercises</source>      
-        <target>Øvelser</target>
+        <source>Exercises</source>
+        <target>&#xD8;velser</target>
       </trans-unit>
       <trans-unit id="3">
-        <source>Programs</source>      
+        <source>Programs</source>
         <target>Programmer</target>
       </trans-unit>
       <trans-unit id="4">
         <source>Logout</source>
-        <target/>
+        <target></target>
       </trans-unit>
       <trans-unit id="5">
-        <source>Switch Language</source>      
+        <source>Switch Language</source>
         <target>Skift sprog</target>
       </trans-unit>
       <trans-unit id="6">
-        <source>register</source>      
+        <source>register</source>
         <target>registrer</target>
       </trans-unit>
       <trans-unit id="8">
-        <source>Forgot your password?</source>      
+        <source>Forgot your password?</source>
         <target>Glemt adgangskode?</target>
       </trans-unit>
       <trans-unit id="9">
-        <source>Register</source>      
+        <source>Register</source>
         <target>Registrer</target>
       </trans-unit>
       <trans-unit id="10">
-        <source>Programs List</source>      
+        <source>Programs List</source>
         <target>Programmer</target>
       </trans-unit>
       <trans-unit id="11">
-        <source>Name</source>      
+        <source>Name</source>
         <target>Navn</target>
       </trans-unit>
       <trans-unit id="12">
-        <source>Notes</source>      
+        <source>Notes</source>
         <target>Noter</target>
       </trans-unit>
       <trans-unit id="13">
-        <source>Created at</source>      
+        <source>Created at</source>
         <target>Oprettet</target>
       </trans-unit>
       <trans-unit id="14">
-        <source>Updated at</source>      
+        <source>Updated at</source>
         <target>Opdateret</target>
       </trans-unit>
       <trans-unit id="15">
-        <source>New</source>      
+        <source>New</source>
         <target>Ny</target>
       </trans-unit>
       <trans-unit id="16">
-        <source>Edit Programs</source>      
+        <source>Edit Programs</source>
         <target>Rediger programmer</target>
       </trans-unit>
       <trans-unit id="17">
-        <source>New Programs</source>      
+        <source>New Programs</source>
         <target>Nye programmer</target>
       </trans-unit>
       <trans-unit id="18">
-        <source>Exercises List</source>      
-        <target>Øvelser</target>
+        <source>Exercises List</source>
+        <target>&#xD8;velser</target>
       </trans-unit>
       <trans-unit id="19">
         <source>Edit Exercises</source>
-        <target>Rediger øvelser</target>
+        <target>Rediger &#xF8;velser</target>
       </trans-unit>
       <trans-unit id="20">
         <source>New Exercises</source>
-        <target>Nye øvelser</target>
+        <target>Nye &#xF8;velser</target>
       </trans-unit>
       <trans-unit id="21">
-        <source>Muscles List</source>      
+        <source>Muscles List</source>
         <target>Muskler</target>
       </trans-unit>
       <trans-unit id="22">
-        <source>Edit Muscles</source>      
+        <source>Edit Muscles</source>
         <target>Rediger muskler</target>
       </trans-unit>
       <trans-unit id="23">
-        <source>New Muscles</source>      
+        <source>New Muscles</source>
         <target>Nye muskler</target>
       </trans-unit>
       <trans-unit id="24">
         <source>Rediger profil</source>
-        <target>Edit Profile</target>        
+        <target>Edit Profile</target>
       </trans-unit>
       <trans-unit id="25">
         <source>Login</source>
-        <target/>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>Workout planner</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>Number of Exercises</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>Owner</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>Creator</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>N/A</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>Cancel</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>Return to list</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>Exercise Sets List</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>New Rep Set</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>New Time Set</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>Edit %1%</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>New %1%</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="38">
+        <source>Tags List</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="39">
+        <source>Edit Tags</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="40">
+        <source>New Tags</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="41">
+        <source>Is Shareable</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="42">
+        <source>Yes</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="43">
+        <source>No</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>Edit Profile</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="45">
+        <source>Insertion</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="46">
+        <source>Origin</source>
+        <target></target>
       </trans-unit>
     </body>
   </file>

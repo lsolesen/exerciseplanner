@@ -14,13 +14,13 @@ class BaseExerciseLinkForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                  => new sfWidgetFormInputHidden(),
       'exercise_id'         => new sfWidgetFormDoctrineSelect(array('model' => 'Exercise', 'add_empty' => true)),
-      'related_exercise_id' => new sfWidgetFormInput(),
+      'related_exercise_id' => new sfWidgetFormDoctrineSelect(array('model' => 'Exercise', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'id'                  => new sfValidatorDoctrineChoice(array('model' => 'ExerciseLink', 'column' => 'id', 'required' => false)),
       'exercise_id'         => new sfValidatorDoctrineChoice(array('model' => 'Exercise', 'required' => false)),
-      'related_exercise_id' => new sfValidatorInteger(array('required' => false)),
+      'related_exercise_id' => new sfValidatorDoctrineChoice(array('model' => 'Exercise', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_link[%s]');

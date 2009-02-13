@@ -5,12 +5,18 @@
  */
 abstract class BaseExerciseLink extends sfDoctrineRecord
 {
-  public function setTableDefinition()
-  {
-    $this->setTableName('exercise_links');
-    $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-    $this->hasColumn('exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
-    $this->hasColumn('related_exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
-  }
+    public function setTableDefinition()
+    {
+        $this->setTableName('exercise_links');
+        $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
+        $this->hasColumn('exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
+        $this->hasColumn('related_exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
+    }
 
+    public function setUp()
+    {
+        $this->hasOne('Exercise', array('local' => 'exercise_id',
+                                        'foreign' => 'id',
+                                        'onDelete' => 'CASCADE'));
+    }
 }

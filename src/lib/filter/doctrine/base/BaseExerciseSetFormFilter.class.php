@@ -14,17 +14,19 @@ class BaseExerciseSetFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      's1'           => new sfWidgetFormFilterInput(),
-      'i1'           => new sfWidgetFormFilterInput(),
-      'otype'        => new sfWidgetFormFilterInput(),
-      'program_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Program')),
+      'exercise_id' => new sfWidgetFormDoctrineChoice(array('model' => 'Exercise', 'add_empty' => true)),
+      'program_id'  => new sfWidgetFormDoctrineChoice(array('model' => 'Program', 'add_empty' => true)),
+      's1'          => new sfWidgetFormFilterInput(),
+      's2'          => new sfWidgetFormFilterInput(),
+      'otype'       => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      's1'           => new sfValidatorPass(array('required' => false)),
-      'i1'           => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'otype'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'program_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Program', 'required' => false)),
+      'exercise_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Exercise', 'column' => 'id')),
+      'program_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Program', 'column' => 'id')),
+      's1'          => new sfValidatorPass(array('required' => false)),
+      's2'          => new sfValidatorPass(array('required' => false)),
+      'otype'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_set_filters[%s]');
@@ -32,22 +34,6 @@ class BaseExerciseSetFormFilter extends BaseFormFilterDoctrine
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
     parent::setup();
-  }
-
-  public function addProgramListColumnQuery(Doctrine_Query $query, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $query->leftJoin('r.ProgramExercise ProgramExercise')
-          ->andWhereIn('ProgramExercise.program_id', $values);
   }
 
   public function getModelName()
@@ -58,11 +44,12 @@ class BaseExerciseSetFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'           => 'Number',
-      's1'           => 'Text',
-      'i1'           => 'Number',
-      'otype'        => 'Number',
-      'program_list' => 'ManyKey',
+      'id'          => 'Number',
+      'exercise_id' => 'ForeignKey',
+      'program_id'  => 'ForeignKey',
+      's1'          => 'Text',
+      's2'          => 'Text',
+      'otype'       => 'Number',
     );
   }
 }

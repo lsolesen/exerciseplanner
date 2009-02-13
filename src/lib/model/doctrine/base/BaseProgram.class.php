@@ -5,31 +5,40 @@
  */
 abstract class BaseProgram extends sfDoctrineRecord
 {
-  public function setTableDefinition()
-  {
-    $this->setTableName('program');
-    $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-    $this->hasColumn('sf_guard_user_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('name', 'string', 32, array('type' => 'string', 'length' => '32'));
-    $this->hasColumn('notes', 'string', 4000, array('type' => 'string', 'length' => '4000'));
-  }
+    public function setTableDefinition()
+    {
+        $this->setTableName('program');
+        $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
+        $this->hasColumn('creator_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
+        $this->hasColumn('owner_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
+        $this->hasColumn('name', 'string', 32, array('type' => 'string', 'length' => '32'));
+        $this->hasColumn('notes', 'string', 4000, array('type' => 'string', 'length' => '4000'));
+        $this->hasColumn('is_shareable', 'boolean', null, array('type' => 'boolean', 'default' => true));
+    }
 
-  public function setUp()
-  {
-    $this->hasOne('sfGuardUser as User', array('local' => 'sf_guard_user_id',
-                                               'foreign' => 'id',
-                                               'onDelete' => 'CASCADE'));
+    public function setUp()
+    {
+        $this->hasOne('sfGuardUser as Creator', array('local' => 'creator_id',
+                                                      'foreign' => 'id',
+                                                      'onDelete' => 'SET NULL'));
 
-    $this->hasMany('ExerciseSet as Exercises', array('refClass' => 'ProgramExercise',
-                                                     'local' => 'program_id',
-                                                     'foreign' => 'exercise_set_id'));
+        $this->hasOne('sfGuardUser as Owner', array('local' => 'owner_id',
+                                                    'foreign' => 'id',
+                                                    'onDelete' => 'CASCADE'));
 
-    $this->hasMany('ProgramExercise', array('local' => 'id',
-                                            'foreign' => 'program_id'));
+        $this->hasMany('Tag as Tags', array('refClass' => 'ProgramTag',
+                                            'local' => 'program_id',
+                                            'foreign' => 'tag_id'));
 
-    $timestampable0 = new Doctrine_Template_Timestampable();
-    $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'notes')));
-    $this->actAs($timestampable0);
-    $this->actAs($i18n0);
-  }
+        $this->hasMany('ExerciseSet as Sets', array('local' => 'id',
+                                                    'foreign' => 'program_id'));
+
+        $this->hasMany('ProgramTag', array('local' => 'id',
+                                           'foreign' => 'program_id'));
+
+        $timestampable0 = new Doctrine_Template_Timestampable();
+        $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'notes')));
+        $this->actAs($timestampable0);
+        $this->actAs($i18n0);
+    }
 }

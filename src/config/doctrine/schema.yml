@@ -31,46 +31,50 @@ Program:
       fields: [ name, notes ]
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
-    sf_guard_user_id: integer(4)    
+    creator_id: integer(4)    
+    owner_id: integer(4)
     name: { type: string(32) }
-    notes: { type: string(4000) }  
+    notes: { type: string(4000) }
+    is_shareable: { type: boolean, default: true }
   relations:
-    User:
+    Creator:
       class: sfGuardUser
-      local: sf_guard_user_id
+      local: creator_id
+      onDelete: SET NULL
+    Owner:
+      class: sfGuardUser
+      foreignAlias: Programs
+      local: owner_id
       onDelete: CASCADE
-    Exercises:
-      refClass: ProgramExercise
-      class: ExerciseSet
+    Tags:
+      class: Tag
+      foreignAlias: Programs
       local: program_id
-      foreign: exercise_set_id
-
-ProgramExercise:
-  columns:
-    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }  
-    program_id: { type: integer(4), unsigned: true }
-    exercise_set_id: { type: integer(4), unsigned: true }
-  relations:
-    Program:
-      onDelete: CASCADE
-    ExerciseSet:
-      onDelete: CASCADE
+      foreign: tag_id
+      refClass: ProgramTag
 
 # Each exercise will be related to the program through one of two:
 # 1) The time you have to conduct an exercise, lets say running, or 
 # 2) The number of reps you have to do in each set 
 
 ExerciseSet:
-  actAs:
-    I18n:
-      fields: [ name ]
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
-    name: { type: string(64) }
+    exercise_id: { type: integer(4), unsigned: true }
+    program_id: { type: integer(4), unsigned: true }
     s1: { type: string(32) }
-    i1: { type: integer(4), unsigned: true }
+    s2: { type: string(32) }
     otype: { type: integer(1), unsigned: true }
-
+  relations:
+    Exercise:
+      local: exercise_id
+      foreignAlias: ExerciseSets
+      onDelete: CASCADE
+    Program:
+      foreignAlias: Sets
+      local: program_id
+      onDelete: CASCADE
+      
 RepSet:
   inheritance: { extends: ExerciseSet, keyField: otype, keyValue: 1 }
 
@@ -87,10 +91,22 @@ Exercise:
       fields: [ name, description, video ]
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    creator_id: integer(4)    
+    owner_id: integer(4)
     name: string(30)
     description: string(4000)
     video: string(255)
+    is_shareable: { type: boolean, default: false }
   relations:
+    Creator:
+      class: sfGuardUser
+      local: creator_id
+      onDelete: SET NULL
+    Owner:
+      class: sfGuardUser
+      foreignAlias: Programs
+      local: owner_id
+      onDelete: CASCADE
     Exercise:
       alias: Exercises
       local: exercise_id
@@ -101,7 +117,12 @@ Exercise:
       local: exercise_id
       foreign: muscle_id
       refClass: ExerciseMuscle
-          
+    Tags:
+      class: Tag
+      local: exercise_id
+      foreign: tag_id
+      refClass: ExerciseTag
+              
 # Exercise relation tables
 ExerciseMuscle:
   tableName: exercise_muscles
@@ -116,6 +137,9 @@ ExerciseLink:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
     exercise_id: { type: integer(4), unsigned: true }
     related_exercise_id: { type: integer(4), unsigned: true }
+  relations:
+    Exercise:
+      onDelete: CASCADE
 
 ###############################################
 Muscle:
@@ -152,7 +176,38 @@ ExerciseImage:
     Exercise:
       local: owner_id
       foreignAlias: Images
-      
+
+Tag:
+  actAs:
+    Timestampable:
+    I18n:
+      fields: [ name ]
+  columns:
+    id:   { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    name: { type: string(64) }
+
+ExerciseTag:
+  columns:
+    id:          { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    tag_id:      { type: integer(4), unsigned: true }
+    exercise_id: { type: integer(4), unsigned: true }
+  relations:
+    Exercise:
+      onDelete: CASCADE
+    Tag:
+      onDelete: CASCADE
+
+ProgramTag:
+  columns:
+    id:          { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    tag_id:      { type: integer(4), unsigned: true }
+    program_id:  { type: integer(4), unsigned: true }
+  relations:
+    Program:
+      onDelete: CASCADE
+    Tag:
+      onDelete: CASCADE
+
 # LATER ADDITIONS:
 
 # A user can have a log and a calendar and follow own training

@@ -8,6 +8,6 @@ class ProjectConfiguration extends sfProjectConfiguration
   public function setup()
   {
     // for compatibility / remove and enable only the plugins you want
-    $this->enablePlugins(array('sfDoctrinePlugin', 'sfDoctrineGuardPlugin'));
+    $this->enablePlugins(array('sfDoctrinePlugin', 'sfDoctrineGuardPlugin','sfProtoculousPlugin'));
   }
 }

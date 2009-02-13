@@ -5,12 +5,12 @@
  */
 abstract class BaseExerciseMuscle extends sfDoctrineRecord
 {
-  public function setTableDefinition()
-  {
-    $this->setTableName('exercise_muscles');
-    $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-    $this->hasColumn('exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
-    $this->hasColumn('muscle_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
-  }
+    public function setTableDefinition()
+    {
+        $this->setTableName('exercise_muscles');
+        $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
+        $this->hasColumn('exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
+        $this->hasColumn('muscle_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
+    }
 
 }
