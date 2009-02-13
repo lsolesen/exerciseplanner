@@ -91,24 +91,24 @@
         <target>Nye muskler</target>
       </trans-unit>
       <trans-unit id="24">
-        <source>Rediger profil</source>
-        <target>Edit Profile</target>
+        <source>Edit Profile</source>
+        <target>Rediger profil</target>
       </trans-unit>
       <trans-unit id="25">
         <source>Login</source>
-        <target></target>
+        <target>Login</target>
       </trans-unit>
       <trans-unit id="26">
         <source>Workout planner</source>
-        <target></target>
+        <target>Motionsplan</target>
       </trans-unit>
       <trans-unit id="27">
         <source>Number of Exercises</source>
-        <target></target>
+        <target>Antal øvelser</target>
       </trans-unit>
       <trans-unit id="28">
         <source>Owner</source>
-        <target></target>
+        <target>Ejer</target>
       </trans-unit>
       <trans-unit id="29">
         <source>Creator</source>
@@ -120,67 +120,67 @@
       </trans-unit>
       <trans-unit id="31">
         <source>Cancel</source>
-        <target></target>
+        <target>Fortryd</target>
       </trans-unit>
       <trans-unit id="32">
         <source>Return to list</source>
-        <target></target>
+        <target>Tilbage til listen</target>
       </trans-unit>
       <trans-unit id="33">
         <source>Exercise Sets List</source>
-        <target></target>
+        <target>Øvelsesliste</target>
       </trans-unit>
       <trans-unit id="34">
         <source>New Rep Set</source>
-        <target></target>
+        <target>Nyt sæt</target>
       </trans-unit>
       <trans-unit id="35">
         <source>New Time Set</source>
-        <target></target>
+        <target>Nyt tidssæt</target>
       </trans-unit>
       <trans-unit id="36">
         <source>Edit %1%</source>
-        <target></target>
+        <target>Rediger %1%</target>
       </trans-unit>
       <trans-unit id="37">
         <source>New %1%</source>
-        <target></target>
+        <target>Ny %1%</target>
       </trans-unit>
       <trans-unit id="38">
         <source>Tags List</source>
-        <target></target>
+        <target>Nøgleord</target>
       </trans-unit>
       <trans-unit id="39">
         <source>Edit Tags</source>
-        <target></target>
+        <target>Rediger nøgleord</target>
       </trans-unit>
       <trans-unit id="40">
         <source>New Tags</source>
-        <target></target>
+        <target>Nyt nøgleord</target>
       </trans-unit>
       <trans-unit id="41">
         <source>Is Shareable</source>
-        <target></target>
+        <target>Delt</target>
       </trans-unit>
       <trans-unit id="42">
         <source>Yes</source>
-        <target></target>
+        <target>Ja</target>
       </trans-unit>
       <trans-unit id="43">
         <source>No</source>
-        <target></target>
+        <target>Nej</target>
       </trans-unit>
       <trans-unit id="44">
         <source>Edit Profile</source>
-        <target></target>
+        <target>Rediger profil</target>
       </trans-unit>
       <trans-unit id="45">
         <source>Insertion</source>
-        <target></target>
+        <target>Hæfte</target>
       </trans-unit>
       <trans-unit id="46">
         <source>Origin</source>
-        <target></target>
+        <target>Udspring</target>
       </trans-unit>
     </body>
   </file>
