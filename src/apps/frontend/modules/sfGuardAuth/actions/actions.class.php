@@ -6,8 +6,11 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     {
         $u       = $this->getUser();
         $culture = $u->getCulture();
+        $url     = $u->getAttribute('url','@homepage','language');
+
         $u->setCulture( ($culture == 'en')?'da':'en' );
-        $this->redirect('@homepage');
+
+        $this->redirect($url);
     }
 
     public function executePassword()

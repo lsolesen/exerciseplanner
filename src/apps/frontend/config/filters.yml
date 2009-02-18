@@ -6,6 +6,9 @@ security:
 security:
   class: sfGuardBasicSecurityFilter
 
+url:
+  class: gsUrlFilter
+
 cache:     ~
 common:    ~
 execution: ~
