@@ -11,10 +11,7 @@ class gsUrlFilter extends sfFilter
             $routing = $context->getRouting();
             $url = $routing->getCurrentInternalUri();
             $context->getUser()->setAttribute('url',$url,'language');
-            $context->getLogger()->log('URL: '.$url);
         }
-        else
-            $context->getLogger()->log('SWITCHING LANGUAGE');
 
         $filterChain->execute();
     }
