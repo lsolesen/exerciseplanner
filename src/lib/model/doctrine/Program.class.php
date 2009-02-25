@@ -5,5 +5,51 @@
  */
 class Program extends BaseProgram
 {
+    public function canBeEdited($user)
+    {
+        if( $this->owner_id == $user->getId() ) // owner
+            return true;
 
+        if($this->is_shareable)
+        {
+            if( $user->isSuperAdmin() )
+                return true;
+
+            if( ( ( $user->hasGroup('coaches') || $user->hasGroup('moderator') ) && $this->owner_id != $user->getId() )  || $this->owner_id == $user->getId() )
+                return true;
+        }
+
+        return false;
+    }
+
+    public function isOwner($user)
+    {
+        return ( $this->owner_id == $user->getId() ); // owner
+    }
+
+    public function returnForDuplication($id)
+    {
+        $this->loadReference('Translation');
+        $data = $this->toArray(true);
+
+        foreach($data['Sets'] as &$s)
+        {
+            unset($s['id']);
+            unset($s['program_id']);
+            unset($s['Program']);
+        }
+
+        foreach($data['Translation'] as &$t)
+            unset($t['id']);
+
+        $data['owner_id'] = $id;
+
+        unset($data['id']);
+        unset($data['Creator']);
+        unset($data['Owner']);
+        unset($data['created_at']);
+        unset($data['updated_at']);
+
+        return $data;
+    }
 }

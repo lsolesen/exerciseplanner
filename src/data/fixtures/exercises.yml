@@ -56,21 +56,21 @@ Exercise:
   Exercise_11:
     created_at: '2009-02-12 14:07:01'
     updated_at: '2009-02-12 14:07:01'
-    Owner:        gnat
-    Creator:      gnat
-    is_shareable: false
+    Owner:        noblet
+    Creator:      noblet
+    is_shareable: true
   Exercise_12:
     created_at: '2009-02-12 14:07:21'
     updated_at: '2009-02-12 14:07:21'
-    Owner:        gnat
-    Creator:      gnat
+    Owner:        noblet
+    Creator:      noblet
     is_shareable: false
   Exercise_13:
     created_at: '2009-02-12 14:07:01'
     updated_at: '2009-02-12 14:07:01'
-    Owner:        gnat
-    Creator:      gnat
-    is_shareable: false  
+    Owner:        noblet
+    Creator:      noblet
+    is_shareable: true  
   Exercise_14:
     created_at: '2009-02-12 14:07:21'
     updated_at: '2009-02-12 14:07:21'
@@ -86,8 +86,8 @@ Exercise:
   Exercise_16:
     created_at: '2009-02-12 14:07:01'
     updated_at: '2009-02-12 14:07:01'
-    Owner:        gnat
-    Creator:      gnat
+    Owner:        noblet
+    Creator:      noblet
     is_shareable: true 
   Exercise_17:
     created_at: '2009-02-12 14:07:21'
@@ -98,8 +98,8 @@ Exercise:
   Exercise_18:
     created_at: '2009-02-12 14:07:01'
     updated_at: '2009-02-12 14:07:01'
-    Owner:        gnat
-    Creator:      gnat
+    Owner:        noblet
+    Creator:      noblet
     is_shareable: true 
   Exercise_19:
     created_at: '2009-02-12 14:07:21'

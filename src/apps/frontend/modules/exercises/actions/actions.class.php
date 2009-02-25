@@ -12,7 +12,8 @@ class exercisesActions extends sfActions
 {
     public function executeIndex(sfWebRequest $request)
     {
-        $this->exercise_list = Doctrine_Query::create()->from('Exercise e')->leftJoin('e.Translation t')->execute();
+        $u = $this->getUser();
+        $this->exercise_list = Doctrine::getTable('Exercise')->getViewableQuery($u->getId(),$u->getCulture())->execute();
     }
 
     public function executeNew(sfWebRequest $request)
@@ -31,6 +32,14 @@ class exercisesActions extends sfActions
         $this->setTemplate('new');
     }
 
+    public function executeShow(sfWebRequest $request)
+    {
+        $exercise = Doctrine::getTable('Exercise')->find($request->getParameter('id'));
+
+        $this->forward404Unless($exercise);
+        $this->exercise = $exercise;
+    }
+
     public function executeEdit(sfWebRequest $request)
     {
         $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->find($request->getParameter('id')), sprintf('Object exercise does not exist (%s).', $request->getParameter('id')));
@@ -47,6 +56,21 @@ class exercisesActions extends sfActions
 
         $this->setTemplate('edit');
     }
+
+    public function executeDuplicate(sfWebRequest $request)
+    {
+        $this->forward404Unless($request->isMethod('get'));
+        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->load($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+
+        $n_exercise = new Exercise();
+        $data       = $exercise->returnForDuplication( $this->getUser()->getId() );
+
+        $n_exercise->fromArray($data , true );
+        $n_exercise->save();
+
+        $this->redirect('programs/index');
+    }
+
 
     public function executeDelete(sfWebRequest $request)
     {

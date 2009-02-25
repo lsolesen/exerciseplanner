@@ -10,8 +10,6 @@
       <?php echo $form; ?>
 
     </tbody>
-
-
     <tfoot>
       <tr>
         <td colspan="2">

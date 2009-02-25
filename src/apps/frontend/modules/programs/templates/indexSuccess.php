@@ -15,7 +15,8 @@
   <tbody>
     <?php foreach ($program_list as $program): ?>
     <tr>
-      <td><a href="<?php echo url_for('programs/edit?id='.$program['id']) ?>"><?php echo $program->getName() ?></a></td>
+<!--      <td><a href="<?php echo ($program->CanBeEdited($sf_user)) ? url_for('programs/edit?id='.$program['id']):'programs/show?id='.$program['id']; ?>"><?php echo $program->getName(); ?></a></td>-->
+      <td><a href="<?php echo url_for('programs/show?id='.$program['id']); ?>"><?php echo $program->getName(); ?></a></td>
       <td><?php echo $program['num_exercises'];; ?></td>
       <td><?php echo (isset($program['Owner'])) ? $program['Owner']['username']: __('N/A'); ?></td>
       <td><?php echo (isset($program['Creator'])) ? $program['Creator']['username']: __('N/A'); ?></td>

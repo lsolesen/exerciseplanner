@@ -4,5 +4,53 @@
  */
 class ProgramTable extends Doctrine_Table
 {
+    public function load($id = null)
+    {
+        if($id == null)
+            return array();
 
+        $lang = sfContext::getInstance()->getUser()->getCulture();
+
+        return Doctrine_Query::create()
+                                ->from('Program p')
+                                ->leftJoin('p.Translation pt WITH pt.lang = ?',$lang)
+                                ->leftJoin('p.Creator c')
+                                ->leftJoin('p.Owner o')
+                                ->leftJoin('p.Sets s')
+                                ->leftJoin('s.Exercise e')
+                                ->where('p.id = ?',array($id))
+                                ->fetchOne();
+    }
+
+    public function loadForShow($id = null)
+    {
+        if($id == null)
+            return array();
+
+        $lang = sfContext::getInstance()->getUser()->getCulture();
+
+        return Doctrine_Query::create()
+                                ->from('Program p')
+                                ->leftJoin('p.Translation pt WITH pt.lang = ?',$lang)
+                                ->leftJoin('p.Creator c')
+                                ->leftJoin('p.Owner o')
+                                ->leftJoin('p.Sets s')
+                                ->leftJoin('s.Exercise e')
+                                ->leftJoin('e.Translation et WITH et.lang = ?', $lang)
+                                ->where('p.id = ?',array($id))
+                                ->fetchOne();
+    }
+
+    public function getViewableQuery($u_id, $culture)
+    {
+        return Doctrine_Query::create()
+                                ->select('p.*, t.name, o.username,c.username,COUNT(s.id) as num_exercises,*')
+                                ->from('Program p')
+                                ->leftJoin('p.Translation t WITH t.lang = ?',$culture)
+                                ->leftJoin('p.Owner o')
+                                ->leftJoin('p.Creator c')
+                                ->leftJoin('p.Sets s')
+                                ->where(' ( p.owner_id = ? ) OR ( p.is_shareable = ? ) ', array($u_id,true))
+                                ->groupBy('p.id');
+    }
 }

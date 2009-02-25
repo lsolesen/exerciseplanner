@@ -1,0 +1,96 @@
+RepSet:
+  RepSet_1:
+    Exercise: Exercise_3
+    Program: Program_2
+    s1: 100lbs
+    s2: 'two hundred'
+    otype: '1'
+  RepSet_3:
+    Exercise: Exercise_3
+    Program: Program_3
+    s1: 100lbs
+    s2: 'two hundred'
+    otype: '1'
+  RepSet_5:
+    Exercise: Exercise_1
+    Program: Program_1
+    s1: '12'
+    s2: '3333'
+    otype: '1'
+  RepSet_8:
+    Exercise: Exercise_4
+    Program: Program_1
+    s1: 2RM
+    s2: '30'
+    otype: '1'
+TimeSet:
+  TimeSet_2:
+    Exercise: Exercise_1
+    Program: Program_2
+    s1: '402020'
+    s2: '1:20'
+    otype: '2'
+  TimeSet_4:
+    Exercise: Exercise_1
+    Program: Program_3
+    s1: '402020'
+    s2: '1:20'
+    otype: '2'
+  TimeSet_6:
+    Exercise: Exercise_3
+    Program: Program_1
+    s1: Gentag
+    s2: '10'
+    otype: '2'
+
+Program:
+  Program_1:
+    Creator: gnat
+    Owner: gnat
+    is_shareable: true
+    created_at: '2009-02-13 10:28:16'
+    updated_at: '2009-02-13 10:28:16'
+  Program_2:
+    Creator: sgu_admin
+    Owner: sgu_admin
+    is_shareable: true
+    created_at: '2009-02-13 10:28:48'
+    updated_at: '2009-02-13 10:28:48'
+  Program_3:
+    Creator: gnat
+    Owner: gnat
+    is_shareable: false
+    created_at: '2009-02-13 10:31:38'
+    updated_at: '2009-02-13 10:31:38'
+
+ProgramTranslation:
+  ProgramTranslation_1_da:
+    Program: Program_1
+    name: 'My Program - Danish'
+    notes: "Aenean in neque nec est aliquet malesuada. Ut porttitor ornare orci. Duis ac turpis! Aliquam accumsan erat sit amet sed.\n"
+    lang: da
+  ProgramTranslation_1_en:
+    Program: Program_1
+    name: 'My Program - EN'
+    notes: "Praesent in dolor? Proin eget turpis. Mauris eget est! Curabitur tristique, felis a egestas porta, erat libero volutpat.\n"
+    lang: en
+  ProgramTranslation_2_da:
+    Program: Program_2
+    name: 'My Program - Danish'
+    notes: "Aenean in neque nec est aliquet malesuada. Ut porttitor ornare orci. Duis ac turpis! Aliquam accumsan erat sit amet sed.\n"
+    lang: da
+  ProgramTranslation_2_en:
+    Program: Program_2
+    name: 'My Program - EN'
+    notes: "Praesent in dolor? Proin eget turpis. Mauris eget est! Curabitur tristique, felis a egestas porta, erat libero volutpat.\n"
+    lang: en
+  ProgramTranslation_3_da:
+    Program: Program_3
+    name: 'My Program - Danish'
+    notes: "Aenean in neque nec est aliquet malesuada. Ut porttitor ornare orci. Duis ac turpis! Aliquam accumsan erat sit amet sed.\n"
+    lang: da
+  ProgramTranslation_3_en:
+    Program: Program_3
+    name: 'My Program - EN'
+    notes: "Praesent in dolor? Proin eget turpis. Mauris eget est! Curabitur tristique, felis a egestas porta, erat libero volutpat.\n"
+    lang: en

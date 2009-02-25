@@ -12,15 +12,8 @@ class programsActions extends sfActions
 {
     public function executeIndex(sfWebRequest $request)
     {
-        $this->program_list = Doctrine_Query::create()
-                                    ->select('p.*, t.name, o.username,c.username,COUNT(s.id) as num_exercises,*')
-                                    ->from('Program p')
-                                    ->leftJoin('p.Translation t WITH t.lang = ?',$this->getUser()->getCulture())
-                                    ->leftJoin('p.Owner o')
-                                    ->leftJoin('p.Creator c')
-                                    ->leftJoin('p.Sets s')
-                                    ->groupBy('p.id')
-                                    ->execute();
+        $u = $this->getUser();
+        $this->program_list = Doctrine::getTable('Program')->getViewableQuery($u->getId(),$u->getCulture())->execute();
     }
 
     public function executeNew(sfWebRequest $request)
@@ -41,19 +34,43 @@ class programsActions extends sfActions
 
     public function executeEdit(sfWebRequest $request)
     {
-        $this->forward404Unless($program = Doctrine::getTable('Program')->find($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($program = Doctrine::getTable('Program')->loadForShow($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
         $this->form = new ProgramForm($program);
+    }
+
+    public function executeShow(sfWebRequest $request)
+    {
+        $program = Doctrine::getTable('Program')->loadForShow($request->getParameter('id'));
+        $this->forward404Unless($program, sprintf('Program does not exist (%s).', $request->getParameter('id')));
+
+        $this->program = $program;
     }
 
     public function executeUpdate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod('post') || $request->isMethod('put'));
         $this->forward404Unless($program = Doctrine::getTable('Program')->find($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($program->isOwner($this->getUser()));
+
         $this->form = new ProgramForm($program);
 
         $this->processForm($request, $this->form);
 
         $this->setTemplate('edit');
+    }
+
+    public function executeDuplicate(sfWebRequest $request)
+    {
+        $this->forward404Unless($request->isMethod('get'));
+        $this->forward404Unless($program = Doctrine::getTable('Program')->load($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+
+        $n_program = new Program();
+        $data      = $program->returnForDuplication( $this->getUser()->getId());
+        $this->logMessage(print_r($data,true));
+        $n_program->fromArray($data , true );
+        $n_program->save();
+
+        $this->redirect('programs/index');
     }
 
     public function executeDelete(sfWebRequest $request)
@@ -86,6 +103,15 @@ class programsActions extends sfActions
             $this->form = new TimeSetForm($rset);
             $this->label = 'Time Set';
         }
+
+        $this->id = rand();
+    }
+
+    public function executeRemoveSet(sfWebRequest $request)
+    {
+        Doctrine_Query::create()->delete()->from('ExerciseSet es')->where('es.id = ?',$request->getParameter('id'))->execute();
+
+        return sfView::NONE;
     }
 
     protected function processForm(sfWebRequest $request, sfForm $form)

@@ -1,1 +1,1 @@
-<div><?php include_partial('setsForm',array('label'=>$label,'form'=>$form)); ?></div>
+<div id="exercise_<?php echo $id; ?>"><?php include_partial('setsForm',array('label'=>$label,'form'=>$form,'id'=>$id)); ?></div>

@@ -3,7 +3,18 @@ sfGuardUser:
     username:       admin
     password:       admin
     is_super_admin: true
-
+    Profile: admin_profile
+  gnat:
+    username:       gnat
+    password:       1234567
+    is_super_admin: false
+    Profile: gnat_profile
+  noblet:
+    username:       noblet
+    password:       1234567
+    is_super_admin: false
+    Profile: noblet_profile
+    
 sfGuardPermission:
   sgp_admin:
     name:           admin
@@ -13,6 +24,12 @@ sfGuardGroup:
   sgg_admin:
     name:           admin
     description:    Administrator group
+  sgg_coaches:
+    name:           coaches
+    description:    Coach group
+  sgg_moderator:
+    name:           moderator
+    description:    Global Moderator group
 
 sfGuardGroupPermission:
   sggp_admin:
@@ -21,5 +38,25 @@ sfGuardGroupPermission:
 
 sfGuardUserGroup:
   sgug_admin:
-    sfGuardGroup:       sgg_admin
-    sfGuardUser:        sgu_admin
+    sfGuardGroup:   sgg_admin
+    sfGuardUser:    sgu_admin
+  sgug_gnat:
+    sfGuardGroup:   sgg_coaches
+    sfGuardUser:    gnat
+  sgug_noblet:
+    sfGuardGroup:   sgg_coaches
+    sfGuardUser:    noblet
+
+Profile:
+  noblet_profile:
+    first_name: Nathanael
+    last_name: Noblet
+    email_address: nnoblet@nobletdesign.com
+  gnat_profile:
+    first_name: Nathanael
+    last_name: Noblet
+    email_address: nathanael@gnat.ca
+  admin_profile:
+    first_name: FName
+    last_name:  LName
+    email_address: lars@example.org 

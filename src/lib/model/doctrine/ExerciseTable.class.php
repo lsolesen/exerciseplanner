@@ -4,5 +4,15 @@
  */
 class ExerciseTable extends Doctrine_Table
 {
-
+    public function getViewableQuery($u_id, $culture)
+    {
+        return Doctrine_Query::create()
+                                ->select('p.*, t.name, o.username,c.username')
+                                ->from('Exercise p')
+                                ->leftJoin('p.Translation t WITH t.lang = ?',$culture)
+                                ->leftJoin('p.Owner o')
+                                ->leftJoin('p.Creator c')
+                                ->where(' ( p.owner_id = ? ) OR ( p.is_shareable = ? ) ', array($u_id,true))
+                                ->groupBy('p.id');
+    }
 }

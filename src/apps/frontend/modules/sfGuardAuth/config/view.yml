@@ -1,0 +1,5 @@
+emailPasswordHtmlSuccess:
+  has_layout: false
+  
+emailPasswordTxtSuccess:
+  has_layout: false

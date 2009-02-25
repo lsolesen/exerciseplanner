@@ -4,5 +4,11 @@
  */
 class sfGuardUserTable extends PluginsfGuardUserTable
 {
+    public function getByUsername($username = null,$hydration = Doctrine::HYDRATE_RECORD)
+    {
+        if($username)
+            return Doctrine_Query::create()->from('sfGuardUser su')->leftJoin('su.Profile p')->where('su.username = ?',$username)->setHydrationMode($hydration)->fetchOne();
 
+        return null;
+    }
 }

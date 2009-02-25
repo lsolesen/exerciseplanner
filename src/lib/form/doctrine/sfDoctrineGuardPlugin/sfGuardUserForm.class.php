@@ -30,8 +30,8 @@ class sfGuardUserForm extends PluginsfGuardUserForm
         $this->embedForm('Profile', $profileForm);
     }
 
-    public function updateObject($values)
-    {
-        parent::updateObject($values);
-    }
+//    public function updateObject($values)
+//    {
+//        parent::updateObject($values);
+//    }
 }
