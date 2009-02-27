@@ -4,7 +4,7 @@
     <property name="tests.dir" value="./src/test/" />
     <property name="build.dir" value="../build" />
     <property name="reports.dir" value="../build/logs" />
-    <property name="reports.phpunit.dir" value="../../../build/logs" />
+    <property name="reports.test.dir" value="../../build/logs" />
     <property name="reports.coverage.dir" value="../../../build/coverage" />
     <property name="api.dir" value="../build/api" />
 
@@ -25,7 +25,7 @@
 	</target>
 
 	<target name="test" depends="clearcache">
-	  <exec command="${source.dir}/src/symfony test:undercontrol ../${reports.dir}/undercontrol.xml" passthru="true"></exec>
+	  <exec command="${source.dir}src/symfony test:undercontrol ${reports.test.dir}/undercontrol.xml" passthru="true"></exec>
 	</target>
 
 
