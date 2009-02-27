@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<project name="insight" default="build" basedir=".">
+    <property name="source.dir" value="./src/" />
+    <property name="tests.dir" value="./src/test/" />
+    <property name="build.dir" value="../build" />
+    <property name="reports.dir" value="../../build/logs" />
+    <property name="reports.phpunit.dir" value="../../../build/logs" />
+    <property name="reports.coverage.dir" value="../../../build/coverage" />
+    <property name="api.dir" value="../build/api" />
+
+    <target name="prepare">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <target name="build" depends="prepare,checkout,test,php-codesniffer,php-documentor">
+    </target>
+
+    <target name="checkout">
+        <exec dir="${source.dir}" command="svn export ${source.dir} ${build.dir}" />
+        <mkdir dir="${reports.dir}" />
+    </target>
+
+	<target name="clearcache">
+	  <exec command="${source.dir}/symfony cc"></exec>
+	</target>
+
+	<target name="test" depends="clearcache">
+	  <exec command="${source.dir}/symfony test-functional frontend ${reports.dir}/undercontrol.xml" passthru="true"></exec>
+	</target>
+
+
+    <target name="php-codesniffer">
+        <exec output="${reports.dir}/checkstyle.xml" dir="${source.dir}"
+            command="phpcs --report=checkstyle . --standard=PEAR" />
+    </target>
+
+    <target name="php-documentor">
+        <exec dir="${source.dir}" command="phpdoc -ue on -t ${api.dir} -d ${source.dir}/lib/model/" />
+    </target>
+
+    <target name="pear">
+        <exec dir="${build.dir}" command="php generate_package_xml.php make" />
+    </target>
+
+    <target name="pear-create">
+        <phingcall target="pear" />
+        <exec dir="${build.dir}" command="pear package package.xml" />
+    </target>
+
+    <target name="deploy">
+        <property file="./build.properties" />
+    </target>
+
+</project>
