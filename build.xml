@@ -21,21 +21,21 @@
     </target>
 
 	<target name="clearcache">
-	  <exec command="${source.dir}/symfony cc"></exec>
+	  <exec command="${source.dir}/src/symfony cc"></exec>
 	</target>
 
 	<target name="test" depends="clearcache">
-	  <exec command="${source.dir}/symfony test-functional frontend ${reports.dir}/undercontrol.xml" passthru="true"></exec>
+	  <exec command="${source.dir}/src/symfony test-functional frontend ${reports.dir}/undercontrol.xml" passthru="true"></exec>
 	</target>
 
 
     <target name="php-codesniffer">
         <exec output="${reports.dir}/checkstyle.xml" dir="${source.dir}"
-            command="phpcs --report=checkstyle . --standard=PEAR" />
+            command="phpcs --report=checkstyle ./src/ --standard=PEAR" />
     </target>
 
     <target name="php-documentor">
-        <exec dir="${source.dir}" command="phpdoc -ue on -t ${api.dir} -d ${source.dir}/lib/model/" />
+        <exec dir="${source.dir}" command="phpdoc -ue on -t ${api.dir} -d ${source.dir}/src/lib/model/" />
     </target>
 
     <target name="pear">
