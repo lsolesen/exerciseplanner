@@ -20,5 +20,5 @@
 </table>
 
 <?php if ($sf_user->isAuthenticated()): ?>
-  <p><a href="<?php echo url_for('muscles/new') ?>"><?php echo ('New'); ?>></a></p>
+  <p><a href="<?php echo url_for('muscles/new') ?>"><?php echo ('New'); ?></a></p>
 <?php endif; ?>
