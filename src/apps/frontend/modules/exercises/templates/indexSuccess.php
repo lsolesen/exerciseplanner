@@ -25,4 +25,6 @@
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('exercises/new') ?>">New</a>
+<?php if ($sf_user->isAuthenticated()): ?>
+    <p><a href="<?php echo url_for('exercises/new') ?>"><?php echo __('New'); ?></a></p>
+<?php endif; ?>
