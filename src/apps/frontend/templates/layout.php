@@ -15,6 +15,8 @@
                 <li><?php echo link_to(__('Programs'),'programs/index'); ?></li>
                 <li><?php echo link_to(__('Exercises'),'exercises/index'); ?></li>
                 <li><?php echo link_to(__('Logout'),'@sf_guard_signout'); ?></li>
+        <?php else: ?>
+                <li><?php echo link_to(__('Login'),'@sf_guard_signin'); ?></li>
         <?php endif; ?>
                 <li><?php echo link_to(__('Switch Language'),'sfGuardAuth/switchLanguage'); ?></li>
             </ul>
