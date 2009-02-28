@@ -13,7 +13,7 @@ use_helper('Javascript');
         <tr>
             <td>
                 &nbsp;<a href="<?php echo url_for('@homepage') ?>"><?php echo __('Cancel'); ?></a>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="<?php echo __('Submit'); ?>" />
             </td>
         </tr>
     </tfoot>
