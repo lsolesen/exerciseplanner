@@ -22,14 +22,15 @@ class ProgramTable extends Doctrine_Table
                                 ->fetchOne();
     }
 
-    public function loadForShow($id = null)
+    public function loadForShow($id = null,$one_lang = true)
     {
         if($id == null)
             return array();
 
         $lang = sfContext::getInstance()->getUser()->getCulture();
 
-        return Doctrine_Query::create()
+        if($one_lang)
+            return Doctrine_Query::create()
                                 ->from('Program p')
                                 ->leftJoin('p.Translation pt WITH pt.lang = ?',$lang)
                                 ->leftJoin('p.Creator c')
@@ -37,6 +38,17 @@ class ProgramTable extends Doctrine_Table
                                 ->leftJoin('p.Sets s')
                                 ->leftJoin('s.Exercise e')
                                 ->leftJoin('e.Translation et WITH et.lang = ?', $lang)
+                                ->where('p.id = ?',array($id))
+                                ->fetchOne();
+        else
+            return Doctrine_Query::create()
+                                ->from('Program p')
+                                ->leftJoin('p.Translation pt')
+                                ->leftJoin('p.Creator c')
+                                ->leftJoin('p.Owner o')
+                                ->leftJoin('p.Sets s')
+                                ->leftJoin('s.Exercise e')
+                                ->leftJoin('e.Translation et')
                                 ->where('p.id = ?',array($id))
                                 ->fetchOne();
     }

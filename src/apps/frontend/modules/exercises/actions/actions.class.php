@@ -60,7 +60,7 @@ class exercisesActions extends sfActions
     public function executeDuplicate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod('get'));
-        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->load($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->find($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
 
         $n_exercise = new Exercise();
         $data       = $exercise->returnForDuplication( $this->getUser()->getId() );
@@ -84,12 +84,32 @@ class exercisesActions extends sfActions
 
     protected function processForm(sfWebRequest $request, sfForm $form)
     {
-        $form->bind($request->getParameter($form->getName()));
+        $form->bind($request->getParameter($form->getName()),$request->getFiles($form->getName()));
+
         if ($form->isValid())
         {
             $exercise = $form->save();
 
-            $this->redirect('exercises/edit?id='.$exercise['id']);
+            $this->redirect('exercises/show?id='.$exercise['id']);
         }
+    }
+
+    public function executeAddImage(sfWebRequest $request)
+    {
+        $embedName = 'new_image_'.rand();
+        $form      = new ExerciseImageForm();
+        $eform     = new ExerciseForm();
+        $eform->addNewImage($embedName,$form);
+
+        // we can't use the $this->form form because the output escaper causes it to become a string and thus useless in the actual action.
+        $this->setVar('form',$eform['images'][$embedName],true);
+        $this->id   = $embedName;
+    }
+
+    public function executeRemoveImage(sfWebRequest $request)
+    {
+        Doctrine_Query::create()->delete()->from('ExerciseImage es')->where('es.id = ?',$request->getParameter('id'))->execute();
+
+        return sfView::NONE;
     }
 }

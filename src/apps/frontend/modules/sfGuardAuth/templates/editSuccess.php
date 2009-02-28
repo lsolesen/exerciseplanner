@@ -5,5 +5,5 @@
     <?php echo $form ?>
   </table>
 
-  <input type="submit" value="<?php echo __('register') ?>" />&nbsp;
+  <input type="submit" value="<?php echo __('update') ?>" />&nbsp;
 </form>

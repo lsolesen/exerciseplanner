@@ -34,7 +34,7 @@ class programsActions extends sfActions
 
     public function executeEdit(sfWebRequest $request)
     {
-        $this->forward404Unless($program = Doctrine::getTable('Program')->loadForShow($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($program = Doctrine::getTable('Program')->loadForShow($request->getParameter('id'),false), sprintf('Program does not exist (%s).', $request->getParameter('id')));
         $this->form = new ProgramForm($program);
     }
 
@@ -86,25 +86,30 @@ class programsActions extends sfActions
     public function executeAddSet(sfWebRequest $request)
     {
         $type = $this->getRequestParameter('t',null);
-
+        $this->forward404Unless($type);
         if($type == 'rep')
         {
+            $embedName = 'new_'.$type.'_'.rand();
             $rset             = new RepSet();
             $rset->otype      = 1;
-
-            $this->form = new RepSetForm($rset);
+            $form = new RepSetForm($rset);
             $this->label = 'Rep Set';
         }
         else
         {
+            $embedName = 'new_'.$type.'_'.rand();
             $rset             = new TimeSet();
             $rset->otype      = 2;
-
-            $this->form = new TimeSetForm($rset);
+            $form = new TimeSetForm($rset);
             $this->label = 'Time Set';
         }
 
-        $this->id = rand();
+        $pform = new ProgramForm();
+        $pform->addNewSet($embedName,$form);
+
+        // we can't use the $this->form form because the output escaper causes it to become a string and thus useless in the actual action.
+        $this->setVar('form',$pform['exercise_lists'][$embedName],true);
+        $this->id   = $embedName;
     }
 
     public function executeRemoveSet(sfWebRequest $request)
@@ -120,29 +125,9 @@ class programsActions extends sfActions
         if ($form->isValid())
         {
             $program = $form->save();
+            $program = $form->getObject();
 
-            $sets = $request->getParameter('exercise_set');
-            $this->logMessage('SETS: '.print_r($sets,true));
-            $toSave = new Doctrine_Collection('ExerciseSet');
-
-            foreach($sets['id'] as $key => $id)
-            {
-                if($id)
-                    $rset = Doctrine::getTable('ExerciseSet')->find($id);
-                else
-                    $rset = new ExerciseSet();
-
-                $rset->otype      = $sets['otype'][$key];
-                $rset->program_id = $program['id'];
-                $rset->exercise_id= $sets['exercise_id'][$key];
-                $rset->s1         = $sets['s1'][$key];
-                $rset->s2         = $sets['s2'][$key];
-                $toSave[]         = $rset;
-            }
-
-            $toSave->save();
-
-            $this->redirect('programs/edit?id='.$program['id']);
+            $this->redirect('programs/show?id='.$program['id']);
         }
     }
 }
