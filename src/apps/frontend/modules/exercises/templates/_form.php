@@ -34,14 +34,8 @@
             <th><?php echo $form['muscles_list']->renderLabel(); ?></th>
             <td><?php echo $form['muscles_list']->render(); ?></td>
         </tr>
-
         <tr>
-            <th><?php echo $form['images']->renderLabel(); ?></th>
-            <td><?php echo $form['images']->render(); ?></td>
-        </tr>
-
-        <tr>
-            <th valign="top"><?php echo __('Images'); ?> <?php if($is_owner): ?> <?php echo link_to_remote('Add Image',array('url'=>'exercises/addImage','update'=>'images','position'=>'top')); ?><?php endif; ?></th>
+            <th valign="top"><?php echo __('Images'); ?> <?php if($is_owner || $obj->isNew()): ?> <?php echo link_to_remote('Add Image',array('url'=>'exercises/addImage','update'=>'images','position'=>'top')); ?><?php endif; ?></th>
             <td id="images">
             <?php
                 $p_id = $form->getObject()->get('id');
