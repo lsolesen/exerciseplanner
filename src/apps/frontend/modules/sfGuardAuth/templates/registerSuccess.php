@@ -1,6 +1,6 @@
 <h1><?php echo __('Register'); ?></h1>
 
-<form action="<?php echo url_for('sfGuardAuth/edit') ?>" method="post">
+<form action="<?php echo url_for('sfGuardAuth/register') ?>" method="post">
   <table>
     <?php echo $form ?>
   </table>
