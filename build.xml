@@ -28,9 +28,8 @@
 	  <exec command="${source.dir}src/symfony test:undercontrol ${reports.test.dir}/undercontrol.xml" passthru="true"></exec>
 	</target>
 
-
     <target name="php-codesniffer">
-        <exec output="${reports.dir}/checkstyle.xml" dir="${source.dir}" error="${reports.dir}/error.xml"
+        <exec output="${reports.dir}/checkstyle.xml" dir="${source.dir}" error="${reports.dir}/phpcserror.log"
             command="phpcs --report=checkstyle ./src/ --standard=PEAR" />
     </target>
 
