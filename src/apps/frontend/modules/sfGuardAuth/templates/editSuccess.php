@@ -1,4 +1,5 @@
-<?php echo __('Edit Profile'); ?>
+<h1><?php echo __('Edit Profile'); ?></h1>
+
 <form action="<?php echo url_for('sfGuardAuth/register') ?>" method="post">
   <table>
     <?php echo $form ?>
