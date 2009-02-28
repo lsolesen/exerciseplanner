@@ -27,4 +27,6 @@
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('programs/new') ?>"><?php echo __('New'); ?></a>
+<?php if ($sf_user->isAuthenticated()): ?>
+<p><a href="<?php echo url_for('programs/new') ?>"><?php echo __('New'); ?></a></p>
+<?php endif; ?>
