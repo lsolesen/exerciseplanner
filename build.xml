@@ -30,7 +30,7 @@
 
 
     <target name="php-codesniffer">
-        <exec output="${reports.dir}/checkstyle.xml" dir="${source.dir}"
+        <exec output="${reports.dir}/checkstyle.xml" dir="${source.dir}" error="${reports.dir}/error.xml"
             command="phpcs --report=checkstyle ./src/ --standard=PEAR" />
     </target>
 
