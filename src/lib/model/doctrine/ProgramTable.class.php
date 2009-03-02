@@ -83,12 +83,16 @@ class ProgramTable extends Doctrine_Table
         $new_images = array();
         $path       = sfConfig::get('sf_upload_dir').'/exercises/';
         $owner_id   = sfContext::getInstance()->getUser()->getId();
+        sfContext::getInstance()->getLogger()->log('SETS: '.print_r($data['Sets'],true));
         foreach($data['Sets'] as &$s)
         {
             unset($s['id']);
             unset($s['program_id']);
             unset($s['Program']);
-            foreach($s['Exercise']['Images'] as &$img)
+            unset($s['exercise_id']);
+
+            $exercise = &$s['Exercise'];
+            foreach($exercise['Images'] as &$img)
             {
                 unset($img['id']);
                 unset($img['exercise_id']);
@@ -101,9 +105,14 @@ class ProgramTable extends Doctrine_Table
                 foreach($img['Translation'] as $lang => &$img_t)
                     unset($img_t['id']);
             }
+
+            foreach($exercise['Translation'] as $lang => &$exercise_t)
+                unset($exercise_t['id']);
+
+            unset($exercise['id']);
         }
 
-        foreach($data['Translation'] as &$t)
+        foreach($data['Translation'] as $lang => &$t)
             unset($t['id']);
 
         unset($data['id']);
@@ -111,7 +120,7 @@ class ProgramTable extends Doctrine_Table
         unset($data['updated_at']);
 
         $n_program = new Program();
-        $n_program->fromArray($obj,true);
+        $n_program->fromArray($data,true);
         $n_program->owner_id     = $owner_id;
         $n_program->is_shareable = false;
 

@@ -28,7 +28,7 @@
             <td><?php echo $exercise['Creator']; ?></td>
         </tr>
 
-    <tr>
+        <tr>
             <th><label for="exercise_exercises_list">Related Exercises</label></th>
             <td><?php if(count($exercise['Exercises']) == 0): ?>
                     <?php echo __('None'); ?>

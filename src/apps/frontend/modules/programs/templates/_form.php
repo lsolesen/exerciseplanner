@@ -7,7 +7,7 @@
     $is_owner = $obj->isOwner($sf_user);
 ?>
 <?php if($can_edit): ?>
-<form action="<?php echo url_for('programs/'.($form->getObject()->isNew() ? 'create' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getid() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form action="<?php echo url_for('programs/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getid() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <?php endif; ?>
 
 <?php if (!$obj->isNew()): ?>
@@ -46,7 +46,7 @@
                             <td>'. $form['exercise_lists'][$key]['s2']->render().'</td>
                         </tr>
                         <tr>
-                            <td colspan="2" align="right">';
+                            <td colspan="2" align="right">'.$form['exercise_lists'][$key]['otype']->render().$form['exercise_lists'][$key]['id']->render();
 
                     echo link_to_remote('Delete',array('url'=>'programs/removeSet?id='.$id[2].'&program_id='.$p_id,'confirm'=>__('This action is not reversable. Are you sure?'),'update'=>'data','after'=>"$('".$key."').remove();"));
 

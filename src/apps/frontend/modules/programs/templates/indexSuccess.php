@@ -5,6 +5,7 @@
     <tr>
       <th><?php echo __('Name'); ?></th>
       <th><?php echo __('Number of Exercises'); ?></th>
+      <th><?php echo __('Shareable'); ?></th>
       <th><?php echo __('Owner'); ?></th>
       <th><?php echo __('Creator'); ?></th>
       <th><?php echo __('Created at'); ?></th>
@@ -15,9 +16,9 @@
   <tbody>
     <?php foreach ($program_list as $program): ?>
     <tr>
-<!--      <td><a href="<?php echo ($program->CanBeEdited($sf_user)) ? url_for('programs/edit?id='.$program['id']):'programs/show?id='.$program['id']; ?>"><?php echo $program->getName(); ?></a></td>-->
       <td><a href="<?php echo url_for('programs/show?id='.$program['id']); ?>"><?php echo $program->getName(); ?></a></td>
-      <td><?php echo $program['num_exercises'];; ?></td>
+      <td><?php echo $program['num_exercises']; ?></td>
+      <td><?php echo ($program['is_shareable'])?__('Yes'):__('No'); ?></td>
       <td><?php echo (isset($program['Owner'])) ? $program['Owner']['username']: __('N/A'); ?></td>
       <td><?php echo (isset($program['Creator'])) ? $program['Creator']['username']: __('N/A'); ?></td>
       <td><?php echo $program->getcreated_at() ?></td>

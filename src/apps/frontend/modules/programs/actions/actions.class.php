@@ -62,15 +62,9 @@ class programsActions extends sfActions
     public function executeDuplicate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod('get'));
-        $this->forward404Unless($program = Doctrine::getTable('Program')->load($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($program = Doctrine::getTable('Program')->duplicate($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
 
-        $n_program = new Program();
-        $data      = $program->returnForDuplication( $this->getUser()->getId());
-        $this->logMessage(print_r($data,true));
-        $n_program->fromArray($data , true );
-        $n_program->save();
-
-        $this->redirect('programs/index');
+        $this->redirect('programs/edit?id='.$program['id']);
     }
 
     public function executeDelete(sfWebRequest $request)

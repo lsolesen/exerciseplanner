@@ -38,7 +38,14 @@
                             <table>
                                 <tr>
                                     <th><label for="exercise_set_exercise_id">Exercise</label></th>
-                                    <td><?php echo $set['Exercise']['name']; ?></td>
+                                    <td>
+                                        <?php echo $set['Exercise']['name']; ?><br />
+                                        <p><?php echo $set['Exercise']['description']; ?></p>
+                                        <?php echo $set['Exercise']['video']; ?>
+                                        <?php foreach($set['Exercise']['Images'] as $image): ?>
+                                            <div><?php echo image_tag('/uploads/exercises/'.$image['filename'],array('width'=>$image['width'],'height'=>$image['height'])); ?><br /><?php echo $image['caption']; ?></div>
+                                        <?php endforeach; ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th><label for="exercise_set_s1">Weight</label></th>
@@ -54,7 +61,14 @@
                             <table>
                                 <tr>
                                     <th><label for="exercise_set_exercise_id">Exercise</label></th>
-                                    <td><?php echo $set['Exercise']['name']; ?></td>
+                                    <td>
+                                        <?php echo $set['Exercise']['name']; ?><br />
+                                        <p><?php echo $set['Exercise']['description']; ?></p>
+                                        <?php echo $set['Exercise']['video']; ?>
+                                        <?php foreach($set['Exercise']['Images'] as $image): ?>
+                                            <div><?php echo image_tag('/uploads/exercises/'.$image['filename'],array('width'=>$image['width'],'height'=>$image['height'])); ?><br /><?php echo $image['caption']; ?></div>
+                                        <?php endforeach; ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th><label for="exercise_set_s1">Time</label></th>

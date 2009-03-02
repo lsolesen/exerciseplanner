@@ -14,6 +14,11 @@
             <th width="20%"><?php echo $form['s2']->renderLabel(); ?></th>
             <td><?php echo $form['s2']->render(); ?></td>
         </tr>
-        <tr><td colspan="2" align="right"><?php echo link_to_function('Remove',"$('exercise_".$id."').remove();"); ?></td></tr>
+        <tr>
+            <td colspan="2" align="right">
+                <?php echo $form['otype']->render().$form['id']->render(); ?>
+                <?php echo link_to_function('Remove',"$('exercise_".$id."').remove();"); ?>
+            </td>
+        </tr>
     </table>
 </div>
