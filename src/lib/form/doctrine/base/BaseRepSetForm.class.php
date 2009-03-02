@@ -13,8 +13,8 @@ class BaseRepSetForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'exercise_id' => new sfWidgetFormDoctrineSelect(array('model' => 'Exercise', 'add_empty' => true)),
-      'program_id'  => new sfWidgetFormDoctrineSelect(array('model' => 'Program', 'add_empty' => true)),
+      'exercise_id' => new sfWidgetFormDoctrineChoice(array('model' => 'Exercise', 'add_empty' => true)),
+      'program_id'  => new sfWidgetFormDoctrineChoice(array('model' => 'Program', 'add_empty' => true)),
       's1'          => new sfWidgetFormInput(),
       's2'          => new sfWidgetFormInput(),
       'otype'       => new sfWidgetFormInput(),

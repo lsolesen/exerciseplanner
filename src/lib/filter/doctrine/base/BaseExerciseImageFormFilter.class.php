@@ -14,21 +14,17 @@ class BaseExerciseImageFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'owner_id' => new sfWidgetFormDoctrineChoice(array('model' => 'Exercise', 'add_empty' => true)),
-      'filename' => new sfWidgetFormFilterInput(),
-      'width'    => new sfWidgetFormFilterInput(),
-      'height'   => new sfWidgetFormFilterInput(),
-      'caption'  => new sfWidgetFormFilterInput(),
-      'otype'    => new sfWidgetFormFilterInput(),
+      'exercise_id' => new sfWidgetFormDoctrineChoice(array('model' => 'Exercise', 'add_empty' => true)),
+      'filename'    => new sfWidgetFormFilterInput(),
+      'width'       => new sfWidgetFormFilterInput(),
+      'height'      => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'owner_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Exercise', 'column' => 'id')),
-      'filename' => new sfValidatorPass(array('required' => false)),
-      'width'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'height'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'caption'  => new sfValidatorPass(array('required' => false)),
-      'otype'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'exercise_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Exercise', 'column' => 'id')),
+      'filename'    => new sfValidatorPass(array('required' => false)),
+      'width'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'height'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_image_filters[%s]');
@@ -46,13 +42,11 @@ class BaseExerciseImageFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'       => 'Number',
-      'owner_id' => 'ForeignKey',
-      'filename' => 'Text',
-      'width'    => 'Number',
-      'height'   => 'Number',
-      'caption'  => 'Text',
-      'otype'    => 'Number',
+      'id'          => 'Number',
+      'exercise_id' => 'ForeignKey',
+      'filename'    => 'Text',
+      'width'       => 'Number',
+      'height'      => 'Number',
     );
   }
 }

@@ -1,0 +1,12 @@
+all:
+  .settings:
+    image_dimensions:
+      resize: 
+        crop:    true  
+        strict:  false
+        width:   250
+      border:
+        color:   FFFFFF
+      shadow:
+        color:   FFFFFF
+      save: [ ]

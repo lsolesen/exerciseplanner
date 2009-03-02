@@ -46,7 +46,7 @@ abstract class BaseExercise extends sfDoctrineRecord
                                              'foreign' => 'exercise_id'));
 
         $this->hasMany('ExerciseImage as Images', array('local' => 'id',
-                                                        'foreign' => 'owner_id'));
+                                                        'foreign' => 'exercise_id'));
 
         $this->hasMany('ExerciseTag', array('local' => 'id',
                                             'foreign' => 'exercise_id'));

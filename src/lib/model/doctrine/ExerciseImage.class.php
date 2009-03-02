@@ -5,5 +5,10 @@
  */
 class ExerciseImage extends BaseExerciseImage
 {
-
+    public function postDelete($event)
+    {
+        $path = sfConfig::get('sf_upload_dir').'/';
+        if(is_file($path.$this->filename))
+            @unlink($path.$this->filename);
+    }
 }

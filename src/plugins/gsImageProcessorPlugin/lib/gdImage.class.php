@@ -55,24 +55,12 @@ class gdImage
 
         $func = "imagecreatefrom$ext";
 
-        if(sfConfig::get('sf_logging_enabled'))
-            sfLogger::getInstance()->debug('gd load image function type: '.$func);
-
         if (!function_exists($func))
         {
-            if(sfConfig::get('sf_logging_enabled'))
-                sfLogger::getInstance()->debug('gd function does not exist?? '.$func);
-
             $this->loadImageFromString(file_get_contents($filename));
         }
         else
         {
-            if(sfConfig::get('sf_logging_enabled'))
-            {
-                sfLogger::getInstance()->debug('gd load image filename: '.$filename);
-                sfLogger::getInstance()->debug('gd load image->calling: '.$func.'('.$filename.')');
-            }
-
             $this->_img = $func($filename);
         }
 
@@ -229,8 +217,8 @@ class gdImage
             $this->_is_saved= $func($this->_img, $filename, $quality);
         else
             $this->_is_saved = $func($this->_img, $filename);
-        
-        if (!$this->_is_saved) 
+
+        if (!$this->_is_saved)
         {
             $err = error_get_last();
         	throw new sfException('Unable to save image to filesystem. '.$err['message']);

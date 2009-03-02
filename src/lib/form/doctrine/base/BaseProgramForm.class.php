@@ -13,8 +13,8 @@ class BaseProgramForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
-      'creator_id'   => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
-      'owner_id'     => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'creator_id'   => new sfWidgetFormDoctrineChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'owner_id'     => new sfWidgetFormDoctrineChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'is_shareable' => new sfWidgetFormInputCheckbox(),
       'created_at'   => new sfWidgetFormDateTime(),
       'updated_at'   => new sfWidgetFormDateTime(),

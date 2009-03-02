@@ -9,8 +9,10 @@
  */
 class ExerciseForm extends BaseExerciseForm
 {
+    private $max_images = 4;
     public function configure()
     {
+        //        $max_images = 4;
         unset($this['created_at'],$this['updated_at'],$this['owner_id'],$this['creator_id'],$this['tags_list'],$this['id']);
 
         $this->widgetSchema->setLabel('exercises_list','Related Exercises');
@@ -22,44 +24,35 @@ class ExerciseForm extends BaseExerciseForm
         $this->widgetSchema->setLabel('en','English');
         $this->widgetSchema->setLabel('da','Danish');
 
-        $embeddedForm = new sfForm();
+        $x = 1;
         foreach($this->getObject()->getImages() as $image)
         {
-            $embeddedForm->embedForm('existing_image_'.$image->getId(), new ExerciseImageForm($image));
+            $this->embedForm('image_'.$x, new ExerciseImageForm($image));
+            $x++;
         }
 
-        $this->embedForm('images', $embeddedForm);
+        for( ;$x <= $this->max_images; $x++)
+        {
+            $this->embedForm('image_'.$x, new ExerciseImageForm());
+        }
+    }
 
+    public function getMaxImages()
+    {
+        return $this->max_images;
     }
 
     public function bind(array $taintedValues = null, array $taintedFiles = null)
     {
-        if(isset($taintedValues['images']))
+        parent::bind($taintedValues,$taintedFiles);
+        if(empty($this->values))
+            sfContext::getInstance()->getLogger()->log('ERROR: '.$this->errorSchema->getMessage());
+
+        foreach ($this->embeddedForms as $name => $form)
         {
-            foreach($taintedValues['images'] as $index => $set)
-            {
-                if (!isset($this['images'][$index]))
-                {
-                    $f = new ExerciseImageForm();
-                    $this->addNewImage($index,$f);
-                }
-            }
+            $this->embeddedForms[$name]->isBound = true;
+            $this->embeddedForms[$name]->values = $this->values[$name];
         }
-
-        $ret = parent::bind($taintedValues, $taintedFiles);
-
-        foreach ($this->embeddedForms['images'] as $name => $form)
-        {
-            sfContext::getInstance()->getLogger()->log(__FUNCTION__.' isBound() '.(($this->embeddedForms['images'][$name]->isBound) ? 'true':'false').' isset: '.((isset($this->embeddedForms['images'][$name]->values['filename']) ? 'true':'false')));
-
-            $this->embeddedForms['images'][$name]->isBound = true;
-            $this->embeddedForms['images'][$name]->values  = $this->values['images'][$name];
-
-            sfContext::getInstance()->getLogger()->log(__FUNCTION__.' isBound() '.(($this->embeddedForms['images'][$name]->isBound) ? 'true':'false').' isset: '.((isset($this->embeddedForms['images'][$name]->values['filename']) ? 'true':'false')));
-
-        }
-
-        return $ret;
     }
 
     public function updateObject($values = null)
@@ -67,10 +60,10 @@ class ExerciseForm extends BaseExerciseForm
         parent::updateObject($values);
 
         if(!$this->object->owner_id)
-        $this->object->owner_id = sfContext::getInstance()->getUser()->getId();
+            $this->object->owner_id = sfContext::getInstance()->getUser()->getId();
 
         if(!$this->object->creator_id)
-        $this->object->creator_id = sfContext::getInstance()->getUser()->getId();
+            $this->object->creator_id = sfContext::getInstance()->getUser()->getId();
 
         return $this->object;
     }
@@ -87,44 +80,33 @@ class ExerciseForm extends BaseExerciseForm
             $forms = $this->embeddedForms;
         }
 
-        if(isset($forms['images']))
-        {
-            $values = $this->getValues();
-            foreach($this->embeddedForms['images']->getEmbeddedForms() as $index => $imageForm)
-            {
-                if ($values['images'][$index]['caption']) // only save sets that aren't blank
-                {
-                    $values['images'][$index]['owner_id'] = $this->object['id'];
-                    $imageForm->updateObject($values['images'][$index]);
-                    $imageForm->save();
-                }
-                else if(!$imageForm->getObject()->isNew())
-                $imageForm->getObject()->delete();
-            }
+        $values = $this->getValues();
 
-            unset($this->embeddedForms['images']);
-        }
-
-        foreach ($forms as $index => $form)
+        foreach($forms as $name => $form)
         {
-            if($index != 'images')
+//            sfContext::getInstance()->getLogger()->log(__FUNCTION__.' Form: '.$name);
+            if(strpos($name,'image_') !== false)
             {
-                if ($form instanceof sfFormDoctrine)
+//                sfContext::getInstance()->getLogger()->log(__FUNCTION__.' IS IMAGE TYPE: '.$name);
+                if ($values[$name]['en']['caption']) // only save sets that aren't blank
                 {
+//                    sfContext::getInstance()->getLogger()->log(__FUNCTION__.' HAS CAPTION: '.$name);
+                    $form->getObject()->exercise_id = $this->object['id'];
                     $form->getObject()->save($con);
                     $form->saveEmbeddedForms($con);
                 }
-                else
-                {
-                    $this->saveEmbeddedForms($con, $form->getEmbeddedForms());
-                }
+                else if(!$form->getObject()->isNew())
+                    $form->getObject()->delete();
+            }
+            else if ($form instanceof sfFormDoctrine)
+            {
+                $form->getObject()->save($con);
+                $form->saveEmbeddedForms($con);
+            }
+            else
+            {
+                $this->saveEmbeddedForms($con, $form->getEmbeddedForms());
             }
         }
-    }
-
-    public function addNewImage($name, $form)
-    {
-        $this->embeddedForms['images']->embedForm($name, $form);
-        $this->embedForm('images', $this->embeddedForms['images']); // re-embed the form
     }
 }

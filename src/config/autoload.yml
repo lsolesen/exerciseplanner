@@ -8,3 +8,7 @@ autoload:
     path:           '%SF_PLUGINS_DIR%/*/modules/*/lib'
     prefix: 3
     recursive:      on
+  gsImageProcess:
+    name:           blah blah
+    path:           '%SF_PLUGINS_DIR%/gsImageProcessorPlugin/lib'
+    recursive:      on

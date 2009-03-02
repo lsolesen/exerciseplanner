@@ -127,9 +127,6 @@ class gsWatermarkProcessor
             $yPosition = ceil(($mainImageHeight / 2) - ($watermarkImageHeight / 2));
         }
 
-        if(sfConfig::get('sf_logging_enabled'))
-            sfLogger::getInstance()->debug('Watermarking: xpos='.$xPosition.' ypos='.$yPosition);
-
         //create new image to hold merged changes
         $watermarkedImage = imagecreatetruecolor($mainImageWidth, $mainImageHeight);
 

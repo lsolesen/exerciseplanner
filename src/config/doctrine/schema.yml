@@ -157,25 +157,36 @@ Muscle:
     image_height: { type: integer(4), unsigned: true }
 
 ################################################
-Image:
-  attributes:
-    export: [ all, constraints ]
-  tableName: images
+#Image:
+#  attributes:
+#    export: [ all, constraints ]
+#  tableName: images
+#  columns:
+#    id:       { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+#    owner_id: { type: integer(4), unsigned: true }
+#    filename: { type: string(128) }
+#    width:    { type: integer(3), unsigned: true }
+#    height:   { type: integer(3), unsigned: true }
+#    caption:  { type: string(128) }
+#    otype:    { type: integer(1), unsigned: true }  
+
+ExerciseImage:
+  actAs: 
+    I18n:
+      fields: [ caption ]
+  tableName: exercise_images
   columns:
     id:       { type: integer(4), unsigned: true, primary: true, autoincrement: true }
-    owner_id: { type: integer(4), unsigned: true }
+    exercise_id: { type: integer(4), unsigned: true }
     filename: { type: string(128) }
     width:    { type: integer(3), unsigned: true }
     height:   { type: integer(3), unsigned: true }
     caption:  { type: string(128) }
-    otype:    { type: integer(1), unsigned: true }  
-
-ExerciseImage:
-  inheritance: { extends: Image, keyField: otype, keyValue: 1 }
   relations:
     Exercise:
-      local: owner_id
+      local: exercise_id
       foreignAlias: Images
+      onDelete: CASCADE
 
 Tag:
   actAs:

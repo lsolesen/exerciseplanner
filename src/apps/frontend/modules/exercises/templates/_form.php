@@ -16,10 +16,10 @@
     <tbody>
         <tr>
             <th><?php echo $form['en']->renderLabel(); ?></th>
-            <td><?php echo $form['da']->render(); ?></td>
+            <td><?php echo $form['en']->render(); ?></td>
         </tr>
         <tr>
-            <th><?php echo $form['en']->renderLabel(); ?></th>
+            <th><?php echo $form['da']->renderLabel(); ?></th>
             <td><?php echo $form['da']->render(); ?></td>
         </tr>
         <tr>
@@ -35,36 +35,41 @@
             <td><?php echo $form['muscles_list']->render(); ?></td>
         </tr>
         <tr>
-            <th valign="top"><?php echo __('Images'); ?> <?php if($is_owner || $obj->isNew()): ?> <?php echo link_to_remote('Add Image',array('url'=>'exercises/addImage','update'=>'images','position'=>'top')); ?><?php endif; ?></th>
+            <th valign="top"><?php echo __('Images'); ?></th>
             <td id="images">
-            <?php
-                $p_id = $form->getObject()->get('id');
+                <?php
+                    $p_id          = $form->getObject()->get('id');
+                    $embeddedForms = $form->getEmbeddedForms();
+                    $max_image     = $form->getMaxImages();
 
-                foreach($form['images'] as $key => $imageForm)
-                {
-                    // TODO find a better way to get the id?
-                    $id = explode('_',$key);
-                    echo '<div id="'.$key.'">';
-                    echo '<h3>'.$form['images'][$key]->renderLabel().'</h3>';
+                    for($x=1; $x <= $max_image; $x++)
+                    {
+                        $img_form = $embeddedForms['image_'.$x];
+                        $obj      = $img_form->getObject();
+                        $is_new   = $obj->isNew();
+                        $id       = $obj->getId();
+                        $filename = $obj->getFilename();
+                        $key      = 'image_'.$x;
 
-                    echo '<table style="width:50%;">
-                        <tr>
-                            <th width="20%">'.$form['images'][$key]['caption']->renderLabel().'</th>
-                            <td>'. $form['images'][$key]['caption']->render().'</td>
-                        </tr>
-                        <tr>
-                            <th width="20%">'. $form['images'][$key]['filename']->renderLabel().'</th>
-                            <td>'. $form['images'][$key]['filename']->render().'</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="right">';
+                        echo '<div id="'.$key.'">';
+                        echo '<h3>'.__('Image %1%',array('%1%'=>$x)).$embeddedForms[$key]->renderGlobalErrors().'</h3>';
+                        echo '<table style="width:50%;">
+                            <tr>
+                                <th width="20%">'.$form[$key]['en']->renderLabel().' '.$form[$key]['en']['caption']->renderLabel().'</th>
+                                <td>'.$form[$key]['en']['caption']->render().'</td>
+                            </tr>
+                            <tr>
+                                <th width="20%">'.$form[$key]['da']->renderLabel().' '.$form[$key]['da']['caption']->renderLabel().'</th>
+                                <td>'.$form[$key]['da']['caption']->render().'</td>
+                            </tr>
 
-                    echo link_to_remote('Delete',array('url'=>'programs/removeSet?id='.$id[2].'&owner_id='.$p_id,'confirm'=>__('This action is not reversable. Are you sure?'),'update'=>'data','after'=>"$('".$key."').remove();"));
-
-                    echo '</td></tr>
-                    </table></div>';
-                }
-            ?>
+                            <tr>
+                                <th width="20%">'. $form[$key]['filename']->renderLabel().'</th>
+                                <td>'. $form[$key]['filename']->render().((!$is_new)?'<br /> Current Image: '.image_tag('/uploads/exercises/'.$filename):'').($form[$key]['id']->render()).'</td>
+                            </tr>';
+                        echo '</table></div>';
+                    }
+                ?>
             </td>
         </tr>
 

@@ -40,6 +40,18 @@
             </td>
         </tr>
         <tr>
+            <td />
+            <td>
+                <?php if(count($exercise['Images']) == 0): ?>
+                    <?php echo __('No Images'); ?>
+                <?php else: ?>
+                    <?php foreach($exercise['Images'] as $image): ?>
+                        <?php echo image_tag('/uploads/exercises/'.$image['filename']); ?><br /><?php echo $image['caption']; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <tr>
             <th><label for="exercise_en_video">Video</label></th>
             <td><?php echo $exercise['video']; ?></td>
         </tr>

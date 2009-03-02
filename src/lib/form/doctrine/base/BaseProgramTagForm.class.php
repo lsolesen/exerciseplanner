@@ -13,8 +13,8 @@ class BaseProgramTagForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
-      'tag_id'     => new sfWidgetFormDoctrineSelect(array('model' => 'Tag', 'add_empty' => true)),
-      'program_id' => new sfWidgetFormDoctrineSelect(array('model' => 'Program', 'add_empty' => true)),
+      'tag_id'     => new sfWidgetFormDoctrineChoice(array('model' => 'Tag', 'add_empty' => true)),
+      'program_id' => new sfWidgetFormDoctrineChoice(array('model' => 'Program', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(

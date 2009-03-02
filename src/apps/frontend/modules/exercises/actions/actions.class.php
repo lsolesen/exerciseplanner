@@ -94,21 +94,17 @@ class exercisesActions extends sfActions
         }
     }
 
-    public function executeAddImage(sfWebRequest $request)
-    {
-        $embedName = 'new_image_'.rand();
-        $form      = new ExerciseImageForm();
-        $eform     = new ExerciseForm();
-        $eform->addNewImage($embedName,$form);
-
-        // we can't use the $this->form form because the output escaper causes it to become a string and thus useless in the actual action.
-        $this->setVar('form',$eform['images'][$embedName],true);
-        $this->id   = $embedName;
-    }
-
     public function executeRemoveImage(sfWebRequest $request)
     {
-        Doctrine_Query::create()->delete()->from('ExerciseImage es')->where('es.id = ?',$request->getParameter('id'))->execute();
+        $img  = Doctrine_Query::create()->from('ExerciseImage es')->where('es.id = ? AND es.owner_id = ? ',array($request->getParameter('id'),$request->getParameter('owner_id')))->fetchOne();
+        $path = sfConfig::get('sf_upload_dir').'/exercises/';
+
+        $this->logMessage('Path: '.$path.' Img: '.$img['filename']);
+
+        if(is_file($path.$img['filename']))
+            unlink($path.$img['filename']);
+
+        $img->delete();
 
         return sfView::NONE;
     }
