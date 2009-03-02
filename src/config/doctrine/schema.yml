@@ -89,6 +89,10 @@ Exercise:
     Timestampable:
     I18n:
       fields: [ name, description, video ]
+    gsShareableTemplate:
+      share: is_shareable
+      owner: owner_id    
+  listeners: [ gsI18nListener ]
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
     creator_id: integer(4)    
@@ -112,6 +116,7 @@ Exercise:
       local: exercise_id
       foreign: related_exercise_id
       refClass: ExerciseLink
+      equal: true
     Muscles:
       class: Muscle
       local: exercise_id
@@ -178,7 +183,7 @@ ExerciseImage:
   columns:
     id:       { type: integer(4), unsigned: true, primary: true, autoincrement: true }
     exercise_id: { type: integer(4), unsigned: true }
-    filename: { type: string(128) }
+    filename: { type: string(200) }
     width:    { type: integer(3), unsigned: true }
     height:   { type: integer(3), unsigned: true }
     caption:  { type: string(128) }

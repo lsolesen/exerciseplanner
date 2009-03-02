@@ -29,7 +29,8 @@ abstract class BaseExercise extends sfDoctrineRecord
 
         $this->hasMany('Exercise as Exercises', array('refClass' => 'ExerciseLink',
                                                       'local' => 'exercise_id',
-                                                      'foreign' => 'related_exercise_id'));
+                                                      'foreign' => 'related_exercise_id',
+                                                      'equal' => true));
 
         $this->hasMany('Muscle as Muscles', array('refClass' => 'ExerciseMuscle',
                                                   'local' => 'exercise_id',
@@ -53,7 +54,11 @@ abstract class BaseExercise extends sfDoctrineRecord
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'description', 2 => 'video')));
+        $gsshareabletemplate0 = new gsShareableTemplate(array('share' => 'is_shareable', 'owner' => 'owner_id'));
         $this->actAs($timestampable0);
         $this->actAs($i18n0);
+        $this->actAs($gsshareabletemplate0);
+
+        $this->addListener(new gsI18nListener());
     }
 }

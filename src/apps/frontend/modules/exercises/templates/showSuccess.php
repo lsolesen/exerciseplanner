@@ -17,13 +17,24 @@
             <th><label for="exercise_is_shareable">Is shareable</label></th>
             <td><?php echo ($exercise['is_shareable']) ? __('Yes'):__('No'); ?></td>
         </tr>
+
         <tr>
+            <th><label for="exercise_owner">Owner</label></th>
+            <td><?php echo $exercise['Owner']; ?></td>
+        </tr>
+
+        <tr>
+            <th><label for="exercise_owner">Creator</label></th>
+            <td><?php echo $exercise['Creator']; ?></td>
+        </tr>
+
+    <tr>
             <th><label for="exercise_exercises_list">Related Exercises</label></th>
             <td><?php if(count($exercise['Exercises']) == 0): ?>
                     <?php echo __('None'); ?>
                 <?php else: ?>
-                    <?php foreach($exercise['Exercises'] as $exercise): ?>
-                        <?php echo $exercise['name']; ?><br />
+                    <?php foreach($exercise['Exercises'] as $rexercise): ?>
+                        <?php echo $rexercise['name']; ?><br />
                     <?php endforeach; ?>
                 <?php endif; ?>
             </td>
@@ -46,7 +57,9 @@
                     <?php echo __('No Images'); ?>
                 <?php else: ?>
                     <?php foreach($exercise['Images'] as $image): ?>
+                        <div>
                         <?php echo image_tag('/uploads/exercises/'.$image['filename']); ?><br /><?php echo $image['caption']; ?>
+                        </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </td>
@@ -58,9 +71,9 @@
     </tbody>
 </table>
 <?php if(!$is_owner && $can_edit ): ?>
-    <a href="<?php echo url_for('exercises/duplicate?id='.$exercise['id']); ?>"><?php echo __('Duplicate'); ?></a>
+    <a href="<?php echo url_for('exercises/duplicate?id='.$exercise_id); ?>"><?php echo __('Duplicate'); ?></a>
 <?php endif; ?>
 
 <?php if($is_owner): ?>
-    <a href="<?php echo url_for('exercises/edit?id='.$exercise['id']); ?>"><?php echo __('Edit'); ?></a>
+    <a href="<?php echo url_for('exercises/edit?id='.$exercise_id); ?>"><?php echo __('Edit'); ?></a>
 <?php endif; ?>

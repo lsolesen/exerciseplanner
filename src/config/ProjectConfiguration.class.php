@@ -5,9 +5,14 @@ sfCoreAutoload::register();
 
 class ProjectConfiguration extends sfProjectConfiguration
 {
-  public function setup()
-  {
-    // for compatibility / remove and enable only the plugins you want
-    $this->enablePlugins(array('sfDoctrinePlugin', 'sfDoctrineGuardPlugin','sfProtoculousPlugin', 'symfonyUnderControlPlugin'));
-  }
+    public function setup()
+    {
+        // for compatibility / remove and enable only the plugins you want
+        $this->enablePlugins(array('sfDoctrinePlugin', 'sfDoctrineGuardPlugin','sfProtoculousPlugin', 'symfonyUnderControlPlugin'));
+    }
+
+    public function configureDoctrine(Doctrine_Manager $manager)
+    {
+        $manager->setAttribute('use_dql_callbacks', true);
+    }
 }

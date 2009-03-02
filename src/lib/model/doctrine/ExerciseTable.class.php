@@ -15,4 +15,96 @@ class ExerciseTable extends Doctrine_Table
                                 ->where(' ( p.owner_id = ? ) OR ( p.is_shareable = ? ) ', array($u_id,true))
                                 ->groupBy('p.id');
     }
+
+    public function getForShowOrEdit($id,$hydrationMode = Doctrine::HYDRATE_RECORD,$all_langs = false)
+    {
+        $q = Doctrine_Query::create()->from('Exercise e')
+                                ->leftJoin('e.Exercises rel')
+                                ->leftJoin('e.Images i')
+                                ->leftJoin('e.Creator c')
+                                ->leftJoin('e.Owner o')
+                                ->where('e.id = ? ',array($id))
+                                ->setHydrationMode($hydrationMode);
+        if($all_langs)
+            return $q->leftJoin('e.Translation et')
+                     ->leftJoin('i.Translation it')
+                     ->leftJoin('rel.Translation rit')
+                     ->fetchOne();
+        else
+        {
+            $lang = sfContext::getInstance()->getUser()->getCulture();
+            return $q->leftJoin('e.Translation et WITH et.lang = ?',$lang)
+                     ->leftJoin('i.Translation it WITH it.lang = ?',$lang)
+                     ->leftJoin('rel.Translation rit WITH rit.lang = ?',$lang)
+                     ->fetchOne();
+        }
+    }
+
+    public function duplicate($id)
+    {
+        $obj = Doctrine_Query::create()
+                                ->from('Exercise p')
+                                ->leftJoin('p.ExerciseLink el')
+                                ->leftJoin('p.Translation et')
+                                ->leftJoin('p.Images i')
+                                ->leftJoin('i.Translation it')
+                                ->where('p.id = ? AND p.is_shareable = ? ',array($id,true))
+                                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                                ->fetchOne();
+
+        $new_images = array();
+        $path       = sfConfig::get('sf_upload_dir').'/exercises/';
+        $owner_id   = sfContext::getInstance()->getUser()->getId();
+
+        foreach($obj['Images'] as &$s)
+        {
+            unset($s['id']);
+            unset($s['exercise_id']);
+
+            $n_file        = 'dup_'.$owner_id.'_'.preg_replace('/dup_\d+_/','',$s['filename']);
+            $new_images[]  = $n_file;
+            copy($path.$s['filename'],$path.$n_file);
+            $s['filename'] = $n_file;
+
+            foreach($s['Translation'] as $lang => &$data)
+                unset($data['id']);
+        }
+
+        foreach($obj['ExerciseLink'] as &$el)
+        {
+            unset($el['id']);
+            unset($el['exercise_id']);
+        }
+
+        foreach($obj['Translation'] as $lang => &$t)
+            unset($t['id']);
+
+        sfContext::getInstance()->getLogger()->log('Exercise Translation: '.print_r($obj['Translation'],true));
+
+        unset($obj['id']);
+        unset($obj['created_at']);
+        unset($obj['updated_at']);
+
+        $n_exercise = new Exercise();
+        $n_exercise->fromArray($obj,true);
+
+        sfContext::getInstance()->getLogger()->log('Exercise Translation: '.print_r($n_exercise['Translation']->toArray(true),true));
+
+        $n_exercise->is_shareable = false;
+        $n_exercise->owner_id = $owner_id;
+
+        try
+        {
+            $n_exercise->save();
+        }
+        catch(Exception $e)
+        {
+            foreach($new_images as $n_file)
+                unlink($path.$n_file);
+
+            throw $e;
+        }
+
+        return $n_exercise;
+    }
 }

@@ -26,23 +26,4 @@ class Exercise extends BaseExercise
     {
         return ( $this->owner_id == $user->getId() ); // owner
     }
-
-    public function returnForDuplication($id)
-    {
-        $this->loadReference('Translation');
-        $data = $this->toArray(true);
-
-        foreach($data['Translation'] as &$t)
-            unset($t['id']);
-
-        $data['owner_id'] = $id;
-
-        unset($data['id']);
-        unset($data['Creator']);
-        unset($data['Owner']);
-        unset($data['created_at']);
-        unset($data['updated_at']);
-
-        return $data;
-    }
 }

@@ -10,7 +10,7 @@ abstract class BaseExerciseImage extends sfDoctrineRecord
         $this->setTableName('exercise_images');
         $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
         $this->hasColumn('exercise_id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'length' => '4'));
-        $this->hasColumn('filename', 'string', 128, array('type' => 'string', 'length' => '128'));
+        $this->hasColumn('filename', 'string', 200, array('type' => 'string', 'length' => '200'));
         $this->hasColumn('width', 'integer', 3, array('type' => 'integer', 'unsigned' => true, 'length' => '3'));
         $this->hasColumn('height', 'integer', 3, array('type' => 'integer', 'unsigned' => true, 'length' => '3'));
         $this->hasColumn('caption', 'string', 128, array('type' => 'string', 'length' => '128'));

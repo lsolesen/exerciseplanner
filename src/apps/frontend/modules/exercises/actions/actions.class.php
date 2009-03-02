@@ -34,15 +34,14 @@ class exercisesActions extends sfActions
 
     public function executeShow(sfWebRequest $request)
     {
-        $exercise = Doctrine::getTable('Exercise')->find($request->getParameter('id'));
-
-        $this->forward404Unless($exercise);
+        $this->exercise_id = $request->getParameter('id');
+        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->getForShowOrEdit($this->exercise_id));
         $this->exercise = $exercise;
     }
 
     public function executeEdit(sfWebRequest $request)
     {
-        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->find($request->getParameter('id')), sprintf('Object exercise does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->getForShowOrEdit($request->getParameter('id'),null,true), sprintf('Object exercise does not exist (%s).', $request->getParameter('id')));
         $this->form = new ExerciseForm($exercise);
     }
 
@@ -60,15 +59,9 @@ class exercisesActions extends sfActions
     public function executeDuplicate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod('get'));
-        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->find($request->getParameter('id')), sprintf('Program does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($exercise = Doctrine::getTable('Exercise')->duplicate($request->getParameter('id')), sprintf('Exercise does not exist (%s).', $request->getParameter('id')));
 
-        $n_exercise = new Exercise();
-        $data       = $exercise->returnForDuplication( $this->getUser()->getId() );
-
-        $n_exercise->fromArray($data , true );
-        $n_exercise->save();
-
-        $this->redirect('programs/index');
+        $this->redirect('exercises/edit?id='.$exercise['id']);
     }
 
 

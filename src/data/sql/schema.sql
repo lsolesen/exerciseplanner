@@ -7,7 +7,8 @@ CREATE TABLE sf_guard_user_permission (user_id INT, permission_id INT, created_a
 CREATE TABLE sf_guard_user_group (user_id INT, group_id INT, created_at DATETIME, updated_at DATETIME, PRIMARY KEY(user_id, group_id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_remember_key (id INT AUTO_INCREMENT, user_id INT, remember_key VARCHAR(32), ip_address VARCHAR(50), created_at DATETIME, updated_at DATETIME, INDEX user_id_idx (user_id), PRIMARY KEY(id, ip_address)) ENGINE = INNODB;
 CREATE TABLE exercise_set (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNSIGNED, program_id INT UNSIGNED, s1 VARCHAR(32), s2 VARCHAR(32), otype TINYINT UNSIGNED, INDEX exercise_id_idx (exercise_id), INDEX program_id_idx (program_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE images (id INT UNSIGNED AUTO_INCREMENT, owner_id INT UNSIGNED, filename VARCHAR(128), width MEDIUMINT UNSIGNED, height MEDIUMINT UNSIGNED, caption VARCHAR(128), otype TINYINT UNSIGNED, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE exercise_images (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNSIGNED, filename VARCHAR(128), width MEDIUMINT UNSIGNED, height MEDIUMINT UNSIGNED, INDEX exercise_id_idx (exercise_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE exercise_image_translation (id INT UNSIGNED, caption VARCHAR(128), lang CHAR(2), PRIMARY KEY(id, lang)) ENGINE = INNODB;
 CREATE TABLE exercise_links (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNSIGNED, related_exercise_id INT UNSIGNED, INDEX exercise_id_idx (exercise_id), INDEX related_exercise_id_idx (related_exercise_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE program_tag (id INT UNSIGNED AUTO_INCREMENT, tag_id INT UNSIGNED, program_id INT UNSIGNED, INDEX program_id_idx (program_id), INDEX tag_id_idx (tag_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE exercise_muscles (id INT UNSIGNED AUTO_INCREMENT, exercise_id INT UNSIGNED, muscle_id INT UNSIGNED, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -31,6 +32,8 @@ ALTER TABLE sf_guard_user_group ADD FOREIGN KEY (group_id) REFERENCES sf_guard_g
 ALTER TABLE sf_guard_remember_key ADD FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
 ALTER TABLE exercise_set ADD FOREIGN KEY (program_id) REFERENCES program(id) ON DELETE CASCADE;
 ALTER TABLE exercise_set ADD FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE CASCADE;
+ALTER TABLE exercise_images ADD FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE CASCADE;
+ALTER TABLE exercise_image_translation ADD FOREIGN KEY (id) REFERENCES exercise_images(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE exercise_links ADD FOREIGN KEY (related_exercise_id) REFERENCES exercises(id) ON DELETE CASCADE;
 ALTER TABLE exercise_links ADD FOREIGN KEY (exercise_id) REFERENCES exercises(id) ON DELETE CASCADE;
 ALTER TABLE program_tag ADD FOREIGN KEY (tag_id) REFERENCES tag(id) ON DELETE CASCADE;
