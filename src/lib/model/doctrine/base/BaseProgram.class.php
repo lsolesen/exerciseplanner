@@ -26,19 +26,14 @@ abstract class BaseProgram extends sfDoctrineRecord
                                                     'foreign' => 'id',
                                                     'onDelete' => 'CASCADE'));
 
-        $this->hasMany('Tag as Tags', array('refClass' => 'ProgramTag',
-                                            'local' => 'program_id',
-                                            'foreign' => 'tag_id'));
-
         $this->hasMany('ExerciseSet as Sets', array('local' => 'id',
                                                     'foreign' => 'program_id'));
 
-        $this->hasMany('ProgramTag', array('local' => 'id',
-                                           'foreign' => 'program_id'));
-
         $timestampable0 = new Doctrine_Template_Timestampable();
         $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'notes')));
+        $taggable0 = new Taggable();
         $this->actAs($timestampable0);
         $this->actAs($i18n0);
+        $this->actAs($taggable0);
     }
 }

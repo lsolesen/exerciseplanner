@@ -9,28 +9,24 @@ abstract class BaseTag extends sfDoctrineRecord
     {
         $this->setTableName('tag');
         $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'unsigned' => true, 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-        $this->hasColumn('name', 'string', 64, array('type' => 'string', 'length' => '64'));
+        $this->hasColumn('name', 'string', 100, array('type' => 'string', 'length' => '100'));
+        $this->hasColumn('lang', 'string', 8, array('type' => 'string', 'length' => '8'));
+        $this->hasColumn('is_triple', 'boolean', null, array('type' => 'boolean'));
+        $this->hasColumn('triple_namespace', 'string', 100, array('type' => 'string', 'length' => '100'));
+        $this->hasColumn('triple_key', 'string', 100, array('type' => 'string', 'length' => '100'));
+        $this->hasColumn('triple_value', 'string', 100, array('type' => 'string', 'length' => '100'));
+
+
+        $this->index('name', array('fields' => 'name'));
+        $this->index('lang', array('fields' => 'lang'));
+        $this->index('triple1', array('fields' => 'triple_namespace'));
+        $this->index('triple2', array('fields' => 'triple_key'));
+        $this->index('triple3', array('fields' => 'triple_value'));
     }
 
     public function setUp()
     {
-        $this->hasMany('Program as Programs', array('refClass' => 'ProgramTag',
-                                                    'local' => 'tag_id',
-                                                    'foreign' => 'program_id'));
-
-        $this->hasMany('Exercise', array('refClass' => 'ExerciseTag',
-                                         'local' => 'tag_id',
-                                         'foreign' => 'exercise_id'));
-
-        $this->hasMany('ExerciseTag', array('local' => 'id',
-                                            'foreign' => 'tag_id'));
-
-        $this->hasMany('ProgramTag', array('local' => 'id',
-                                           'foreign' => 'tag_id'));
-
-        $timestampable0 = new Doctrine_Template_Timestampable();
-        $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name')));
-        $this->actAs($timestampable0);
-        $this->actAs($i18n0);
+        $this->hasMany('Tagging', array('local' => 'id',
+                                        'foreign' => 'tag_id'));
     }
 }

@@ -22,7 +22,7 @@
 
         <tr>
             <th>Tags</th>
-            <td></td>
+            <td><?php foreach($program->getTags(array('lang'=>$sf_user->getCulture())) as $tag) { echo $tag.'<br />'; } ?></td>
         </tr>
 
         <tr>

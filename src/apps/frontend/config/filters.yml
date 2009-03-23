@@ -4,7 +4,7 @@ security:
 
 # insert your own filters here
 security:
-  class: sfGuardBasicSecurityFilter
+  class: sfGuardRememberMeFilter
 
 url:
   class: gsUrlFilter

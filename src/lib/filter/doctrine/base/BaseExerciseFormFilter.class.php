@@ -21,7 +21,6 @@ class BaseExerciseFormFilter extends BaseFormFilterDoctrine
       'updated_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
       'exercises_list' => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Exercise')),
       'muscles_list'   => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Muscle')),
-      'tags_list'      => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Tag')),
     ));
 
     $this->setValidators(array(
@@ -32,7 +31,6 @@ class BaseExerciseFormFilter extends BaseFormFilterDoctrine
       'updated_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'exercises_list' => new sfValidatorDoctrineChoiceMany(array('model' => 'Exercise', 'required' => false)),
       'muscles_list'   => new sfValidatorDoctrineChoiceMany(array('model' => 'Muscle', 'required' => false)),
-      'tags_list'      => new sfValidatorDoctrineChoiceMany(array('model' => 'Tag', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_filters[%s]');
@@ -74,22 +72,6 @@ class BaseExerciseFormFilter extends BaseFormFilterDoctrine
           ->andWhereIn('ExerciseMuscle.muscle_id', $values);
   }
 
-  public function addTagsListColumnQuery(Doctrine_Query $query, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $query->leftJoin('r.ExerciseTag ExerciseTag')
-          ->andWhereIn('ExerciseTag.tag_id', $values);
-  }
-
   public function getModelName()
   {
     return 'Exercise';
@@ -106,7 +88,6 @@ class BaseExerciseFormFilter extends BaseFormFilterDoctrine
       'updated_at'     => 'Date',
       'exercises_list' => 'ManyKey',
       'muscles_list'   => 'ManyKey',
-      'tags_list'      => 'ManyKey',
     );
   }
 }

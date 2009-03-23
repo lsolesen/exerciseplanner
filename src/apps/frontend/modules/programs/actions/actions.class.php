@@ -118,6 +118,21 @@ class programsActions extends sfActions
         $form->bind($request->getParameter($form->getName()));
         if ($form->isValid())
         {
+            // add new tags
+            if($ntags = $request->getParameter('program_tags'))
+            {
+                $program = $form->getObject();
+                $program->addTag($ntags);
+            }
+
+            // remove selected tags
+            $rtags = $request->getParameter('program_remove_tags');
+            if(!empty($rtags))
+            {
+                $program = $form->getObject();
+                $program->removeTag($rtags);
+            }
+
             $program = $form->save();
             $program = $form->getObject();
 

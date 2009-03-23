@@ -19,7 +19,6 @@ class BaseProgramFormFilter extends BaseFormFilterDoctrine
       'is_shareable' => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'created_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
       'updated_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
-      'tags_list'    => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Tag')),
     ));
 
     $this->setValidators(array(
@@ -28,7 +27,6 @@ class BaseProgramFormFilter extends BaseFormFilterDoctrine
       'is_shareable' => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'created_at'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'updated_at'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
-      'tags_list'    => new sfValidatorDoctrineChoiceMany(array('model' => 'Tag', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('program_filters[%s]');
@@ -36,22 +34,6 @@ class BaseProgramFormFilter extends BaseFormFilterDoctrine
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
     parent::setup();
-  }
-
-  public function addTagsListColumnQuery(Doctrine_Query $query, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $query->leftJoin('r.ProgramTag ProgramTag')
-          ->andWhereIn('ProgramTag.tag_id', $values);
   }
 
   public function getModelName()
@@ -68,7 +50,6 @@ class BaseProgramFormFilter extends BaseFormFilterDoctrine
       'is_shareable' => 'Boolean',
       'created_at'   => 'Date',
       'updated_at'   => 'Date',
-      'tags_list'    => 'ManyKey',
     );
   }
 }

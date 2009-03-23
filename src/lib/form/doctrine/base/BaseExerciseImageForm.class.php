@@ -22,7 +22,7 @@ class BaseExerciseImageForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'          => new sfValidatorDoctrineChoice(array('model' => 'ExerciseImage', 'column' => 'id', 'required' => false)),
       'exercise_id' => new sfValidatorDoctrineChoice(array('model' => 'Exercise', 'required' => false)),
-      'filename'    => new sfValidatorString(array('max_length' => 128, 'required' => false)),
+      'filename'    => new sfValidatorString(array('max_length' => 200, 'required' => false)),
       'width'       => new sfValidatorInteger(array('required' => false)),
       'height'      => new sfValidatorInteger(array('required' => false)),
     ));

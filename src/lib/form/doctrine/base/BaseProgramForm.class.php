@@ -18,7 +18,6 @@ class BaseProgramForm extends BaseFormDoctrine
       'is_shareable' => new sfWidgetFormInputCheckbox(),
       'created_at'   => new sfWidgetFormDateTime(),
       'updated_at'   => new sfWidgetFormDateTime(),
-      'tags_list'    => new sfWidgetFormDoctrineChoiceMany(array('model' => 'Tag')),
     ));
 
     $this->setValidators(array(
@@ -28,7 +27,6 @@ class BaseProgramForm extends BaseFormDoctrine
       'is_shareable' => new sfValidatorBoolean(array('required' => false)),
       'created_at'   => new sfValidatorDateTime(array('required' => false)),
       'updated_at'   => new sfValidatorDateTime(array('required' => false)),
-      'tags_list'    => new sfValidatorDoctrineChoiceMany(array('model' => 'Tag', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('program[%s]');
@@ -41,51 +39,6 @@ class BaseProgramForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Program';
-  }
-
-  public function updateDefaultsFromObject()
-  {
-    parent::updateDefaultsFromObject();
-
-    if (isset($this->widgetSchema['tags_list']))
-    {
-      $this->setDefault('tags_list', $this->object->Tags->getPrimaryKeys());
-    }
-
-  }
-
-  protected function doSave($con = null)
-  {
-    parent::doSave($con);
-
-    $this->saveTagsList($con);
-  }
-
-  public function saveTagsList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['tags_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (is_null($con))
-    {
-      $con = $this->getConnection();
-    }
-
-    $this->object->unlink('Tags', array());
-
-    $values = $this->getValue('tags_list');
-    if (is_array($values))
-    {
-      $this->object->link('Tags', $values);
-    }
   }
 
 }

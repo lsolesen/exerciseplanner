@@ -20,7 +20,7 @@
     <tr><th><?php echo $form['is_shareable']->renderLabel(); ?></th><td><?php echo $form['is_shareable']; ?></td></tr>
 
     <tr>
-        <th><?php if($is_owner || $obj->isNew()): ?> <?php echo link_to_remote('Add Rep Set',array('url'=>'programs/addSet?t=rep','update'=>'sets','position'=>'top')); ?>  <?php echo link_to_remote('Add Time Set',array('url'=>'programs/addSet?t=time','update'=>'sets','position'=>'top')); ?> <?php endif; ?></th>
+        <th valign="top"><?php if($is_owner || $obj->isNew()): ?> <?php echo link_to_remote('Add Rep Set',array('url'=>'programs/addSet?t=rep','update'=>'sets','position'=>'top')); ?>  <?php echo link_to_remote('Add Time Set',array('url'=>'programs/addSet?t=time','update'=>'sets','position'=>'top')); ?> <?php endif; ?></th>
         <td id="sets">
             <?php
                 $p_id          = $form->getObject()->get('id');
@@ -58,7 +58,22 @@
     </tr>
         <tr>
             <th><?php echo __('Tags'); ?></th>
-            <td></td>
+            <td>
+                <input type="text" name="program_tags" /><br />
+                <table>
+                    <tr>
+                        <th align="left"><?php echo __('Tag'); ?></th>
+                        <th align="left"><?php echo __('Remove'); ?></th>
+                    </tr>
+                    <?php foreach($form->getObject()->getTags(array('lang'=>$sf_user->getCulture())) as $tag): ?>
+                    <tr>
+                        <td><?php echo $tag; ?></td>
+                        <td><input type="checkbox" name="program_remove_tags[]" value="<?php echo $tag; ?>" /></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+
+            </td>
         </tr>
     </tbody>
 

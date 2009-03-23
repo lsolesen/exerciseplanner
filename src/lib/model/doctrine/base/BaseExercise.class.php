@@ -36,10 +36,6 @@ abstract class BaseExercise extends sfDoctrineRecord
                                                   'local' => 'exercise_id',
                                                   'foreign' => 'muscle_id'));
 
-        $this->hasMany('Tag as Tags', array('refClass' => 'ExerciseTag',
-                                            'local' => 'exercise_id',
-                                            'foreign' => 'tag_id'));
-
         $this->hasMany('ExerciseSet as ExerciseSets', array('local' => 'id',
                                                             'foreign' => 'exercise_id'));
 
@@ -48,9 +44,6 @@ abstract class BaseExercise extends sfDoctrineRecord
 
         $this->hasMany('ExerciseImage as Images', array('local' => 'id',
                                                         'foreign' => 'exercise_id'));
-
-        $this->hasMany('ExerciseTag', array('local' => 'id',
-                                            'foreign' => 'exercise_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'description', 2 => 'video')));

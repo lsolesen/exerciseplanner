@@ -29,6 +29,7 @@ Program:
     Timestampable:
     I18n:
       fields: [ name, notes ]
+    Taggable:      
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
     creator_id: integer(4)    
@@ -46,12 +47,6 @@ Program:
       foreignAlias: Programs
       local: owner_id
       onDelete: CASCADE
-    Tags:
-      class: Tag
-      foreignAlias: Programs
-      local: program_id
-      foreign: tag_id
-      refClass: ProgramTag
 
 # Each exercise will be related to the program through one of two:
 # 1) The time you have to conduct an exercise, lets say running, or 
@@ -122,11 +117,6 @@ Exercise:
       local: exercise_id
       foreign: muscle_id
       refClass: ExerciseMuscle
-    Tags:
-      class: Tag
-      local: exercise_id
-      foreign: tag_id
-      refClass: ExerciseTag
               
 # Exercise relation tables
 ExerciseMuscle:
@@ -194,36 +184,43 @@ ExerciseImage:
       onDelete: CASCADE
 
 Tag:
-  actAs:
-    Timestampable:
-    I18n:
-      fields: [ name ]
   columns:
-    id:   { type: integer(4), unsigned: true, primary: true, autoincrement: true }
-    name: { type: string(64) }
+    id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    name:             { type: string(100) }
+    lang:             { type: string(8) }
+    is_triple:        { type: boolean }
+    triple_namespace: { type: string(100) }
+    triple_key:       { type: string(100) }
+    triple_value:     { type: string(100) }
+  indexes:
+    name:
+      fields: name
+    lang:
+      fields: lang
+    triple1:
+      fields: triple_namespace
+    triple2:
+      fields: triple_key
+    triple3:
+      fields: triple_value
 
-ExerciseTag:
+Tagging:
   columns:
-    id:          { type: integer(4), unsigned: true, primary: true, autoincrement: true }
-    tag_id:      { type: integer(4), unsigned: true }
-    exercise_id: { type: integer(4), unsigned: true }
+    id:     { type: integer(4), unsigned: true, primary: true, autoincrement: true }
+    tag_id: { type: integer(4), unsigned: true, notnull: true }
+    taggable_model: { type: string(30) }
+    taggable_id:    { type: integer(4), unsigned: true }
   relations:
-    Exercise:
-      onDelete: CASCADE
     Tag:
-      onDelete: CASCADE
-
-ProgramTag:
-  columns:
-    id:          { type: integer(4), unsigned: true, primary: true, autoincrement: true }
-    tag_id:      { type: integer(4), unsigned: true }
-    program_id:  { type: integer(4), unsigned: true }
-  relations:
-    Program:
-      onDelete: CASCADE
-    Tag:
-      onDelete: CASCADE
-
+  indexes:
+    tag:
+      fields: [ tag_id ]
+    taggable:
+      fields: [ taggable_model, taggable_id ]
+  attributes:
+    # don't export constraints. This is necessary because multiple models can 
+    #  join Tagging on taggable_id
+    export: [ all, constraints ] 
 # LATER ADDITIONS:
 
 # A user can have a log and a calendar and follow own training

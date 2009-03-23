@@ -27,7 +27,6 @@ class gsShareableListener extends Doctrine_Record_Listener
         $params = $event->getParams();
         $class  = get_class($event->getInvoker());
         $sql    = ($params['alias'] == $class) ? 'FROM '.$class : 'FROM '.$class.' '.$params['alias'] ;
-        sfContext::getInstance()->getLogger()->log(__CLASS__.'::'.__FUNCTION__.' CALLED ! :'.$sql);
 
         if(!$this->contains($sql,$query))
             return;

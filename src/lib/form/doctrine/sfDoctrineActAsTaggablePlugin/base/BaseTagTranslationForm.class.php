@@ -19,7 +19,7 @@ class BaseTagTranslationForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'   => new sfValidatorDoctrineChoice(array('model' => 'TagTranslation', 'column' => 'id', 'required' => false)),
-      'name' => new sfValidatorString(array('max_length' => 64, 'required' => false)),
+      'name' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'lang' => new sfValidatorDoctrineChoice(array('model' => 'TagTranslation', 'column' => 'lang', 'required' => false)),
     ));
 
