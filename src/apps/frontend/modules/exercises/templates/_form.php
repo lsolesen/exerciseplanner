@@ -35,6 +35,24 @@
             <td><?php echo $form['muscles_list']->render(); ?></td>
         </tr>
         <tr>
+            <th><?php echo __('Tags'); ?></th>
+            <td>
+                <input type="text" name="exercise_tags" /><br />
+                <table>
+                    <tr>
+                        <th align="left"><?php echo __('Tag'); ?></th>
+                        <th align="left"><?php echo __('Remove'); ?></th>
+                    </tr>
+                    <?php foreach($form->getObject()->getTags() as $tag): ?>
+                    <tr>
+                        <td><?php echo $tag; ?></td>
+                        <td><input type="checkbox" name="exercise_remove_tags[]" value="<?php echo $tag; ?>" /></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </td>
+        </tr>
+        <tr>
             <th valign="top"><?php echo __('Images'); ?></th>
             <td id="images">
                 <?php

@@ -48,9 +48,11 @@ abstract class BaseExercise extends sfDoctrineRecord
         $timestampable0 = new Doctrine_Template_Timestampable();
         $i18n0 = new Doctrine_Template_I18n(array('fields' => array(0 => 'name', 1 => 'description', 2 => 'video')));
         $gsshareabletemplate0 = new gsShareableTemplate(array('share' => 'is_shareable', 'owner' => 'owner_id'));
+        $taggable0 = new Taggable();
         $this->actAs($timestampable0);
         $this->actAs($i18n0);
         $this->actAs($gsshareabletemplate0);
+        $this->actAs($taggable0);
 
         $this->addListener(new gsI18nListener());
     }

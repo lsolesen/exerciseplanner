@@ -87,6 +87,7 @@ Exercise:
     gsShareableTemplate:
       share: is_shareable
       owner: owner_id    
+    Taggable:      
   listeners: [ gsI18nListener ]
   columns:
     id: { type: integer(4), unsigned: true, primary: true, autoincrement: true }

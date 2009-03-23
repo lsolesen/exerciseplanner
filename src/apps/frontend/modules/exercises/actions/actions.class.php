@@ -81,6 +81,22 @@ class exercisesActions extends sfActions
 
         if ($form->isValid())
         {
+
+            // add new tags
+            if($ntags = $request->getParameter('exercise_tags'))
+            {
+                $exercise = $form->getObject();
+                $exercise->addTag($ntags);
+            }
+
+            // remove selected tags
+            $rtags = $request->getParameter('exercise_remove_tags');
+            if(!empty($rtags))
+            {
+                $exercise = $form->getObject();
+                $exercise->removeTag($rtags);
+            }
+
             $exercise = $form->save();
 
             $this->redirect('exercises/show?id='.$exercise['id']);

@@ -14,13 +14,13 @@ class BaseExerciseMuscleFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'exercise_id' => new sfWidgetFormDoctrineChoice(array('model' => 'Exercise', 'add_empty' => true)),
-      'muscle_id'   => new sfWidgetFormDoctrineChoice(array('model' => 'Muscle', 'add_empty' => true)),
+      'exercise_id' => new sfWidgetFormFilterInput(),
+      'muscle_id'   => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'exercise_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Exercise', 'column' => 'id')),
-      'muscle_id'   => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Muscle', 'column' => 'id')),
+      'exercise_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'muscle_id'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('exercise_muscle_filters[%s]');
@@ -39,8 +39,8 @@ class BaseExerciseMuscleFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'          => 'Number',
-      'exercise_id' => 'ForeignKey',
-      'muscle_id'   => 'ForeignKey',
+      'exercise_id' => 'Number',
+      'muscle_id'   => 'Number',
     );
   }
 }

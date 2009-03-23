@@ -27,7 +27,15 @@
             <th><label for="exercise_owner">Creator</label></th>
             <td><?php echo $exercise['Creator']; ?></td>
         </tr>
-
+        <tr>
+            <th><?php echo __('Tags'); ?></th>
+            <td>
+                <!--  Maybe replace with the plugins tag_cloud helpers or something.. -->
+                <?php foreach($form->getObject()->getTags() as $tag): ?>
+                    <?php echo $tag; ?><br />
+                <?php endforeach; ?>
+            </td>
+        </tr>
         <tr>
             <th><label for="exercise_exercises_list">Related Exercises</label></th>
             <td><?php if(count($exercise['Exercises']) == 0): ?>
